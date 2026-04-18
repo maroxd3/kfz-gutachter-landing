@@ -21,7 +21,8 @@ export default function Hero() {
     <section className="relative min-h-screen overflow-hidden bg-ink text-cream">
       <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" fill="#B8915E" />
 
-      {/* Hintergrund-Foto mit Ken-Burns Zoom */}
+      {/* Hintergrund-Foto mit Ken-Burns Zoom. Auf Mobile wird das Auto
+          mittig fokussiert, damit die Hotspots sichtbar bleiben. */}
       <motion.div
         className="absolute inset-0 z-0"
         initial={{ scale: 1.1 }}
@@ -31,13 +32,14 @@ export default function Hero() {
         <img
           src={brand.heroImageUrl}
           alt={brand.heroImageAlt}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-center"
         />
       </motion.div>
 
-      {/* Gradient-Overlay für Text-Lesbarkeit (links stärker als rechts) */}
+      {/* Gradient-Overlay für Text-Lesbarkeit. Auf Mobile nur unten,
+          damit das Auto samt Hotspots im oberen Bildteil sichtbar ist. */}
       <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-black via-black/80 to-black/10 md:via-black/60"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/40 via-black/50 to-black md:bg-gradient-to-r md:from-black md:via-black/60 md:to-black/10"
         aria-hidden
       />
       <div
@@ -45,9 +47,9 @@ export default function Hero() {
         aria-hidden
       />
 
-      {/* Interaktive Hotspots auf dem Foto — nur einer gleichzeitig offen */}
+      {/* Interaktive Hotspots auf dem Foto — auch auf Mobile sichtbar */}
       <div
-        className="absolute inset-0 z-[3] hidden md:block"
+        className="absolute inset-0 z-[3]"
         onClick={(e) => {
           // Klick außerhalb eines Pins schließt geöffnetes Popup
           if (e.target === e.currentTarget) setOpenId(null)

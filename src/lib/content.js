@@ -3,8 +3,8 @@
 import { asset } from './utils.js'
 
 export const brand = {
-  name: 'Sachverständigenbüro Saleh',
-  nameShort: 'Saleh',
+  name: 'Kfz-Sachverständige Hannover',
+  nameShort: 'Sachverständige',
   tagline: 'Kfz-Gutachten Hannover',
   city: 'Hannover',
   phone: '+49 511 000 00 00',

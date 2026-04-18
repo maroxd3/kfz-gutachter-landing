@@ -12,6 +12,12 @@ const severityColors = {
 // gleichzeitig auf ist. Das Popup ist pointer-events-none, damit Klicks
 // auf darunter liegende Pins durchgehen.
 export default function DamageHotspot({ point, index, isOpen, onToggle }) {
+  // Popup-Platzierung: liegt der Pin in der rechten Bildhälfte, nach links
+  // ausklappen, sonst nach rechts — verhindert Overflow auf kleinen Viewports.
+  const popoverOnLeft = point.x > 55
+  // Vertikal: Pins in der oberen Bildhälfte → Popup unten, sonst oben.
+  const popoverOnTop = point.y > 60
+
   return (
     <div
       className="absolute z-[5] -translate-x-1/2 -translate-y-1/2"
@@ -27,12 +33,13 @@ export default function DamageHotspot({ point, index, isOpen, onToggle }) {
       <button
         onClick={onToggle}
         className={cn(
-          'relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/80 bg-gold text-ink shadow-lg transition hover:scale-110',
+          'relative flex h-7 w-7 items-center justify-center rounded-full border-2 border-white/80 bg-gold text-ink shadow-lg transition hover:scale-110 md:h-8 md:w-8',
           isOpen && 'scale-110 bg-white',
         )}
         aria-label={`Schaden: ${point.label}`}
       >
-        {isOpen ? <X size={16} /> : <Plus size={16} />}
+        {isOpen ? <X size={14} className="md:hidden" /> : <Plus size={14} className="md:hidden" />}
+        {isOpen ? <X size={16} className="hidden md:block" /> : <Plus size={16} className="hidden md:block" />}
       </button>
 
       <AnimatePresence>
@@ -42,7 +49,11 @@ export default function DamageHotspot({ point, index, isOpen, onToggle }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 6, scale: 0.95 }}
             transition={{ duration: 0.18 }}
-            className="pointer-events-none absolute top-10 left-1/2 z-[6] w-72 -translate-x-1/2 rounded-xl border border-white/10 bg-black/90 p-4 text-left shadow-2xl backdrop-blur-md"
+            className={cn(
+              'pointer-events-none absolute z-[6] w-[min(18rem,calc(100vw-2rem))] rounded-xl border border-white/10 bg-black/90 p-4 text-left shadow-2xl backdrop-blur-md',
+              popoverOnLeft ? 'right-1/2 mr-3' : 'left-1/2 ml-3',
+              popoverOnTop ? 'bottom-full mb-2' : 'top-full mt-2',
+            )}
           >
             <div className="flex items-center justify-between gap-3">
               <h4 className="font-serif text-base font-semibold text-white">

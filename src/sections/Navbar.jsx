@@ -17,7 +17,6 @@ export default function Navbar() {
         <nav className="hidden items-center gap-8 text-sm font-medium text-neutral-300 md:flex">
           <a href="#leistungen" className="hover:text-gold">Leistungen</a>
           <a href="#ablauf" className="hover:text-gold">Ablauf</a>
-          <a href="#ueber-mich" className="hover:text-gold">Über mich</a>
           <a href="#kontakt" className="hover:text-gold">Kontakt</a>
         </nav>
 

@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronsLeftRight } from 'lucide-react'
 import { collisionScene } from '../lib/content.js'
 import { cn } from '../lib/utils.js'
@@ -17,6 +17,7 @@ export default function BeforeAfter() {
   const rafRef = useRef(null)
   const [position, setPosition] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [openPointId, setOpenPointId] = useState(null)
   const draggingRef = useRef(false)
 
   const updateFromClientX = useCallback((clientX) => {
@@ -133,7 +134,7 @@ export default function BeforeAfter() {
             {allPoints.map((p) => (
               <motion.div
                 key={`glow-${p.id}`}
-                className="absolute rounded-full"
+                className="pointer-events-none absolute rounded-full"
                 style={{
                   left: `${p.x}%`,
                   top: `${p.y}%`,
@@ -158,36 +159,70 @@ export default function BeforeAfter() {
               />
             )}
 
-            {/* Hotspot-Marker */}
-            {allPoints.map((p) => (
-              <div
-                key={p.id}
-                className="absolute -translate-x-1/2 -translate-y-1/2"
-                style={{ left: `${p.x}%`, top: `${p.y}%` }}
-              >
-                <div className="flex items-center gap-2">
-                  <div
+            {/* Hotspot-Marker — klickbar, Popup nur bei geöffnetem Pin */}
+            {allPoints.map((p) => {
+              const isOpen = openPointId === p.id
+              const popoverOnLeft = p.x > 55
+              const popoverOnTop = p.y > 60
+              return (
+                <div
+                  key={p.id}
+                  className="absolute -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: `${p.x}%`, top: `${p.y}%` }}
+                >
+                  <button
+                    onMouseDown={(e) => e.stopPropagation()}
+                    onTouchStart={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setPaused(true)
+                      setOpenPointId((cur) => (cur === p.id ? null : p.id))
+                    }}
+                    aria-label={`Schaden: ${p.label}`}
                     className={cn(
-                      'flex h-9 w-9 items-center justify-center rounded-full border-2 border-white font-serif text-sm font-bold shadow-lg shadow-black/40',
+                      'flex h-6 w-6 items-center justify-center rounded-full border-2 border-white font-serif text-[11px] font-bold shadow-lg shadow-black/40 transition hover:scale-110 md:h-9 md:w-9 md:text-sm',
                       p.party === 'client' ? 'bg-gold text-ink' : 'bg-red-500 text-white',
+                      isOpen && 'scale-110 ring-2 ring-white/60',
                     )}
                   >
                     {p.number}
-                  </div>
-                  <div className="hidden rounded-lg border border-white/10 bg-black/85 px-3 py-1.5 backdrop-blur md:block">
-                    <div
-                      className={cn(
-                        'text-[10px] uppercase tracking-wider',
-                        p.party === 'client' ? 'text-gold-soft' : 'text-red-300',
-                      )}
-                    >
-                      {p.label}
-                    </div>
-                    <div className="font-serif text-sm font-semibold text-white">{p.repair}</div>
-                  </div>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 4, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 4, scale: 0.95 }}
+                        transition={{ duration: 0.18 }}
+                        className={cn(
+                          'pointer-events-none absolute z-20 w-[min(16rem,calc(100vw-2rem))] rounded-lg border border-white/10 bg-black/90 p-3 shadow-2xl backdrop-blur-md',
+                          popoverOnLeft ? 'right-1/2 mr-3' : 'left-1/2 ml-3',
+                          popoverOnTop ? 'bottom-full mb-2' : 'top-full mt-2',
+                        )}
+                      >
+                        <div
+                          className={cn(
+                            'text-[10px] uppercase tracking-wider',
+                            p.party === 'client' ? 'text-gold-soft' : 'text-red-300',
+                          )}
+                        >
+                          {p.label}
+                        </div>
+                        <div className="mt-1 font-serif text-lg font-semibold text-white">
+                          {p.repair}
+                        </div>
+                        {p.damage && (
+                          <p className="mt-2 text-[11px] leading-relaxed text-neutral-300">
+                            {p.damage}
+                          </p>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-              </div>
-            ))}
+              )
+            })}
 
             {/* Zwei getrennte Summen-Badges */}
             <div className="absolute top-4 right-4 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-medium uppercase tracking-wider text-gold-soft backdrop-blur">
