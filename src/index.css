@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  --color-ink: #0A1F44;
+  --color-ink-soft: #1a2f5c;
+  --color-ink-muted: #5a6480;
+
+  --color-gold: #B8915E;
+  --color-gold-soft: #d4b584;
+  --color-gold-dark: #8e6d43;
+
+  --color-cream: #fafaf7;
+  --color-cream-dark: #f2efe6;
+  --color-line: #e5e1d4;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #0A1F44;
+  --color-muted-foreground: #5a6480;
+
+  --animate-spotlight: spotlight 2s ease 0.25s 1 forwards;
+}
+
+@keyframes spotlight {
+  0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
+  100% { opacity: 1; transform: translate(-50%, -40%) scale(1); }
+}
+
+.loader {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #B8915E;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: white;
+}
