@@ -20,7 +20,7 @@ export default function DamageHotspot({ point, index, isOpen, onToggle }) {
 
   return (
     <div
-      className="absolute z-[5] -translate-x-1/2 -translate-y-1/2"
+      className="pointer-events-auto absolute z-[5] -translate-x-1/2 -translate-y-1/2"
       style={{ left: `${point.x}%`, top: `${point.y}%` }}
     >
       <motion.span

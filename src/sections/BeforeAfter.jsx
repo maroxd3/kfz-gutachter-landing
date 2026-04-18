@@ -111,7 +111,7 @@ export default function BeforeAfter() {
             className="absolute inset-0 h-full w-full object-cover"
             draggable={false}
           />
-          <div className="absolute top-4 left-4 z-10 rounded-full border border-white/20 bg-black/60 px-3 py-1 text-xs font-medium uppercase tracking-wider text-white/80 backdrop-blur">
+          <div className="absolute top-2 left-2 z-10 rounded-full border border-white/20 bg-black/60 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white/80 backdrop-blur md:top-4 md:left-4 md:px-3 md:py-1 md:text-xs">
             Unfallszene · bei Ankunft
           </div>
 
@@ -196,24 +196,24 @@ export default function BeforeAfter() {
                         exit={{ opacity: 0, y: 4, scale: 0.95 }}
                         transition={{ duration: 0.18 }}
                         className={cn(
-                          'pointer-events-none absolute z-20 w-[min(16rem,calc(100vw-2rem))] rounded-lg border border-white/10 bg-black/90 p-3 shadow-2xl backdrop-blur-md',
-                          popoverOnLeft ? 'right-1/2 mr-3' : 'left-1/2 ml-3',
+                          'pointer-events-none absolute z-20 w-[min(11rem,calc(100vw-2rem))] rounded-lg border border-white/10 bg-black/90 p-2 shadow-2xl backdrop-blur-md md:w-[min(15rem,calc(100vw-2rem))] md:p-3',
+                          popoverOnLeft ? 'right-1/2 mr-2 md:mr-3' : 'left-1/2 ml-2 md:ml-3',
                           popoverOnTop ? 'bottom-full mb-2' : 'top-full mt-2',
                         )}
                       >
                         <div
                           className={cn(
-                            'text-[10px] uppercase tracking-wider',
+                            'text-[9px] uppercase tracking-wider md:text-[10px]',
                             p.party === 'client' ? 'text-gold-soft' : 'text-red-300',
                           )}
                         >
                           {p.label}
                         </div>
-                        <div className="mt-1 font-serif text-lg font-semibold text-white">
+                        <div className="mt-0.5 font-serif text-sm font-semibold text-white md:mt-1 md:text-lg">
                           {p.repair}
                         </div>
                         {p.damage && (
-                          <p className="mt-2 text-[11px] leading-relaxed text-neutral-300">
+                          <p className="mt-1.5 hidden text-[11px] leading-relaxed text-neutral-300 md:block">
                             {p.damage}
                           </p>
                         )}
@@ -225,28 +225,30 @@ export default function BeforeAfter() {
             })}
 
             {/* Zwei getrennte Summen-Badges */}
-            <div className="absolute top-4 right-4 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-medium uppercase tracking-wider text-gold-soft backdrop-blur">
+            <div className="absolute top-2 right-2 rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-gold-soft backdrop-blur md:top-4 md:right-4 md:px-3 md:py-1 md:text-xs">
               Gutachten abgeschlossen
             </div>
 
-            <div className="absolute bottom-4 left-4 rounded-xl border border-gold/40 bg-black/85 px-5 py-3 backdrop-blur-md">
-              <div className="text-[10px] uppercase tracking-[0.2em] text-gold-soft">
+            <div className="absolute bottom-2 left-2 rounded-lg border border-gold/40 bg-black/85 px-2 py-1.5 backdrop-blur-md md:bottom-4 md:left-4 md:rounded-xl md:px-5 md:py-3">
+              <div className="text-[9px] uppercase tracking-[0.2em] text-gold-soft md:text-[10px]">
                 {collisionScene.client.label}
               </div>
-              <div className="font-serif text-2xl font-semibold text-white md:text-3xl">
+              <div className="font-serif text-base font-semibold text-white md:text-3xl">
                 {clientTotal.toLocaleString('de-DE')} €
               </div>
-              <div className="mt-0.5 text-[10px] text-neutral-500">{collisionScene.client.sublabel}</div>
+              <div className="mt-0.5 hidden text-[10px] text-neutral-500 md:block">
+                {collisionScene.client.sublabel}
+              </div>
             </div>
 
-            <div className="absolute right-4 bottom-4 rounded-xl border border-red-500/40 bg-black/85 px-5 py-3 backdrop-blur-md">
-              <div className="text-[10px] uppercase tracking-[0.2em] text-red-300">
+            <div className="absolute right-2 bottom-2 rounded-lg border border-red-500/40 bg-black/85 px-2 py-1.5 backdrop-blur-md md:right-4 md:bottom-4 md:rounded-xl md:px-5 md:py-3">
+              <div className="text-[9px] uppercase tracking-[0.2em] text-red-300 md:text-[10px]">
                 {collisionScene.opponent.label}
               </div>
-              <div className="font-serif text-2xl font-semibold text-white md:text-3xl">
+              <div className="font-serif text-base font-semibold text-white md:text-3xl">
                 {opponentTotal.toLocaleString('de-DE')} €
               </div>
-              <div className="mt-0.5 text-[10px] text-neutral-500">
+              <div className="mt-0.5 hidden text-[10px] text-neutral-500 md:block">
                 {collisionScene.opponent.sublabel}
               </div>
             </div>
@@ -259,11 +261,12 @@ export default function BeforeAfter() {
           >
             <div className="h-full w-0.5 bg-white/90 shadow-[0_0_20px_rgba(184,145,94,0.8)]" />
             <motion.div
-              className="absolute flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-gold text-ink shadow-xl"
+              className="absolute flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gold text-ink shadow-xl md:h-14 md:w-14"
               animate={{ scale: paused ? [1, 1.08, 1] : 1 }}
               transition={{ duration: 1.8, repeat: paused ? Infinity : 0, ease: 'easeInOut' }}
             >
-              <ChevronsLeftRight size={22} strokeWidth={2.5} />
+              <ChevronsLeftRight size={16} strokeWidth={2.5} className="md:hidden" />
+              <ChevronsLeftRight size={22} strokeWidth={2.5} className="hidden md:block" />
             </motion.div>
           </div>
         </div>

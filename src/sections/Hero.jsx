@@ -47,14 +47,10 @@ export default function Hero() {
         aria-hidden
       />
 
-      {/* Interaktive Hotspots auf dem Foto — auch auf Mobile sichtbar */}
-      <div
-        className="absolute inset-0 z-[3]"
-        onClick={(e) => {
-          // Klick außerhalb eines Pins schließt geöffnetes Popup
-          if (e.target === e.currentTarget) setOpenId(null)
-        }}
-      >
+      {/* Interaktive Hotspots auf dem Foto — Wrapper ist pointer-events-none,
+          damit Klicks auf den Text/Buttons darunter normal durchgehen. Nur die
+          Pins selbst fangen Klicks ab (pointer-events-auto in DamageHotspot). */}
+      <div className="pointer-events-none absolute inset-0 z-[20]">
         {heroDamagePoints.map((p, i) => (
           <DamageHotspot
             key={p.id}
