@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, X } from 'lucide-react'
 import { cn } from '../../lib/utils.js'
@@ -9,15 +8,15 @@ const severityColors = {
   Schwer: 'bg-rose-500/20 text-rose-300 border-rose-500/40',
 }
 
-export default function DamageHotspot({ point, index }) {
-  const [open, setOpen] = useState(false)
-
+// Kontrolliert — open/onToggle kommt vom Parent, damit nur EIN Hotspot
+// gleichzeitig auf ist. Das Popup ist pointer-events-none, damit Klicks
+// auf darunter liegende Pins durchgehen.
+export default function DamageHotspot({ point, index, isOpen, onToggle }) {
   return (
     <div
       className="absolute z-[5] -translate-x-1/2 -translate-y-1/2"
       style={{ left: `${point.x}%`, top: `${point.y}%` }}
     >
-      {/* Pulsierender Ring */}
       <motion.span
         className="absolute inset-0 rounded-full bg-gold"
         initial={{ scale: 1, opacity: 0.6 }}
@@ -26,24 +25,24 @@ export default function DamageHotspot({ point, index }) {
       />
 
       <button
-        onClick={() => setOpen((o) => !o)}
+        onClick={onToggle}
         className={cn(
           'relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/80 bg-gold text-ink shadow-lg transition hover:scale-110',
-          open && 'scale-110 bg-white',
+          isOpen && 'scale-110 bg-white',
         )}
         aria-label={`Schaden: ${point.label}`}
       >
-        {open ? <X size={16} /> : <Plus size={16} />}
+        {isOpen ? <X size={16} /> : <Plus size={16} />}
       </button>
 
       <AnimatePresence>
-        {open && (
+        {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 6, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 6, scale: 0.95 }}
             transition={{ duration: 0.18 }}
-            className="absolute top-10 left-1/2 w-72 -translate-x-1/2 rounded-xl border border-white/10 bg-black/90 p-4 text-left shadow-2xl backdrop-blur-md"
+            className="pointer-events-none absolute top-10 left-1/2 z-[6] w-72 -translate-x-1/2 rounded-xl border border-white/10 bg-black/90 p-4 text-left shadow-2xl backdrop-blur-md"
           >
             <div className="flex items-center justify-between gap-3">
               <h4 className="font-serif text-base font-semibold text-white">

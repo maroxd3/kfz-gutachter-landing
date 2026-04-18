@@ -1,5 +1,6 @@
 // Zentrale Stelle für alle Platzhalter-Inhalte.
 // Hier anpassen, sobald echte Firmendaten feststehen.
+import { asset } from './utils.js'
 
 export const brand = {
   name: 'Sachverständigenbüro Saleh',
@@ -55,8 +56,8 @@ export const heroDamagePoints = [
 // Zwei-Fahrzeug-Szene für die Before/After-Sektion (Haftpflichtschaden).
 // Linkes Auto = dein Mandant. Rechtes Auto = Gegner.
 export const collisionScene = {
-  imageBefore: '/bfore.png',
-  imageAfter: '/after.png',
+  imageBefore: asset('bfore.png'),
+  imageAfter: asset('after.png'),
   client: {
     label: 'Ihr Fahrzeug',
     sublabel: 'Mercedes E-Klasse · Geschädigter',

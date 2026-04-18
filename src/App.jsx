@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FileText } from 'lucide-react'
+import { asset } from './lib/utils.js'
 import { ContainerScroll } from './components/ui/container-scroll-animation.jsx'
 import Navbar from './sections/Navbar.jsx'
 import Hero from './sections/Hero.jsx'
@@ -56,7 +57,7 @@ function GutachtenMockup() {
   }
   return (
     <img
-      src="/gutachten-mockup.png"
+      src={asset('gutachten-mockup.png')}
       alt="Kfz-Schadensgutachten · Musterseite"
       onError={() => setFailed(true)}
       className="mx-auto h-full w-full rounded-2xl object-cover object-left-top"
@@ -103,7 +104,7 @@ export default function App() {
             title="Der Anruf."
             subtitle="„Herr Saleh — was jetzt?"
             question="Ihr Telefon klingelt. Es ist 8:22 Uhr. Wen rufen Sie an — die Versicherung des anderen, oder jemanden, der auf Ihrer Seite steht?"
-            image="/k01.png"
+            image={asset('k01.png')}
             imageAlt="Hand mit Smartphone, im Hintergrund ein beschädigtes Fahrzeug"
             tone="neutral"
           />
@@ -119,7 +120,7 @@ export default function App() {
             title="45 Minuten. Dann sind wir da."
             subtitle="Was Sie von uns bekommen — und was Sie dafür zahlen."
             question="Wie lange warten Sie, bis jemand vorbeikommt — und zu welchem Preis?"
-            image="/k02.png"
+            image={asset('k02.png')}
             imageAlt="Fahrzeug des Sachverständigen trifft am Unfallort ein"
             tone="neutral"
           />
@@ -150,7 +151,7 @@ export default function App() {
             title="Die Kalkulation."
             subtitle="Rechtssicher. Nachvollziehbar. In unter einer Minute geschätzt."
             question="Was ist Ihr Schaden wirklich wert — und was würde eine Versicherung Ihnen gern auszahlen?"
-            image="/k03.png"
+            image={asset('k03.png')}
             imageAlt="Schreibtisch mit Laptop, Schadensfotos und Messwerkzeug"
             tone="neutral"
           />
@@ -180,7 +181,7 @@ export default function App() {
             title="Vier Zahlen."
             subtitle="Auf die Sie sich verlassen können — schriftlich, nicht als Versprechen."
             question="Woran erkennen Sie, ob Sie einen guten oder einen beliebigen Gutachter haben?"
-            image="/k04.png"
+            image={asset('k04.png')}
             imageAlt="Uhr auf Schreibtisch neben unterschriebenem Gutachten"
             tone="neutral"
           />
@@ -196,7 +197,7 @@ export default function App() {
             title="Warum Mandanten bleiben."
             subtitle="Der Unterschied zwischen einem Gutachter und einem Sachverständigen."
             question={'Darf jeder „Gutachter" heißen — oder nur jemand, der wirklich dafür geprüft wurde?'}
-            image="/k07.png"
+            image={asset('k07.png')}
             imageAlt="Zertifikat DIN EN ISO/IEC 17024"
             tone="gold"
             dark
@@ -213,7 +214,7 @@ export default function App() {
             title="Der Mensch hinter dem Stempel."
             subtitle="Mustafa Saleh — Sachverständiger nach DIN EN ISO/IEC 17024."
             question="Wem vertrauen Sie Ihren Schaden an — einer Firma, oder einer Person, der Sie ins Gesicht schauen?"
-            image="/k08.png"
+            image={asset('k08.png')}
             imageAlt="Portrait Mustafa Saleh, Sachverständiger"
             tone="neutral"
           />
@@ -229,7 +230,7 @@ export default function App() {
             title="Sie tragen 0 €."
             subtitle="Akte geschlossen. Wagen repariert. Leben geht weiter."
             question="Was bleibt, wenn der Schaden weg ist — außer der Gewissheit, dass Sie richtig gehandelt haben?"
-            image="/k05.png"
+            image={asset('k05.png')}
             imageAlt="Repariertes Fahrzeug im Abendlicht"
             tone="gold"
           />

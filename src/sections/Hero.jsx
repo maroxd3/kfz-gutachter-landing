@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, ArrowRight, ShieldCheck, MousePointerClick } from 'lucide-react'
 import { Spotlight } from '../components/ui/spotlight.jsx'
@@ -5,6 +6,7 @@ import DamageHotspot from '../components/ui/damage-hotspot.jsx'
 import { brand, certifications, heroDamagePoints } from '../lib/content.js'
 
 export default function Hero() {
+  const [openId, setOpenId] = useState(null)
   const totalRepair = heroDamagePoints.reduce(
     (sum, p) => sum + Number(p.repair.replace(/[^\d]/g, '') || 0),
     0,
@@ -43,10 +45,22 @@ export default function Hero() {
         aria-hidden
       />
 
-      {/* Interaktive Hotspots auf dem Foto */}
-      <div className="absolute inset-0 z-[3] hidden md:block">
+      {/* Interaktive Hotspots auf dem Foto — nur einer gleichzeitig offen */}
+      <div
+        className="absolute inset-0 z-[3] hidden md:block"
+        onClick={(e) => {
+          // Klick außerhalb eines Pins schließt geöffnetes Popup
+          if (e.target === e.currentTarget) setOpenId(null)
+        }}
+      >
         {heroDamagePoints.map((p, i) => (
-          <DamageHotspot key={p.id} point={p} index={i} />
+          <DamageHotspot
+            key={p.id}
+            point={p}
+            index={i}
+            isOpen={openId === p.id}
+            onToggle={() => setOpenId((cur) => (cur === p.id ? null : p.id))}
+          />
         ))}
       </div>
 
