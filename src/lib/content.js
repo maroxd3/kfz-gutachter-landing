@@ -44,12 +44,13 @@ export const brand = {
 }
 
 // Interaktive Schaden-Markierungen — Hero (einzelnes Fahrzeug).
-// x, y sind Prozent der Bildbreite/Höhe (0–100).
+// x, y sind Prozent der Bildbreite/Höhe (0–100). Positionen kalibriert
+// für /public/hero.png (graue Limousine, Fronthälfte rechts im Bild).
 export const heroDamagePoints = [
-  { id: 1, x: 62, y: 58, label: 'Front-Stoßfänger', damage: 'Verformung, Riss im Kunststoff', repair: '1.850 €', depreciation: '320 €', severity: 'Mittel' },
-  { id: 2, x: 74, y: 45, label: 'Scheinwerfer links', damage: 'Gehäuse gebrochen, Reflektor beschädigt', repair: '890 €', depreciation: '—', severity: 'Leicht' },
-  { id: 3, x: 55, y: 42, label: 'Motorhaube', damage: 'Beule, Lackschaden auf 40 cm', repair: '2.400 €', depreciation: '620 €', severity: 'Schwer' },
-  { id: 4, x: 82, y: 66, label: 'Kotflügel rechts', damage: 'Kratzer, leichte Delle', repair: '650 €', depreciation: '—', severity: 'Leicht' },
+  { id: 1, x: 60, y: 60, label: 'Kotflügel vorne links', damage: 'Tiefe Eindellung über Radlauf, Lack bis aufs Blech abgeschürft', repair: '2.400 €', depreciation: '620 €', severity: 'Schwer' },
+  { id: 2, x: 66, y: 53, label: 'Scheinwerfer links', damage: 'Streuscheibe gerissen, Halterung gebrochen', repair: '1.180 €', depreciation: '—', severity: 'Mittel' },
+  { id: 3, x: 58, y: 72, label: 'Front-Stoßfänger links', damage: 'Verformung, Lackschaden, Clip-Halter gerissen', repair: '1.650 €', depreciation: '290 €', severity: 'Mittel' },
+  { id: 4, x: 68, y: 41, label: 'Motorhaube vorne links', damage: 'Knick an der Vorderkante, Lackplatzer', repair: '780 €', depreciation: '—', severity: 'Leicht' },
 ]
 
 // Zwei-Fahrzeug-Szene für die Before/After-Sektion (Haftpflichtschaden).
