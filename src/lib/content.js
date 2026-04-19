@@ -38,10 +38,9 @@ export const brand = {
   heroImageAfter:
     'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=2400&q=85',
 
-  // Legacy (wird in Hero.jsx noch benutzt — zeigt das Vorher-Foto)
-  heroImageUrl:
-    'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=2400&q=85',
-  heroImageAlt: 'Fahrzeug – Schadenbeispiel',
+  // Hero-Foto — eigenes 4K Schadenbild, liegt unter /public/hero.png
+  heroImageUrl: asset('hero.png'),
+  heroImageAlt: 'Beschädigtes Fahrzeug — Schadenbeispiel',
 }
 
 // Interaktive Schaden-Markierungen — Hero (einzelnes Fahrzeug).
