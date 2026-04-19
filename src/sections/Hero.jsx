@@ -36,14 +36,14 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Gradient-Overlay für Text-Lesbarkeit. Auf Mobile nur unten,
-          damit das Auto samt Hotspots im oberen Bildteil sichtbar ist. */}
+      {/* Gradient-Overlay für Text-Lesbarkeit. Auf Mobile bleibt der obere
+          Bildteil nahezu klar sichtbar — nur unten verdunkelt für den Text. */}
       <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/40 via-black/50 to-black md:bg-gradient-to-r md:from-black md:via-black/60 md:to-black/10"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-transparent via-black/25 to-black md:bg-gradient-to-r md:from-black md:via-black/60 md:to-black/10"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-52 bg-gradient-to-t from-black via-black/80 to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-60 bg-gradient-to-t from-black via-black/90 to-transparent md:h-52"
         aria-hidden
       />
 
@@ -62,8 +62,9 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Inhalt */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-28 md:py-32">
+      {/* Inhalt — auf Mobile an den unteren Rand gezogen, damit das Auto
+          mit den Pins im oberen Drittel sichtbar bleibt. */}
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-end px-6 pt-28 pb-10 md:justify-center md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -78,7 +79,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-7 max-w-3xl bg-gradient-to-b from-white to-neutral-400 bg-clip-text font-serif text-5xl font-semibold leading-[1.02] text-transparent md:text-7xl lg:text-[5.5rem]"
+          className="mt-6 max-w-3xl bg-gradient-to-b from-white to-neutral-400 bg-clip-text font-serif text-4xl font-semibold leading-[1.05] text-transparent md:mt-7 md:text-7xl md:leading-[1.02] lg:text-[5.5rem]"
         >
           Jeder Schaden hat einen <span className="italic text-gold">Wert</span>.
         </motion.h1>
@@ -87,7 +88,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-6 max-w-xl text-lg leading-relaxed text-neutral-300 md:text-xl"
+          className="mt-4 max-w-xl text-base leading-relaxed text-neutral-300 md:mt-6 md:text-xl"
         >
           Wir dokumentieren, bewerten und quantifizieren — rechtssicher und unabhängig.
           Klicken Sie auf die Markierungen und sehen Sie, wie ein Gutachten entsteht.
