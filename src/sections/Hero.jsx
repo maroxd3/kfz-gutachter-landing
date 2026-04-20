@@ -64,7 +64,7 @@ export default function Hero() {
 
       {/* Inhalt — auf Mobile an den unteren Rand gezogen, damit das Auto
           mit den Pins im oberen Drittel sichtbar bleibt. */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-end px-6 pt-28 pb-10 md:justify-center md:py-32">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-end px-6 pt-28 pb-6 md:justify-center md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -130,7 +130,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/10 pt-6"
+          className="mt-14 hidden flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/10 pt-6 md:flex"
         >
           <span className="text-xs uppercase tracking-[0.2em] text-neutral-500">
             Qualifikationen
