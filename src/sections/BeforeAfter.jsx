@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronsLeftRight } from 'lucide-react'
+import { ChevronsLeftRight, X } from 'lucide-react'
+import { createPortal } from 'react-dom'
 import { collisionScene } from '../lib/content.js'
 import { cn } from '../lib/utils.js'
 
@@ -19,6 +20,16 @@ export default function BeforeAfter() {
   const [paused, setPaused] = useState(false)
   const [openPointId, setOpenPointId] = useState(null)
   const draggingRef = useRef(false)
+
+  // Mobile-detection für Bottom-Sheet-Popups via Portal
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)')
+    const update = () => setIsMobile(mql.matches)
+    update()
+    mql.addEventListener('change', update)
+    return () => mql.removeEventListener('change', update)
+  }, [])
 
   const updateFromClientX = useCallback((clientX) => {
     const el = containerRef.current
@@ -188,67 +199,102 @@ export default function BeforeAfter() {
                     {p.number}
                   </button>
 
-                  <AnimatePresence>
-                    {isOpen && (
+                  {(() => {
+                    const popupNode = (
                       <motion.div
                         initial={{ opacity: 0, y: 4, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 4, scale: 0.95 }}
                         transition={{ duration: 0.18 }}
-                        className={cn(
-                          'pointer-events-none absolute z-20 w-[min(11rem,calc(100vw-2rem))] rounded-lg border border-white/10 bg-black/90 p-2 shadow-2xl backdrop-blur-md md:w-[min(15rem,calc(100vw-2rem))] md:p-3',
-                          popoverOnLeft ? 'right-1/2 mr-2 md:mr-3' : 'left-1/2 ml-2 md:ml-3',
-                          popoverOnTop ? 'bottom-full mb-2' : 'top-full mt-2',
-                        )}
+                        className={
+                          isMobile
+                            ? 'pointer-events-auto fixed inset-x-3 bottom-3 z-[60] rounded-xl border border-white/15 bg-black/95 p-4 text-left shadow-2xl backdrop-blur-md'
+                            : cn(
+                                'pointer-events-none absolute z-20 w-[min(15rem,calc(100vw-2rem))] rounded-lg border border-white/10 bg-black/90 p-3 shadow-2xl backdrop-blur-md',
+                                popoverOnLeft ? 'right-1/2 mr-3' : 'left-1/2 ml-3',
+                                popoverOnTop ? 'bottom-full mb-2' : 'top-full mt-2',
+                              )
+                        }
                       >
-                        <div
-                          className={cn(
-                            'text-[9px] uppercase tracking-wider md:text-[10px]',
-                            p.party === 'client' ? 'text-gold-soft' : 'text-red-300',
-                          )}
-                        >
-                          {p.label}
+                        <div className="flex items-center justify-between gap-3">
+                          <div
+                            className={cn(
+                              'text-[10px] uppercase tracking-wider',
+                              p.party === 'client' ? 'text-gold-soft' : 'text-red-300',
+                            )}
+                          >
+                            {p.label}
+                          </div>
+                          <span
+                            className={cn(
+                              'rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider',
+                              p.party === 'client' ? 'bg-gold/20 text-gold-soft' : 'bg-red-500/20 text-red-300',
+                            )}
+                          >
+                            {collisionScene[p.party === 'client' ? 'client' : 'opponent'].label}
+                          </span>
                         </div>
-                        <div className="mt-0.5 font-serif text-sm font-semibold text-white md:mt-1 md:text-lg">
+                        <div className="mt-2 font-serif text-2xl font-semibold text-white md:text-lg">
                           {p.repair}
                         </div>
                         {p.damage && (
-                          <p className="mt-1.5 hidden text-[11px] leading-relaxed text-neutral-300 md:block">
+                          <p className="mt-2 text-sm leading-relaxed text-neutral-300 md:text-[11px]">
                             {p.damage}
                           </p>
                         )}
+                        {isMobile && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setOpenPointId(null)
+                            }}
+                            aria-label="Schließen"
+                            className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white/80 transition active:bg-white/10"
+                          >
+                            <X size={14} /> Schließen
+                          </button>
+                        )}
                       </motion.div>
-                    )}
-                  </AnimatePresence>
+                    )
+                    return isMobile && typeof document !== 'undefined' ? (
+                      createPortal(
+                        <AnimatePresence>{isOpen && popupNode}</AnimatePresence>,
+                        document.body,
+                      )
+                    ) : (
+                      <AnimatePresence>{isOpen && popupNode}</AnimatePresence>
+                    )
+                  })()}
                 </div>
               )
             })}
 
-            {/* Zwei getrennte Summen-Badges */}
-            <div className="absolute top-2 right-2 rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-gold-soft backdrop-blur md:top-4 md:right-4 md:px-3 md:py-1 md:text-xs">
+            {/* "Gutachten abgeschlossen" Badge — auf Mobile versteckt um Auto frei zu lassen */}
+            <div className="absolute top-2 right-2 hidden rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-gold-soft backdrop-blur md:top-4 md:right-4 md:block md:px-3 md:py-1 md:text-xs">
               Gutachten abgeschlossen
             </div>
 
-            <div className="absolute bottom-2 left-2 rounded-lg border border-gold/40 bg-black/85 px-2 py-1.5 backdrop-blur-md md:bottom-4 md:left-4 md:rounded-xl md:px-5 md:py-3">
-              <div className="text-[9px] uppercase tracking-[0.2em] text-gold-soft md:text-[10px]">
+            {/* Summen-Badges nur auf Desktop (Mobile zeigt sie unten als eigene Bar) */}
+            <div className="absolute bottom-4 left-4 hidden rounded-xl border border-gold/40 bg-black/85 px-5 py-3 backdrop-blur-md md:block">
+              <div className="text-[10px] uppercase tracking-[0.2em] text-gold-soft">
                 {collisionScene.client.label}
               </div>
-              <div className="font-serif text-base font-semibold text-white md:text-3xl">
+              <div className="font-serif text-3xl font-semibold text-white">
                 {clientTotal.toLocaleString('de-DE')} €
               </div>
-              <div className="mt-0.5 hidden text-[10px] text-neutral-500 md:block">
+              <div className="mt-0.5 text-[10px] text-neutral-500">
                 {collisionScene.client.sublabel}
               </div>
             </div>
 
-            <div className="absolute right-2 bottom-2 rounded-lg border border-red-500/40 bg-black/85 px-2 py-1.5 backdrop-blur-md md:right-4 md:bottom-4 md:rounded-xl md:px-5 md:py-3">
-              <div className="text-[9px] uppercase tracking-[0.2em] text-red-300 md:text-[10px]">
+            <div className="absolute right-4 bottom-4 hidden rounded-xl border border-red-500/40 bg-black/85 px-5 py-3 backdrop-blur-md md:block">
+              <div className="text-[10px] uppercase tracking-[0.2em] text-red-300">
                 {collisionScene.opponent.label}
               </div>
-              <div className="font-serif text-base font-semibold text-white md:text-3xl">
+              <div className="font-serif text-3xl font-semibold text-white">
                 {opponentTotal.toLocaleString('de-DE')} €
               </div>
-              <div className="mt-0.5 hidden text-[10px] text-neutral-500 md:block">
+              <div className="mt-0.5 text-[10px] text-neutral-500">
                 {collisionScene.opponent.sublabel}
               </div>
             </div>
@@ -271,8 +317,30 @@ export default function BeforeAfter() {
           </div>
         </div>
 
+        {/* Mobile-only: Summen-Badges direkt unter dem Bild */}
+        <div className="mt-4 grid grid-cols-2 gap-3 md:hidden">
+          <div className="rounded-lg border border-gold/40 bg-white/5 px-3 py-2.5">
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gold-soft">
+              <span className="h-2 w-2 rounded-full bg-gold" />
+              {collisionScene.client.label}
+            </div>
+            <div className="mt-1 font-serif text-xl font-semibold text-white">
+              {clientTotal.toLocaleString('de-DE')} €
+            </div>
+          </div>
+          <div className="rounded-lg border border-red-500/40 bg-white/5 px-3 py-2.5">
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-red-300">
+              <span className="h-2 w-2 rounded-full bg-red-500" />
+              {collisionScene.opponent.label}
+            </div>
+            <div className="mt-1 font-serif text-xl font-semibold text-white">
+              {opponentTotal.toLocaleString('de-DE')} €
+            </div>
+          </div>
+        </div>
+
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap items-center gap-5 text-xs">
+          <div className="hidden flex-wrap items-center gap-5 text-xs md:flex">
             <span className="flex items-center gap-2 text-neutral-400">
               <span className="h-2.5 w-2.5 rounded-full bg-gold" />
               {collisionScene.client.label}
@@ -287,6 +355,12 @@ export default function BeforeAfter() {
               <span className="font-serif text-base font-semibold text-white">
                 {grandTotal.toLocaleString('de-DE')} €
               </span>
+            </span>
+          </div>
+          <div className="text-xs text-neutral-400 md:hidden">
+            Gesamt:{' '}
+            <span className="font-serif text-base font-semibold text-white">
+              {grandTotal.toLocaleString('de-DE')} €
             </span>
           </div>
           {paused && (
