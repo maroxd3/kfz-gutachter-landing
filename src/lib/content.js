@@ -15,12 +15,12 @@ export const brand = {
   email: 'kontakt@hannover-kfz-gutachter.de',
   emailHref: 'mailto:kontakt@hannover-kfz-gutachter.de',
   address: {
-    street: 'Gradestr. 7A',
-    zip: '30163',
+    street: 'Berliner Allee 51',
+    zip: '30855',
     city: 'Hannover',
   },
   hours: 'Mo–Fr  08:00 – 18:00 · Sa nach Vereinbarung',
-  googleMaps: 'https://www.google.com/maps/search/?api=1&query=Gradestr.+7A+30163+Hannover',
+  googleMaps: 'https://www.google.com/maps/search/?api=1&query=Berliner+Allee+51+30855+Hannover',
 
   // 🖼️ ZWEI FOTOS für den Before/After-Slider:
   //   heroImageBefore  = sauberes Auto (vor dem Unfall)
