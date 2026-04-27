@@ -45,15 +45,18 @@ export const brand = {
 }
 
 // Interaktive Schaden-Markierungen — Hero (einzelnes Fahrzeug).
-// x, y sind Prozent der Container-Breite/Höhe (0–100), Desktop-Default.
-// xMobile/yMobile: separate Werte fürs Mobile-Layout, weil object-cover
-// das Bild auf Hochformat anders croppt — das Auto sitzt dann weiter rechts.
+// x, y sind Prozent des ORIGINAL-Bildes (0–100, hero.webp ist 2400×2400).
+// Hero.jsx mapped sie via objectCoverPoint() automatisch in Container-
+// Pixel-Koordinaten, sodass Pins auf JEDER Aspect Ratio korrekt sitzen.
 export const heroDamagePoints = [
-  { id: 1, x: 60, y: 60, xMobile: 76, yMobile: 38, label: 'Kotflügel vorne links', damage: 'Tiefe Eindellung über Radlauf, Lack bis aufs Blech abgeschürft', repair: '2.400 €', depreciation: '620 €', severity: 'Schwer' },
-  { id: 2, x: 66, y: 53, xMobile: 82, yMobile: 30, label: 'Scheinwerfer links', damage: 'Streuscheibe gerissen, Halterung gebrochen', repair: '1.180 €', depreciation: '—', severity: 'Mittel' },
-  { id: 3, x: 58, y: 72, xMobile: 72, yMobile: 50, label: 'Front-Stoßfänger links', damage: 'Verformung, Lackschaden, Clip-Halter gerissen', repair: '1.650 €', depreciation: '290 €', severity: 'Mittel' },
-  { id: 4, x: 68, y: 41, xMobile: 84, yMobile: 22, label: 'Motorhaube vorne links', damage: 'Knick an der Vorderkante, Lackplatzer', repair: '780 €', depreciation: '—', severity: 'Leicht' },
+  { id: 1, x: 60, y: 60, label: 'Kotflügel vorne links', damage: 'Tiefe Eindellung über Radlauf, Lack bis aufs Blech abgeschürft', repair: '2.400 €', depreciation: '620 €', severity: 'Schwer' },
+  { id: 2, x: 66, y: 53, label: 'Scheinwerfer links', damage: 'Streuscheibe gerissen, Halterung gebrochen', repair: '1.180 €', depreciation: '—', severity: 'Mittel' },
+  { id: 3, x: 58, y: 72, label: 'Front-Stoßfänger links', damage: 'Verformung, Lackschaden, Clip-Halter gerissen', repair: '1.650 €', depreciation: '290 €', severity: 'Mittel' },
+  { id: 4, x: 68, y: 41, label: 'Motorhaube vorne links', damage: 'Knick an der Vorderkante, Lackplatzer', repair: '780 €', depreciation: '—', severity: 'Leicht' },
 ]
+
+// Original-Bilddimensionen für Pin-Mapping (siehe objectCoverPoint in utils.js)
+export const heroImageNaturalSize = { w: 2400, h: 2400 }
 
 // Zwei-Fahrzeug-Szene für die Before/After-Sektion (Haftpflichtschaden).
 // Linkes Auto = dein Mandant. Rechtes Auto = Gegner.

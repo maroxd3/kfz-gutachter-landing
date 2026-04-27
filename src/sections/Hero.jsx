@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, ArrowRight, ShieldCheck, MousePointerClick } from 'lucide-react'
 import { Spotlight } from '../components/ui/spotlight.jsx'
 import DamageHotspot from '../components/ui/damage-hotspot.jsx'
-import { brand, certifications, heroDamagePoints } from '../lib/content.js'
+import { brand, certifications, heroDamagePoints, heroImageNaturalSize } from '../lib/content.js'
+import { objectCoverPoint } from '../lib/utils.js'
 
 export default function Hero() {
   const [openId, setOpenId] = useState(null)
@@ -17,8 +18,22 @@ export default function Hero() {
   )
   const totalSum = totalRepair + totalDepreciation
 
+  // Container-Größe via ResizeObserver tracken, damit Pin-Positionen
+  // bei Window-Resize neu berechnet werden (z. B. Rotation, Browser-Resize).
+  const sectionRef = useRef(null)
+  const [size, setSize] = useState({ w: 0, h: 0 })
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const update = () => setSize({ w: el.offsetWidth, h: el.offsetHeight })
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-ink text-cream">
+    <section ref={sectionRef} className="relative min-h-screen overflow-hidden bg-ink text-cream">
       <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" fill="#B8915E" />
 
       {/* Hintergrund-Foto mit Ken-Burns Zoom. Auf Mobile wird das Auto
@@ -51,15 +66,27 @@ export default function Hero() {
           damit Klicks auf den Text/Buttons darunter normal durchgehen. Nur die
           Pins selbst fangen Klicks ab (pointer-events-auto in DamageHotspot). */}
       <div className="pointer-events-none absolute inset-0 z-[20]">
-        {heroDamagePoints.map((p, i) => (
-          <DamageHotspot
-            key={p.id}
-            point={p}
-            index={i}
-            isOpen={openId === p.id}
-            onToggle={() => setOpenId((cur) => (cur === p.id ? null : p.id))}
-          />
-        ))}
+        {heroDamagePoints.map((p, i) => {
+          // Pixel-Position berechnen wo der Punkt im aktuellen Container landet,
+          // basierend auf object-cover Crop des 2400×2400 Hero-Bildes.
+          const pos = objectCoverPoint(
+            heroImageNaturalSize.w, heroImageNaturalSize.h,
+            size.w, size.h, p.x, p.y,
+          )
+          const pointWithStyle = {
+            ...p,
+            style: { left: `${pos.x}px`, top: `${pos.y}px` },
+          }
+          return (
+            <DamageHotspot
+              key={p.id}
+              point={pointWithStyle}
+              index={i}
+              isOpen={openId === p.id}
+              onToggle={() => setOpenId((cur) => (cur === p.id ? null : p.id))}
+            />
+          )
+        })}
       </div>
 
       {/* Inhalt — auf Mobile an den unteren Rand gezogen, damit das Auto
