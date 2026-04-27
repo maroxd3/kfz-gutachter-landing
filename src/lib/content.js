@@ -49,9 +49,9 @@ export const brand = {
 // Hero.jsx mapped sie via objectCoverPoint() automatisch in Container-
 // Pixel-Koordinaten, sodass Pins auf JEDER Aspect Ratio korrekt sitzen.
 export const heroDamagePoints = [
-  { id: 1, x: 60, y: 60, label: 'Kotflügel vorne links', damage: 'Tiefe Eindellung über Radlauf, Lack bis aufs Blech abgeschürft', repair: '2.400 €', depreciation: '620 €', severity: 'Schwer' },
-  { id: 2, x: 66, y: 53, label: 'Scheinwerfer links', damage: 'Streuscheibe gerissen, Halterung gebrochen', repair: '1.180 €', depreciation: '—', severity: 'Mittel' },
-  { id: 3, x: 58, y: 72, label: 'Front-Stoßfänger links', damage: 'Verformung, Lackschaden, Clip-Halter gerissen', repair: '1.650 €', depreciation: '290 €', severity: 'Mittel' },
+  { id: 1, x: 60, y: 68, label: 'Kotflügel vorne links', damage: 'Tiefe Eindellung über Radlauf, Lack bis aufs Blech abgeschürft', repair: '2.400 €', depreciation: '620 €', severity: 'Schwer' },
+  { id: 2, x: 72, y: 62, label: 'Scheinwerfer links', damage: 'Streuscheibe gerissen, Halterung gebrochen', repair: '1.180 €', depreciation: '—', severity: 'Mittel' },
+  { id: 3, x: 66, y: 80, label: 'Front-Stoßfänger links', damage: 'Verformung, Lackschaden, Clip-Halter gerissen', repair: '1.650 €', depreciation: '290 €', severity: 'Mittel' },
   { id: 4, x: 68, y: 41, label: 'Motorhaube vorne links', damage: 'Knick an der Vorderkante, Lackplatzer', repair: '780 €', depreciation: '—', severity: 'Leicht' },
 ]
 

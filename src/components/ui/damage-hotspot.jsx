@@ -109,13 +109,13 @@ export default function DamageHotspot({ point, index, isOpen, onToggle }) {
       <button
         onClick={onToggle}
         className={cn(
-          'relative flex h-7 w-7 items-center justify-center rounded-full border-2 border-white/80 bg-gold text-ink shadow-lg transition hover:scale-110 md:h-8 md:w-8',
+          'relative flex h-5 w-5 items-center justify-center rounded-full border-2 border-white/80 bg-gold text-ink shadow-lg transition hover:scale-110 md:h-7 md:w-7',
           isOpen && 'scale-110 bg-white',
         )}
         aria-label={`Schaden: ${point.label}`}
       >
-        {isOpen ? <X size={14} className="md:hidden" /> : <Plus size={14} className="md:hidden" />}
-        {isOpen ? <X size={16} className="hidden md:block" /> : <Plus size={16} className="hidden md:block" />}
+        {isOpen ? <X size={11} className="md:hidden" /> : <Plus size={11} className="md:hidden" />}
+        {isOpen ? <X size={14} className="hidden md:block" /> : <Plus size={14} className="hidden md:block" />}
       </button>
 
       {isMobile && typeof document !== 'undefined' ? (
