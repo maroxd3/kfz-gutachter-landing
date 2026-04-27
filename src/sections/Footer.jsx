@@ -29,8 +29,9 @@ export default function Footer() {
           <div>
             <h4 className="text-xs uppercase tracking-[0.2em] text-gold-soft">Rechtliches</h4>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="#impressum" className="hover:text-cream">Impressum</a></li>
-              <li><a href="#datenschutz" className="hover:text-cream">Datenschutzerklärung</a></li>
+              <li><a href="/impressum.html" className="hover:text-cream">Impressum</a></li>
+              <li><a href="/datenschutz.html" className="hover:text-cream">Datenschutzerklärung</a></li>
+              <li><a href="/agb.html" className="hover:text-cream">AGB</a></li>
             </ul>
           </div>
         </div>

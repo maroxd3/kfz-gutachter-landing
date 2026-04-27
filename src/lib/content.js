@@ -3,23 +3,24 @@
 import { asset } from './utils.js'
 
 export const brand = {
-  name: 'Kfz-Sachverständige Hannover',
-  nameShort: 'Sachverständige',
+  name: 'Sachverständigenbüro Hannover',
+  nameShort: 'Sachverständigenbüro',
   tagline: 'Kfz-Gutachten Hannover',
   city: 'Hannover',
-  phone: '+49 511 000 00 00',
-  phoneHref: 'tel:+495110000000',
-  whatsapp: '+49 151 000 000 00',
-  whatsappHref: 'https://wa.me/4915100000000',
-  email: 'info@example.de',
-  emailHref: 'mailto:info@example.de',
+  legalOwner: 'Mustafa Saleh',
+  phone: '+49 176 80444241',
+  phoneHref: 'tel:+4917680444241',
+  whatsapp: '+49 176 80444241',
+  whatsappHref: 'https://wa.me/4917680444241',
+  email: 'kontakt@hannover-kfz-gutachter.de',
+  emailHref: 'mailto:kontakt@hannover-kfz-gutachter.de',
   address: {
-    street: 'Musterstraße 1',
-    zip: '30159',
+    street: 'Gradestr. 7A',
+    zip: '30163',
     city: 'Hannover',
   },
   hours: 'Mo–Fr  08:00 – 18:00 · Sa nach Vereinbarung',
-  googleMaps: 'https://maps.google.com/?q=Hannover',
+  googleMaps: 'https://www.google.com/maps/search/?api=1&query=Gradestr.+7A+30163+Hannover',
 
   // 🖼️ ZWEI FOTOS für den Before/After-Slider:
   //   heroImageBefore  = sauberes Auto (vor dem Unfall)
