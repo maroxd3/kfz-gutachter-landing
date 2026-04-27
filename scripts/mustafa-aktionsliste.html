@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Was du tun musst — Kfz-Gutachter Hannover</title>
+  <style>
+    @page { size: A4; margin: 18mm 16mm; }
+    :root {
+      --ink: #0A1F44; --ink-soft: #1a2f5c; --muted: #5a6480;
+      --gold: #B8915E; --gold-soft: #d4b584; --gold-dark: #8e6d43;
+      --cream: #fafaf7; --cream-dark: #f2efe6; --line: #e5e1d4;
+      --red: #b8332f; --green: #2f7a3a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: white; color: var(--ink); font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 10.5pt; line-height: 1.5; }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; }
+
+    .head { display: flex; align-items: center; gap: 14pt; margin-bottom: 22pt; }
+    .logo { width: 56pt; height: 56pt; border-radius: 10pt; background: var(--ink); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 36pt; font-weight: 700; flex-shrink: 0; }
+    .head .name { font-family: 'Cormorant Garamond', serif; font-size: 22pt; font-weight: 600; line-height: 1.05; }
+    .head .sub { font-size: 9pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 2pt; }
+
+    h1 { font-size: 36pt; line-height: 1.0; color: var(--ink); }
+    h1 em { font-style: italic; color: var(--gold-dark); font-weight: 600; }
+    .lede { font-size: 10.5pt; color: var(--muted); margin-top: 10pt; max-width: 150mm; }
+
+    .phase {
+      display: flex; align-items: baseline; gap: 12pt;
+      margin: 22pt 0 8pt; padding-bottom: 5pt;
+      border-bottom: 1px solid var(--line);
+    }
+    .phase .label { font-size: 9pt; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--gold-dark); }
+    .phase .when { font-size: 9pt; color: var(--muted); margin-left: auto; font-style: italic; }
+
+    .item {
+      display: flex; gap: 12pt;
+      padding: 9pt 0 8pt;
+      border-bottom: 1px solid var(--line);
+      page-break-inside: avoid;
+    }
+    .item:last-child { border-bottom: none; }
+    .check {
+      width: 18pt; height: 18pt; flex-shrink: 0;
+      border: 1.4pt solid var(--ink); border-radius: 3pt;
+      margin-top: 2pt;
+    }
+    .item-body { flex: 1; }
+    .item-title { font-family: 'Cormorant Garamond', serif; font-size: 14pt; font-weight: 600; line-height: 1.15; color: var(--ink); }
+    .item-how { font-size: 9.5pt; color: var(--muted); margin-top: 3pt; }
+    .item-how b { color: var(--ink-soft); font-weight: 600; }
+    .item-how a { color: var(--gold-dark); text-decoration: none; font-weight: 500; }
+
+    .footer-band {
+      margin-top: 22pt;
+      padding: 12pt 14pt;
+      background: var(--cream);
+      border-left: 3pt solid var(--gold);
+      border-radius: 4pt;
+    }
+    .footer-band .ft { font-family: 'Cormorant Garamond', serif; font-size: 13pt; font-weight: 600; color: var(--ink); margin-bottom: 3pt; }
+    .footer-band .fb { font-size: 9.5pt; color: var(--muted); }
+
+    .small { font-size: 8pt; color: var(--muted); margin-top: 12pt; text-align: right; }
+
+    /* PAGE 2 — LAWS */
+    .pagebreak { page-break-before: always; }
+    .laws h1 { font-size: 30pt; }
+    .laws-lede { font-size: 10pt; color: var(--muted); margin-top: 8pt; max-width: 160mm; margin-bottom: 18pt; }
+
+    .law-group { margin: 14pt 0 4pt; padding: 10pt 12pt 4pt; background: var(--cream); border-radius: 5pt; page-break-inside: avoid; }
+    .law-group .gh {
+      font-family: 'Cormorant Garamond', serif; font-size: 14pt; font-weight: 600;
+      color: var(--ink); margin-bottom: 8pt;
+      padding-bottom: 5pt; border-bottom: 1px solid var(--line);
+      display: flex; align-items: baseline; gap: 8pt;
+    }
+    .law-group .gh-icon {
+      font-size: 9pt; color: var(--gold-dark); font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+    .law-row {
+      display: grid; grid-template-columns: 50mm 1fr;
+      gap: 6pt 12pt; padding: 4pt 0;
+      font-size: 9.5pt; line-height: 1.4;
+      border-bottom: 1px dashed var(--line);
+    }
+    .law-row:last-child { border-bottom: none; }
+    .law-row .lk { font-weight: 700; color: var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 11pt; }
+    .law-row .lv { color: var(--ink-soft); }
+    .law-row .lv b { color: var(--ink); }
+
+    .alert {
+      margin: 14pt 0 8pt;
+      padding: 10pt 14pt;
+      border: 1.5pt solid var(--gold);
+      background: rgba(184,145,94,0.06);
+      border-radius: 5pt;
+      page-break-inside: avoid;
+    }
+    .alert .at { font-family: 'Cormorant Garamond', serif; font-size: 13pt; font-weight: 600; color: var(--ink); }
+    .alert .ab { font-size: 9.5pt; color: var(--ink-soft); margin-top: 4pt; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ SEITE 1 — AKTIONSLISTE ============ -->
+  <div class="head">
+    <div class="logo">S</div>
+    <div>
+      <div class="name">Kfz-Gutachter Hannover</div>
+      <div class="sub">Persönlich · Direkt · Vor Ort</div>
+    </div>
+  </div>
+
+  <h1>Was du tun musst, <em>Mustafa.</em></h1>
+  <p class="lede">
+    Sechs Punkte. Keine Details — die kann ich dir mündlich oder als Detail-Briefing geben,
+    wenn du sie brauchst. Hier das Wesentliche, scanbar in zwei Minuten.
+    Allem rund um Webseite, E-Mail, Marketing kümmere ich mich.
+    Auf Seite 2 stehen die Gesetze, die für dich gelten.
+  </p>
+
+  <div class="phase">
+    <div class="label">Diese Woche</div>
+    <div class="when">Pflicht — nicht aufschieben</div>
+  </div>
+
+  <div class="item">
+    <div class="check"></div>
+    <div class="item-body">
+      <div class="item-title">1.&nbsp; Steuerstatus klären (Steuerberater · 30 Min)</div>
+      <div class="item-how">
+        Wegen deiner TÜV-GmbH ist nicht offensichtlich, ob du eine <b>neue Freiberufler-Steuernummer</b>
+        beantragen oder nur die bestehende erweitern musst. 30 Min beim Steuerberater
+        (~80–150 €) klären: <b>§ 18 EStG (Freiberufler-Status), § 19 UStG neu</b>
+        (seit 2025: 25.000 € Vorjahr / 100.000 € laufendes Jahr), <b>Nebentätigkeit-Erlaubnis</b>
+        aus deinem TÜV-Vertrag. Spart später Diskussion mit Finanzamt.
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="check"></div>
+    <div class="item-body">
+      <div class="item-title">2.&nbsp; Berufshaftpflichtversicherung abschließen</div>
+      <div class="item-how">
+        Vergleich auf <a>exali.de</a> · ca. 400–700 € pro Jahr · steuerlich absetzbar.
+        <b>Vor dem ersten Auftrag.</b> Die TÜV-GmbH-Versicherung deckt diese private
+        Tätigkeit nicht ab.
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="check"></div>
+    <div class="item-body">
+      <div class="item-title">3.&nbsp; Verarbeitungsverzeichnis erstellen (DSGVO Art. 30)</div>
+      <div class="item-how">
+        Vorlage von der <b>IHK Hannover</b> herunterladen, ausfüllen, abheften.
+        Wird nicht veröffentlicht — nur in der Schublade haben für Behördenanfragen.
+        Aufwand: ~1 Stunde.
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="label">Nächste 2-4 Wochen</div>
+    <div class="when">Wichtig für Sichtbarkeit</div>
+  </div>
+
+  <div class="item">
+    <div class="check"></div>
+    <div class="item-body">
+      <div class="item-title">4.&nbsp; Google Business Profile anlegen</div>
+      <div class="item-how">
+        Wir machen das gemeinsam — du brauchst nur ein Google-Konto.
+        Verifizierung läuft per Postkarte (an Berliner Allee 51) oder Video-Anruf.
+        <b>Setup-Zeit: 20 Minuten gemeinsam.</b>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="label">Laufend ab sofort</div>
+    <div class="when">Tagesgeschäft</div>
+  </div>
+
+  <div class="item">
+    <div class="check"></div>
+    <div class="item-body">
+      <div class="item-title">5.&nbsp; Telefon &amp; WhatsApp erreichbar halten</div>
+      <div class="item-how">
+        Nummer: <b>+49 176 80444241</b> · Begrüßung: „Kfz-Gutachter Hannover, Saleh — guten Tag."
+        Webseite verspricht: 24-h-Notfallhotline + Termin innerhalb 24 Stunden.
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="check"></div>
+    <div class="item-body">
+      <div class="item-title">6.&nbsp; Nach dem ersten Auftrag um Bewertung bitten</div>
+      <div class="item-how">
+        Die ersten 5 Google-Bewertungen sind Gold wert. Frag jeden zufriedenen
+        Mandanten direkt — am besten noch am Tag der Übergabe per WhatsApp.
+        Vorlage-Text bekommst du von mir.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-band">
+    <div class="ft">Wenn unsicher: nicht alleine antworten.</div>
+    <div class="fb">
+      Bei Behördenpost, Mandantenfragen oder ungewohnten Anfragen — kurz mit mir abstimmen,
+      bevor du etwas zusagst oder unterschreibst. Das spart später Stress.
+    </div>
+  </div>
+
+  <div class="small">Stand: 27. April 2026 · Marwan für „Kfz-Gutachter Hannover"</div>
+
+  <!-- ============ SEITE 2 — GESETZE ============ -->
+  <div class="laws pagebreak">
+
+    <div class="head" style="margin-bottom: 16pt;">
+      <div class="logo">S</div>
+      <div>
+        <div class="name">Gesetze, die für dich gelten</div>
+        <div class="sub">Kfz-Gutachter Hannover · Pflicht-Wissen</div>
+      </div>
+    </div>
+
+    <h1>Was du <em>kennen</em> musst.</h1>
+    <p class="laws-lede">
+      Du musst nicht jedes Gesetz auswendig wissen — aber wenn jemand fragt
+      „auf welcher Grundlage arbeiten Sie?" oder „warum keine MwSt?", solltest du
+      die richtigen Stichworte parat haben. Sortiert nach Lebensbereich.
+    </p>
+
+    <!-- STEUERN -->
+    <div class="law-group">
+      <div class="gh"><span class="gh-icon">A</span> Steuern &amp; Finanzamt</div>
+
+      <div class="law-row">
+        <div class="lk">§ 18 Abs. 1 Nr. 1 EStG</div>
+        <div class="lv">Du bist <b>Freiberufler</b> als Ingenieur und gutachterliche Tätigkeit. Heißt: keine Gewerbesteuer, keine IHK-Pflicht, einfache Einnahmenüberschussrechnung.</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">§ 19 UStG (Reform 2025)</div>
+        <div class="lv"><b>Kleinunternehmerregelung</b> — keine Umsatzsteuer auf Rechnungen, solange Vorjahresumsatz unter <b>25.000 €</b> und laufender Jahresumsatz unter <b>100.000 €</b> netto. Bei Überschreiten der 100.000-Grenze: sofortiger Wechsel zur Regelbesteuerung mitten im Jahr.</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">§ 14 UStG</div>
+        <div class="lv"><b>Pflichtangaben auf Rechnungen</b>: Name, Anschrift, Steuernummer, Datum, fortlaufende Nummer, Leistung, Entgelt, Hinweis „§ 19 UStG, kein Ausweis MwSt".</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">§ 147 AO + GoBD</div>
+        <div class="lv"><b>8 Jahre für Rechnungen/Buchungsbelege</b> (verkürzt durch BEG IV, Okt 2024 — vorher 10 Jahre), <b>10 Jahre weiterhin für Bilanzunterlagen</b>. Frist beginnt mit Jahresende. Digital reicht — aber unveränderlich (PDF, kein Word).</div>
+      </div>
+    </div>
+
+    <!-- WEBSEITE / DATENSCHUTZ -->
+    <div class="law-group">
+      <div class="gh"><span class="gh-icon">B</span> Webseite &amp; Datenschutz</div>
+
+      <div class="law-row">
+        <div class="lk">§ 5 DDG <span style="color:var(--muted);font-weight:400;font-size:9pt;">(früher § 5 TMG)</span></div>
+        <div class="lv"><b>Impressumspflicht</b> — Inhaber-Name, Anschrift, Kontakt, Berufsbezeichnung. Hinweis: TMG seit 14.05.2024 abgeschafft, jetzt <b>Digitale-Dienste-Gesetz (DDG)</b>. Inhaltlich unverändert. Bereits korrekt online unter /impressum.html.</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">§ 18 MStV</div>
+        <div class="lv"><b>Verantwortlicher für Inhalte</b> — du als natürliche Person. Steht im Impressum.</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">DSGVO Art. 13 + 14</div>
+        <div class="lv"><b>Informationspflicht</b> bei Datenerhebung — Datenschutzerklärung muss erklären, was mit Daten passiert. Bereits online.</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">DSGVO Art. 30</div>
+        <div class="lv"><b>Verarbeitungsverzeichnis</b> — interne Liste aller Datenverarbeitungen. Schritt 3 oben.</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">§ 25 TDDDG <span style="color:var(--muted);font-weight:400;font-size:9pt;">(früher § 25 TTDSG)</span></div>
+        <div class="lv"><b>Cookie-Einwilligung</b> — nur für nicht-technische Cookies. Hinweis: TTDSG seit 14.05.2024 zu <b>TDDDG</b> umbenannt (Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz). Wir setzen keine Cookies → kein Banner nötig.</div>
+      </div>
+    </div>
+
+    <!-- WERBUNG / GESCHÄFTSVERHALTEN -->
+    <div class="law-group">
+      <div class="gh"><span class="gh-icon">C</span> Werbung &amp; Geschäftsverhalten</div>
+
+      <div class="law-row">
+        <div class="lk">UWG (§§ 3, 5)</div>
+        <div class="lv"><b>Verbot irreführender Werbung</b> — keine fake Kundenzahlen, keine erfundenen Bewertungen, keine geschützten Titel ohne Berechtigung. Wichtig: NICHT „öffentlich bestellt und vereidigt" schreiben — das bist du nicht.</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">§ 14 BGB</div>
+        <div class="lv"><b>Du bist Unternehmer</b> im Sinne des BGB — gilt für alle Verträge, B2C-Pflichten greifen (Widerruf etc.).</div>
+      </div>
+    </div>
+
+    <!-- GUTACHTEN-SPEZIFISCH -->
+    <div class="law-group">
+      <div class="gh"><span class="gh-icon">D</span> Gutachten-Tätigkeit</div>
+
+      <div class="law-row">
+        <div class="lk">§ 631 ff. BGB</div>
+        <div class="lv"><b>Werkvertrag</b> — ein Gutachten ist rechtlich ein „Werk". Du schuldest ein Ergebnis, nicht nur Bemühung. Vergütung erst bei Abnahme.</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">§ 280 BGB</div>
+        <div class="lv"><b>Schadenersatz bei Pflichtverletzung</b> — fehlerhaftes Gutachten = Haftung. Deshalb Berufshaftpflicht (Schritt 2).</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">NIngG <span style="color:var(--muted);font-weight:400;font-size:9pt;">(Stand 01.07.2025)</span></div>
+        <div class="lv"><b>Ingenieurgesetz Niedersachsen</b> — „Ingenieur/in" und „Ingenieurbüro" sind geschützte Bezeichnungen. Du darfst sie führen wegen Studium. NICHT „Beratender Ingenieur" — das verlangt zusätzlich Eintragung bei der Ingenieurkammer Niedersachsen.</div>
+      </div>
+      <div class="law-row">
+        <div class="lk">§§ 410, 411 ZPO · § 73 StPO</div>
+        <div class="lv"><b>Pflichten als Sachverständiger</b> falls vor Gericht geladen — Wahrheitspflicht, Unparteilichkeit, ggf. Eid. Honorar nach JVEG.</div>
+      </div>
+    </div>
+
+    <!-- BERUFSBEZEICHNUNG -->
+    <div class="alert">
+      <div class="at">Geschützte Begriffe — NIE benutzen ohne Berechtigung</div>
+      <div class="ab">
+        ❌ <b>„öffentlich bestellt und vereidigt"</b> — nur nach IHK-Bestellungsverfahren erlaubt<br>
+        ❌ <b>„staatlich anerkannt"</b> — gibt es für Sachverständige in DE so nicht<br>
+        ❌ <b>„zertifiziert nach DIN"</b> — nur wenn echte Zertifizierung vorliegt (du hast DIN ISO 17024 ✓)<br>
+        ✓ <b>„freier Sachverständiger"</b>, <b>„Ingenieur"</b>, <b>„zertifiziert (TÜV/DEKRA)"</b> — alles erlaubt
+      </div>
+    </div>
+
+    <p class="small">
+      Das ist kein Anwaltsersatz — bei Streitfall einen Fachanwalt für Verkehrsrecht hinzuziehen.
+      Für reguläre steuerliche Fragen: Steuerberater. Diese Liste ist eine Orientierung,
+      keine Rechtsberatung.
+    </p>
+
+  </div>
+
+</body>
+</html>
