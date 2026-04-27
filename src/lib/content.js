@@ -40,7 +40,7 @@ export const brand = {
     'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=2400&q=85',
 
   // Hero-Foto — eigenes 4K Schadenbild, liegt unter /public/hero.png
-  heroImageUrl: asset('hero.png'),
+  heroImageUrl: asset('hero.webp'),
   heroImageAlt: 'Beschädigtes Fahrzeug — Schadenbeispiel',
 }
 
@@ -57,8 +57,8 @@ export const heroDamagePoints = [
 // Zwei-Fahrzeug-Szene für die Before/After-Sektion (Haftpflichtschaden).
 // Linkes Auto = dein Mandant. Rechtes Auto = Gegner.
 export const collisionScene = {
-  imageBefore: asset('bfore.png'),
-  imageAfter: asset('after.png'),
+  imageBefore: asset('bfore.webp'),
+  imageAfter: asset('after.webp'),
   client: {
     label: 'Ihr Fahrzeug',
     sublabel: 'Mercedes E-Klasse · Geschädigter',

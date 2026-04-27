@@ -13,6 +13,8 @@ import Contact from './sections/Contact.jsx'
 import Faq from './sections/Faq.jsx'
 import Footer from './sections/Footer.jsx'
 import ChapterHead from './components/chapter-head.jsx'
+import StickyCta from './components/ui/sticky-cta.jsx'
+import TrustBanner from './sections/TrustBanner.jsx'
 
 // Jede Section = ein Kapitel. Ganzer Block rutscht beim Scrollen als
 // Einheit rein (Intro + Foto + Inhalt). Keine Popups mehr.
@@ -37,6 +39,9 @@ export default function App() {
         {/* Prolog — der Moment, in dem alles beginnt */}
         <Hero />
 
+        {/* Direct-Response-Schicht: 3-Punkte-Trust direkt nach Hero */}
+        <TrustBanner />
+
         {/* Kap. 01 · 08:22 — Der Anruf */}
         <StoryChapter>
           <ChapterHead
@@ -47,7 +52,7 @@ export default function App() {
             title="Der Anruf."
             subtitle={'„Ich hatte einen Unfall — und jetzt?"'}
             question="Ihr Telefon ist in der Hand. Wen rufen Sie an — die Versicherung des anderen, oder ein Team, das auf Ihrer Seite steht?"
-            image={asset('k01.png')}
+            image={asset('k01.webp')}
             imageAlt="Hand mit Smartphone, im Hintergrund ein beschädigtes Fahrzeug"
             tone="neutral"
           />
@@ -64,7 +69,7 @@ export default function App() {
             title="45 Minuten. Dann sind wir da."
             subtitle="Was Sie von uns bekommen — und was Sie dafür zahlen."
             question="Wie lange warten Sie, bis jemand vorbeikommt — und zu welchem Preis?"
-            image={asset('k02.png')}
+            image={asset('k02.webp')}
             imageAlt="Fahrzeug des Sachverständigen trifft am Unfallort ein"
             tone="neutral"
           />
@@ -97,7 +102,7 @@ export default function App() {
             title="Die Kalkulation."
             subtitle="Rechtssicher. Nachvollziehbar. In unter einer Minute geschätzt."
             question="Was ist Ihr Schaden wirklich wert — und was würde eine Versicherung Ihnen gern auszahlen?"
-            image={asset('k03.png')}
+            image={asset('k03.webp')}
             imageAlt="Schreibtisch mit Laptop, Schadensfotos und Messwerkzeug"
             tone="neutral"
           />
@@ -129,7 +134,7 @@ export default function App() {
             title="Vier Zahlen."
             subtitle="Auf die Sie sich verlassen können — schriftlich, nicht als Versprechen."
             question="Woran erkennen Sie, ob Sie einen guten oder einen beliebigen Gutachter haben?"
-            image={asset('k04.png')}
+            image={asset('k04.webp')}
             imageAlt="Uhr auf Schreibtisch neben unterschriebenem Gutachten"
             tone="neutral"
           />
@@ -162,7 +167,7 @@ export default function App() {
             title="Sie tragen 0 €."
             subtitle="Akte geschlossen. Wagen repariert. Leben geht weiter."
             question="Was bleibt, wenn der Schaden weg ist — außer der Gewissheit, dass Sie richtig gehandelt haben?"
-            image={asset('k05.png')}
+            image={asset('k05.webp')}
             imageAlt="Repariertes Fahrzeug im Abendlicht"
             tone="gold"
           />
@@ -173,6 +178,7 @@ export default function App() {
         <Faq />
       </main>
       <Footer />
+      <StickyCta />
     </div>
   )
 }
