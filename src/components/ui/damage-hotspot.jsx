@@ -25,6 +25,12 @@ export default function DamageHotspot({ point, index, isOpen, onToggle }) {
     return () => mql.removeEventListener('change', update)
   }, [])
 
+  // Pin-Position: auf Mobile xMobile/yMobile bevorzugen falls vorhanden,
+  // sonst auf x/y zurückfallen. So können Mobile-Koordinaten unabhängig
+  // vom Desktop angepasst werden (object-cover croppt unterschiedlich).
+  const px = isMobile && point.xMobile != null ? point.xMobile : point.x
+  const py = isMobile && point.yMobile != null ? point.yMobile : point.y
+
   // Popup-Platzierung Desktop: liegt der Pin in der rechten Bildhälfte,
   // nach links ausklappen, sonst nach rechts.
   const popoverOnLeft = point.x > 55
@@ -93,7 +99,7 @@ export default function DamageHotspot({ point, index, isOpen, onToggle }) {
   return (
     <div
       className="pointer-events-auto absolute z-[5] -translate-x-1/2 -translate-y-1/2"
-      style={{ left: `${point.x}%`, top: `${point.y}%` }}
+      style={{ left: `${px}%`, top: `${py}%` }}
     >
       <motion.span
         className="absolute inset-0 rounded-full bg-gold"
