@@ -114,13 +114,14 @@ export default function DamageHotspot({ point, index, isOpen, onToggle }) {
         {isOpen ? <X size={16} className="hidden md:block" /> : <Plus size={16} className="hidden md:block" />}
       </button>
 
-      <AnimatePresence>
-        {isOpen && (
-          isMobile && typeof document !== 'undefined'
-            ? createPortal(popupContent, document.body)
-            : popupContent
-        )}
-      </AnimatePresence>
+      {isMobile && typeof document !== 'undefined' ? (
+        createPortal(
+          <AnimatePresence>{isOpen && popupContent}</AnimatePresence>,
+          document.body
+        )
+      ) : (
+        <AnimatePresence>{isOpen && popupContent}</AnimatePresence>
+      )}
     </div>
   )
 }
