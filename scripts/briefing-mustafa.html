@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Briefing — Kfz-Gutachter Hannover</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-weight: 400;
+      src: local('Inter Regular'), local('Helvetica'), local('Arial');
+    }
+    :root {
+      --ink: #0A1F44;
+      --ink-soft: #1a2f5c;
+      --muted: #5a6480;
+      --gold: #B8915E;
+      --gold-soft: #d4b584;
+      --gold-dark: #8e6d43;
+      --cream: #fafaf7;
+      --cream-dark: #f2efe6;
+      --line: #e5e1d4;
+      --green: #2f7a3a;
+      --red:   #b8332f;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: white;
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.55;
+    }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', 'Garamond', 'Georgia', serif; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+    h1 { font-size: 32pt; line-height: 1.05; margin: 0 0 4pt; }
+    h2 { font-size: 18pt; margin: 24pt 0 8pt; padding-top: 14pt; border-top: 1px solid var(--line); }
+    h2:first-of-type { border-top: none; padding-top: 0; }
+    h3 { font-size: 13pt; margin: 18pt 0 6pt; color: var(--gold-dark); }
+    p { margin: 0 0 8pt; }
+    ul, ol { margin: 0 0 10pt; padding-left: 18pt; }
+    li { margin-bottom: 4pt; }
+    a { color: var(--ink); text-decoration: underline; text-underline-offset: 2pt; }
+    .lede { color: var(--muted); margin-top: 4pt; font-size: 11pt; }
+
+    .cover {
+      page-break-after: always;
+      min-height: 240mm;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 0;
+    }
+    .cover-top {
+      display: flex; align-items: center; gap: 14pt;
+    }
+    .logo {
+      width: 56pt; height: 56pt; flex-shrink: 0;
+      border-radius: 10pt;
+      background: var(--ink);
+      color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36pt; font-weight: 600;
+    }
+    .cover-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14pt;
+      color: var(--muted);
+      letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .cover-firm { font-size: 26pt; line-height: 1.05; margin-top: 4pt; color: var(--ink); font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+    .cover-mid h1 { font-size: 42pt; }
+    .cover-mid .for { color: var(--muted); font-size: 12pt; margin-top: 18pt; letter-spacing: 0.06em; text-transform: uppercase; }
+    .cover-mid .for strong { color: var(--ink); font-size: 16pt; text-transform: none; letter-spacing: 0; display: block; margin-top: 2pt; font-weight: 600; }
+    .cover-mid .date { margin-top: 28pt; font-size: 10pt; color: var(--muted); }
+    .cover-foot { font-size: 9pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10pt; }
+
+    .ribbon {
+      display: inline-block;
+      padding: 3pt 9pt;
+      border-radius: 100pt;
+      font-size: 8.5pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      vertical-align: middle;
+      margin-right: 6pt;
+    }
+    .r-pflicht { background: #fdecea; color: var(--red); border: 1px solid #f5c0bc; }
+    .r-dringend { background: #fff3df; color: #946100; border: 1px solid #f0d49b; }
+    .r-bald { background: #e8f1fb; color: #1a4a7a; border: 1px solid #c4dcf3; }
+    .r-laufend { background: #e8f3ec; color: var(--green); border: 1px solid #b8d8c1; }
+    .r-erledigt { background: #e8f3ec; color: var(--green); border: 1px solid #b8d8c1; }
+
+    .check { color: var(--green); font-weight: 700; }
+    .x { color: var(--red); font-weight: 700; }
+    .arrow { color: var(--gold-dark); font-weight: 700; }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 6pt;
+      padding: 10pt 12pt;
+      margin: 8pt 0 14pt;
+      background: var(--cream);
+    }
+    .card.gold { border-color: var(--gold); border-left-width: 3pt; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10pt;
+    }
+
+    .kv {
+      display: grid;
+      grid-template-columns: 50mm 1fr;
+      gap: 4pt 12pt;
+      font-size: 10pt;
+    }
+    .kv .k { color: var(--muted); font-size: 9pt; text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2pt; }
+    .kv .v { color: var(--ink); }
+
+    .step {
+      margin-bottom: 16pt;
+    }
+    .step-head {
+      display: flex; align-items: baseline; gap: 8pt;
+      margin-bottom: 4pt;
+    }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18pt;
+      color: var(--gold-dark);
+      font-weight: 600;
+      min-width: 24pt;
+    }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14pt;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .step-body {
+      margin-left: 32pt;
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 22mm 1fr;
+      gap: 3pt 8pt;
+      font-size: 9.5pt;
+      color: var(--muted);
+      margin-top: 4pt;
+    }
+    .meta-row .mk { font-weight: 600; color: var(--ink-soft); }
+
+    table.facts {
+      width: 100%; border-collapse: collapse; font-size: 10pt;
+    }
+    table.facts td {
+      padding: 5pt 6pt;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    table.facts td:first-child {
+      color: var(--muted); width: 38mm;
+      font-size: 9pt; text-transform: uppercase; letter-spacing: 0.05em; padding-top: 7pt;
+    }
+    table.facts td:last-child { color: var(--ink); font-weight: 500; }
+
+    .footer-note {
+      margin-top: 20pt;
+      padding-top: 10pt;
+      border-top: 1px solid var(--line);
+      font-size: 8.5pt;
+      color: var(--muted);
+    }
+
+    .pagebreak { page-break-before: always; }
+    .nobreak { page-break-inside: avoid; }
+  </style>
+</head>
+<body>
+
+  <!-- ============== COVER ============== -->
+  <section class="cover">
+    <div>
+      <div class="cover-top">
+        <div class="logo">S</div>
+        <div>
+          <div class="cover-title">Kfz-Gutachter Hannover</div>
+          <div class="cover-firm">Kfz-Gutachten Hannover</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-mid">
+      <h1>Briefing für<br>den Inhaber.</h1>
+      <p class="lede" style="margin-top:18pt; max-width:140mm;">
+        Was bereits aufgesetzt wurde, was du jetzt machen musst, und alles
+        Wichtige in einem Dokument. Geschäftsbezogene Punkte sind deine
+        Verantwortung — alles Technische macht Marwan.
+      </p>
+
+      <div class="for">Für<strong>Mustafa Saleh</strong></div>
+      <div class="date">Stand: 27. April 2026 · Version 1</div>
+    </div>
+
+    <div class="cover-foot">
+      Kfz-Gutachter Hannover · Inhaber: Mustafa Saleh ·
+      Berliner Allee 51, 30855 Langenhagen · Telefon: +49 176 80444241 ·
+      kontakt@hannover-kfz-gutachter.de
+    </div>
+  </section>
+
+  <!-- ============== PART 1 — WHAT'S DONE ============== -->
+  <section>
+    <h2><span class="ribbon r-erledigt">Erledigt</span>Was bereits aufgesetzt ist</h2>
+    <p class="lede">Du musst dich um diese Punkte nicht mehr kümmern — sie laufen.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <strong>Sichtbares Label</strong>
+        <div class="meta-row" style="grid-template-columns: 30mm 1fr;">
+          <div class="mk">Auf Webseite</div><div>Kfz-Gutachter Hannover</div>
+          <div class="mk">Tagline</div><div>Persönlich · Direkt · Vor Ort</div>
+          <div class="mk">Hinweis</div><div>nur Marketing, jederzeit änderbar</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <strong>Webseite live</strong>
+        <div class="meta-row" style="grid-template-columns: 30mm 1fr;">
+          <div class="mk">Domain</div><div>hannover-kfz-gutachter.de</div>
+          <div class="mk">Hosting</div><div>GitHub Pages + Cloudflare</div>
+          <div class="mk">SSL</div><div>aktiviert (HTTPS erzwungen)</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <strong>Telefon &amp; WhatsApp</strong>
+        <div class="meta-row" style="grid-template-columns: 30mm 1fr;">
+          <div class="mk">Nummer</div><div>+49 176 80444241</div>
+          <div class="mk">Genutzt für</div><div>Anrufe + WhatsApp Business</div>
+          <div class="mk">Inhaber</div><div>du</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <strong>E-Mail</strong>
+        <div class="meta-row" style="grid-template-columns: 30mm 1fr;">
+          <div class="mk">Adresse</div><div>kontakt@hannover-kfz-gutachter.de</div>
+          <div class="mk">Routing</div><div>aktuell an Marwan, später eigener Alias für dich</div>
+          <div class="mk">Anbieter</div><div>Cloudflare Email Routing (kostenlos)</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <strong>Geschäftsadresse</strong>
+        <div class="meta-row" style="grid-template-columns: 30mm 1fr;">
+          <div class="mk">Straße</div><div>Berliner Allee 51</div>
+          <div class="mk">Stadt</div><div>30855 Langenhagen</div>
+          <div class="mk">Land</div><div>Deutschland</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <strong>Rechtliche Pflichtseiten</strong>
+        <div class="meta-row" style="grid-template-columns: 30mm 1fr;">
+          <div class="mk">Impressum</div><div>online, mit deinen Daten</div>
+          <div class="mk">Datenschutz</div><div>online, DSGVO-konform</div>
+          <div class="mk">AGB</div><div>online, B2C-tauglich</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Status der rechtlichen Compliance</h3>
+    <table class="facts nobreak">
+      <tr><td>DSGVO</td><td><span class="check">✓</span> konform — kein Tracking, keine Cookies, Schriften lokal gehostet</td></tr>
+      <tr><td>TTDSG § 25</td><td><span class="check">✓</span> kein Cookie-Banner nötig (keine Marketing-Cookies)</td></tr>
+      <tr><td>TMG § 5 (Impressum)</td><td><span class="check">✓</span> vollständig mit Inhaber, Anschrift, Kontakt, Status</td></tr>
+      <tr><td>UWG (Werbung)</td><td><span class="check">✓</span> alle Service-Zusagen verifizierbar, keine Fake-Stats</td></tr>
+      <tr><td>Steuerlicher Status</td><td>Freiberufler i. S. d. § 18 EStG (Ingenieur), § 19 UStG Kleinunternehmer</td></tr>
+    </table>
+  </section>
+
+  <!-- ============== PART 2 — WHAT YOU MUST DO ============== -->
+  <section class="pagebreak">
+    <h2>Was du jetzt tun musst</h2>
+    <p class="lede">Dies sind die einzigen Punkte, die du persönlich angehen musst. Marwan kann nicht für dich beim Finanzamt unterschreiben oder eine Versicherung in deinem Namen abschließen.</p>
+
+    <!-- STEP 1 -->
+    <div class="step nobreak">
+      <div class="step-head">
+        <div class="step-num">01</div>
+        <div class="step-title">Steuerliche Erfassung beim Finanzamt</div>
+        <span class="ribbon r-pflicht">Pflicht</span>
+      </div>
+      <div class="step-body">
+        <p>Sobald du als Freiberufler tätig wirst, musst du dich beim Finanzamt anmelden. Ohne diesen Schritt gibt es keine Steuernummer — und ohne Steuernummer keine gültigen Rechnungen.</p>
+        <div class="meta-row">
+          <div class="mk">Wo</div><div>elster.de → „Fragebogen zur steuerlichen Erfassung" (Online-Formular)</div>
+          <div class="mk">Frist</div><div>spätestens 1 Monat nach Aufnahme der Tätigkeit</div>
+          <div class="mk">Aufwand</div><div>1–2 Stunden, online ausfüllen</div>
+          <div class="mk">Was eintragen</div><div>Name, Anschrift, Bankverbindung, geschätzter Jahresumsatz (klein halten — § 19 UStG Kleinunternehmer ankreuzen)</div>
+          <div class="mk">Kosten</div><div>kostenlos</div>
+          <div class="mk">Danach</div><div>Steuernummer kommt 2–3 Wochen später per Post</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step nobreak">
+      <div class="step-head">
+        <div class="step-num">02</div>
+        <div class="step-title">Berufshaftpflichtversicherung abschließen</div>
+        <span class="ribbon r-dringend">Diese Woche</span>
+      </div>
+      <div class="step-body">
+        <p>EIN fehlerhaftes Gutachten kann eine Schadensersatzklage von 50.000 € und mehr nach sich ziehen — ohne Versicherung haftest du privat mit allem, was du hast. Das ist kein theoretisches Risiko.</p>
+        <div class="meta-row">
+          <div class="mk">Wo</div><div>Vergleichsportal exali.de · Anbieter: Hiscox, VHV, Markel u. a.</div>
+          <div class="mk">Kosten</div><div>etwa 400–700 € pro Jahr (steuerlich absetzbar)</div>
+          <div class="mk">Versicherungssumme</div><div>mindestens 250.000 € Vermögensschaden, besser 500.000 €</div>
+          <div class="mk">Brauchst du</div><div>Personalausweis, Adresse, Berufsbezeichnung („Ingenieur · Kfz-Sachverständiger"), geschätzter Jahresumsatz</div>
+          <div class="mk">Aufwand</div><div>~30 Min Online-Antrag · Police kommt per Mail</div>
+          <div class="mk">Wichtig</div><div>NICHT erst Aufträge annehmen, dann versichern. Vor dem ersten Auftrag.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step nobreak">
+      <div class="step-head">
+        <div class="step-num">03</div>
+        <div class="step-title">Verarbeitungsverzeichnis nach Art. 30 DSGVO</div>
+        <span class="ribbon r-dringend">Diese Woche</span>
+      </div>
+      <div class="step-body">
+        <p>Eine kurze Liste aller Daten, die wir verarbeiten (z. B. Telefonnummer und Schadensbilder von Mandanten). Wird nicht veröffentlicht, sondern nur in den Aktenordner gelegt — muss aber bei einer Behördenanfrage vorgelegt werden können.</p>
+        <div class="meta-row">
+          <div class="mk">Wo</div><div>Vorlage von der IHK Hannover herunterladen</div>
+          <div class="mk">Aufwand</div><div>etwa 1 Stunde Tabelle ausfüllen</div>
+          <div class="mk">Status</div><div>für Solo-Freiberufler ein Standard-Dokument</div>
+          <div class="mk">Aufbewahrung</div><div>Aktenordner, jährlich aktualisieren</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step nobreak">
+      <div class="step-head">
+        <div class="step-num">04</div>
+        <div class="step-title">Google Business Profile beantragen</div>
+        <span class="ribbon r-bald">In 2–4 Wochen</span>
+      </div>
+      <div class="step-body">
+        <p>Damit das Büro in der lokalen Google-Suche erscheint („Kfz-Gutachter Hannover" → Karten-Eintrag mit Telefon und Bewertungen). Marwan kann technisch helfen, aber das Profil muss in deinem Namen beantragt werden.</p>
+        <div class="meta-row">
+          <div class="mk">Wo</div><div>business.google.com</div>
+          <div class="mk">Aufwand</div><div>15 Min Setup, dann 1–3 Tage Wartezeit für die Verifizierung</div>
+          <div class="mk">Verifizierung</div><div>per Postkarte mit Code an Berliner Allee 51</div>
+          <div class="mk">Was eintragen</div><div>Kfz-Gutachter Hannover, Adresse, Telefon, Öffnungszeiten</div>
+          <div class="mk">Wichtig</div><div>Sobald freigeschaltet: aktiv um Bewertungen bitten — wichtigster lokaler Trust-Hebel</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step nobreak">
+      <div class="step-head">
+        <div class="step-num">05</div>
+        <div class="step-title">Telefon &amp; WhatsApp erreichbar halten</div>
+        <span class="ribbon r-laufend">Laufend</span>
+      </div>
+      <div class="step-body">
+        <p>Das ist der Hauptkanal. Die Webseite hat einen prominenten Anruf-Button. Wenn jemand anruft und niemand drangeht, ist die Conversion verloren.</p>
+        <div class="meta-row">
+          <div class="mk">Nummer</div><div>+49 176 80444241</div>
+          <div class="mk">Begrüßung</div><div>„Kfz-Gutachter Hannover, Mustafa Saleh — guten Tag."</div>
+          <div class="mk">Erwartung</div><div>Versprechen auf der Webseite: Rückruf werktags innerhalb 24 h, Termin innerhalb 24 h</div>
+          <div class="mk">WhatsApp</div><div>regelmäßig prüfen — viele Geschädigte schicken zuerst Schadensbilder dort</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PART 3 — REFERENCE ============== -->
+  <section class="pagebreak">
+    <h2>Was du wissen solltest (Reference)</h2>
+    <p class="lede">Wenn dich jemand nach Daten fragt, hier ist alles auf einen Blick.</p>
+
+    <h3>Firmen-Stammdaten</h3>
+    <table class="facts">
+      <tr><td>Sichtbares Label</td><td>Kfz-Gutachter Hannover (= Domain, kein eingetragener Firmenname)</td></tr>
+      <tr><td>Tagline</td><td>Persönlich · Direkt · Vor Ort</td></tr>
+      <tr><td>Inhaber (Impressum)</td><td>Mustafa Saleh — als Freiberufler ohne separaten Firmennamen</td></tr>
+      <tr><td>Berufsbezeichnung</td><td>Ingenieur · Kfz-Sachverständiger</td></tr>
+      <tr><td>Tätigkeitsstatus</td><td>Freiberufler i. S. d. § 18 Abs. 1 Nr. 1 EStG</td></tr>
+      <tr><td>Umsatzsteuer</td><td>§ 19 UStG Kleinunternehmer (kein USt-Ausweis auf Rechnungen)</td></tr>
+      <tr><td>Geschäftsanschrift</td><td>Berliner Allee 51, 30855 Langenhagen</td></tr>
+      <tr><td>Telefon / WhatsApp</td><td>+49 176 80444241</td></tr>
+      <tr><td>E-Mail</td><td>kontakt@hannover-kfz-gutachter.de</td></tr>
+      <tr><td>Domain (Webseite)</td><td>hannover-kfz-gutachter.de</td></tr>
+      <tr><td>Steuernummer</td><td><em>kommt nach Schritt 01 (Finanzamt)</em></td></tr>
+      <tr><td>Berufshaftpflicht</td><td><em>kommt nach Schritt 02</em></td></tr>
+    </table>
+
+    <h3>Was Marwan macht (musst du nicht)</h3>
+    <table class="facts">
+      <tr><td>Webseite</td><td>komplett — Design, Texte, Hosting, Updates</td></tr>
+      <tr><td>Domain &amp; E-Mail</td><td>technische Verwaltung, Konten, Verlängerungen</td></tr>
+      <tr><td>Marketing</td><td>SEO, Werbung, Online-Sichtbarkeit</td></tr>
+      <tr><td>Lead-Routing</td><td>Anfragen über Webseite landen erst bei Marwan, dann bei dir</td></tr>
+      <tr><td>NICHT</td><td>Vertragspartner für Behörden, Kunden, Versicherer — das ist immer du</td></tr>
+    </table>
+
+    <h3>Wenn du unsicher bist</h3>
+    <ul>
+      <li><strong>Bei Behördenpost:</strong> erstmal nicht antworten oder zusagen — mit Marwan abklären, dann gemeinsam beantworten.</li>
+      <li><strong>Bei Mandantenanfragen:</strong> telefonisch direkt klären. Kein Schriftverkehr ohne Notwendigkeit.</li>
+      <li><strong>Steuern werden komplex:</strong> sobald regelmäßige Aufträge laufen oder die 22.000 €-Grenze nahe kommt — Steuerberater suchen.</li>
+      <li><strong>Bei Unfallfahrer-Anrufen:</strong> ruhig bleiben, fragen wo das Fahrzeug steht, Termin vor Ort innerhalb 24 h vereinbaren.</li>
+    </ul>
+
+    <div class="card gold" style="margin-top: 18pt;">
+      <strong>Wichtigste Faustregel</strong>
+      <p style="margin-top: 4pt;">
+        Du bist der rechtlich verantwortliche Inhaber. Marwan ist der operative
+        Tech-Partner. Beide Rollen brauchen einander — aber Behördenkontakt,
+        Versicherungsabschluss und Steuersachen müssen über dich laufen,
+        damit alles sauber bleibt.
+      </p>
+    </div>
+
+    <div class="footer-note">
+      Dieses Briefing wurde am 27. April 2026 erstellt von Marwan im Auftrag des Sachverständigenbüros Hannover.
+      Bei Fragen oder Änderungen: gemeinsam besprechen, Briefing-Version aktualisieren.
+    </div>
+  </section>
+
+</body>
+</html>
