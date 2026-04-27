@@ -7,15 +7,13 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <div className="inline-flex items-center rounded-2xl bg-cream px-5 py-4 shadow-xl shadow-black/30">
-              <img
-                src={asset('logo/logo-512.png')}
-                alt={brand.name}
-                className="h-24 w-auto md:h-28"
-                width="512"
-                height="384"
-              />
-            </div>
+            <img
+              src={asset('logo/logo-512-dark.png')}
+              alt={brand.name}
+              className="h-28 w-auto md:h-32"
+              width="512"
+              height="384"
+            />
             <p className="mt-5 max-w-sm text-sm leading-relaxed">
               Unabhängige Kfz-Gutachten für Privatkunden, Versicherungen, Anwälte und Gewerbe
               im Raum Hannover.

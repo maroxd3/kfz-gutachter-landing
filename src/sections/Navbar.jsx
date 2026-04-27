@@ -6,15 +6,11 @@ export default function Navbar() {
   return (
     <header className="absolute inset-x-0 top-0 z-50">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a
-          href="#"
-          aria-label={brand.name}
-          className="inline-flex items-center rounded-2xl bg-cream px-4 py-2 shadow-xl shadow-black/20 ring-1 ring-gold/20 transition hover:shadow-2xl"
-        >
+        <a href="#" aria-label={brand.name} className="inline-flex items-center">
           <img
-            src={asset('logo/logo-512.png')}
+            src={asset('logo/logo-512-dark.png')}
             alt={`${brand.name} — Sachverständigenbüro`}
-            className="h-20 w-auto md:h-28"
+            className="h-24 w-auto md:h-32"
             width="512"
             height="384"
           />
