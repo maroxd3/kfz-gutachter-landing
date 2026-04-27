@@ -17,10 +17,10 @@ export const brand = {
   address: {
     street: 'Berliner Allee 51',
     zip: '30855',
-    city: 'Hannover',
+    city: 'Langenhagen',
   },
   hours: 'Mo–Fr  08:00 – 18:00 · Sa nach Vereinbarung',
-  googleMaps: 'https://www.google.com/maps/search/?api=1&query=Berliner+Allee+51+30855+Hannover',
+  googleMaps: 'https://www.google.com/maps/search/?api=1&query=Berliner+Allee+51+30855+Langenhagen',
 
   // 🖼️ ZWEI FOTOS für den Before/After-Slider:
   //   heroImageBefore  = sauberes Auto (vor dem Unfall)
