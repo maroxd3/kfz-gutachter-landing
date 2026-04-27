@@ -106,7 +106,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-6 max-w-2xl bg-gradient-to-b from-white to-neutral-400 bg-clip-text font-serif text-3xl font-semibold leading-[1.1] text-transparent md:mt-7 md:text-5xl md:leading-[1.05] lg:text-6xl"
+          className="mt-6 max-w-[60%] bg-gradient-to-b from-white to-neutral-400 bg-clip-text font-serif text-2xl font-semibold leading-[1.1] text-transparent md:mt-7 md:max-w-2xl md:text-5xl md:leading-[1.05] lg:text-6xl"
         >
           Jeder Schaden hat einen <span className="italic text-gold">Wert</span>.
         </motion.h1>
@@ -115,7 +115,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-4 max-w-xl text-base leading-relaxed text-neutral-300 md:mt-6 md:text-xl"
+          className="mt-4 max-w-[60%] text-sm leading-relaxed text-neutral-300 md:mt-6 md:max-w-xl md:text-xl"
         >
           Wir dokumentieren, bewerten und quantifizieren — rechtssicher und unabhängig.
           Klicken Sie auf die Markierungen und sehen Sie, wie ein Gutachten entsteht.
