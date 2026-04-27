@@ -1,6 +1,6 @@
 import { chromium } from 'playwright'
 import QRCode from 'qrcode'
-import { mkdir } from 'node:fs/promises'
+import { mkdir, readFile } from 'node:fs/promises'
 import { homedir } from 'node:os'
 import { resolve } from 'node:path'
 
@@ -8,6 +8,8 @@ const OUT = resolve(homedir(), 'Desktop', 'KGH-Marketing', 'WhatsApp-Status')
 await mkdir(OUT, { recursive: true })
 
 const FONTS = resolve(import.meta.dirname || new URL('.', import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'), '..', 'public', 'fonts').replace(/\\/g, '/')
+const LOGO_PATH = resolve(import.meta.dirname || new URL('.', import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'), '..', 'public', 'logo', 'logo-512.png')
+const LOGO_DATAURL = `data:image/png;base64,${(await readFile(LOGO_PATH)).toString('base64')}`
 
 const fontStyles = `
 @font-face { font-family:'Inter';font-weight:400;src:url('file:///${FONTS}/inter-latin-400-normal.woff2') format('woff2'); }
@@ -48,21 +50,16 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; font-family: 'Inte
   width: 160px; height: 160px; padding: 16px;
   background: var(--cream); border-radius: 18px;
 }
-.logo-pill {
-  position: absolute; top: 56px; left: 56px;
-  display: flex; align-items: center; gap: 14px;
+.logo-card {
+  position: absolute; top: 48px; left: 48px;
+  background: var(--cream); padding: 20px 28px; border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
 }
-.logo-pill .mark {
-  width: 64px; height: 64px; border-radius: 14px;
-  background: var(--gold); color: var(--ink);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 700;
+.logo-card img { display: block; height: 90px; width: auto; }
+.logo-naked {
+  position: absolute; top: 48px; left: 48px;
 }
-.logo-pill .lockup {
-  font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;
-  line-height: 1.1;
-}
-.logo-pill .lockup small { display: block; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.65; margin-top: 4px; }
+.logo-naked img { display: block; height: 100px; width: auto; }
 `
 
 const qrDataUrl = await QRCode.toDataURL('https://hannover-kfz-gutachter.de/', {
@@ -72,6 +69,11 @@ const qrDataUrl = await QRCode.toDataURL('https://hannover-kfz-gutachter.de/', {
   color: { dark: '#0A1F44', light: '#fafaf7' },
 })
 
+const logoTag = (mode) =>
+  mode === 'dark'
+    ? `<div class="logo-card"><img src="${LOGO_DATAURL}" alt="Kfz-Experten Hannover"></div>`
+    : `<div class="logo-naked"><img src="${LOGO_DATAURL}" alt="Kfz-Experten Hannover"></div>`
+
 const wrap = (bg, text, body, opts = {}) => `
 <!doctype html>
 <html><head><meta charset="utf-8"><style>${fontStyles}${baseStyles}
@@ -80,14 +82,11 @@ ${opts.extra || ''}
 </style></head><body>${body}</body></html>`
 
 const designs = [
-  // 01 — HOOK: "Unfall?"
+  // 01 — HOOK: "Unfall?" (dark bg → logo on white card)
   {
     id: '01-unfall-hook',
     html: wrap('var(--ink)', 'var(--cream)', `
-      <div class="logo-pill" style="color: var(--cream);">
-        <div class="mark">S</div>
-        <div class="lockup">Kfz-Gutachter<br>Hannover<small>Persönlich · Direkt · Vor Ort</small></div>
-      </div>
+      ${logoTag('dark')}
       <img class="qr" src="${qrDataUrl}" alt="QR" />
 
       <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 80px;">
@@ -106,14 +105,11 @@ const designs = [
     `)
   },
 
-  // 02 — PROMISE: Termin in 24h
+  // 02 — PROMISE: Termin in 24h (light bg → logo direct)
   {
     id: '02-termin-24h',
     html: wrap('var(--cream)', 'var(--ink)', `
-      <div class="logo-pill">
-        <div class="mark">S</div>
-        <div class="lockup">Kfz-Gutachter<br>Hannover<small>Persönlich · Direkt · Vor Ort</small></div>
-      </div>
+      ${logoTag('light')}
 
       <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 80px;">
         <div class="eyebrow" style="color: var(--gold-dark); margin-bottom: 48px;">Unsere Zusage</div>
@@ -141,14 +137,11 @@ const designs = [
     `)
   },
 
-  // 03 — LEISTUNGEN list
+  // 03 — LEISTUNGEN list (dark bg)
   {
     id: '03-leistungen',
     html: wrap('linear-gradient(180deg, var(--ink) 0%, #06152e 100%)', 'var(--cream)', `
-      <div class="logo-pill" style="color: var(--cream);">
-        <div class="mark">S</div>
-        <div class="lockup">Kfz-Gutachter<br>Hannover<small>Persönlich · Direkt · Vor Ort</small></div>
-      </div>
+      ${logoTag('dark')}
       <img class="qr" src="${qrDataUrl}" alt="QR" />
 
       <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding:0 100px;">
@@ -190,14 +183,11 @@ const designs = [
     `)
   },
 
-  // 04 — "0 €" für Sie
+  // 04 — "0 €" für Sie (light bg)
   {
     id: '04-0-euro-fuer-sie',
     html: wrap('var(--cream)', 'var(--ink)', `
-      <div class="logo-pill">
-        <div class="mark">S</div>
-        <div class="lockup">Kfz-Gutachter<br>Hannover<small>Persönlich · Direkt · Vor Ort</small></div>
-      </div>
+      ${logoTag('light')}
 
       <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 80px;">
         <div class="eyebrow" style="color: var(--gold-dark); margin-bottom: 32px;">Bei unverschuldetem Unfall</div>
@@ -218,14 +208,11 @@ const designs = [
     `)
   },
 
-  // 05 — Persönlich, kein Call-Center
+  // 05 — Persönlich, kein Call-Center (dark bg)
   {
     id: '05-kein-callcenter',
     html: wrap('var(--ink)', 'var(--cream)', `
-      <div class="logo-pill" style="color: var(--cream);">
-        <div class="mark">S</div>
-        <div class="lockup">Kfz-Gutachter<br>Hannover<small>Persönlich · Direkt · Vor Ort</small></div>
-      </div>
+      ${logoTag('dark')}
 
       <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 80px;">
         <div class="eyebrow" style="color: var(--gold-soft); margin-bottom: 56px;">Was uns unterscheidet</div>
@@ -250,14 +237,11 @@ const designs = [
     `)
   },
 
-  // 06 — Quote-style: "Was tun nach Unfall"
+  // 06 — Quote-style: "Was tun nach Unfall" (light bg)
   {
     id: '06-was-tun-checkliste',
     html: wrap('var(--cream-dark)', 'var(--ink)', `
-      <div class="logo-pill">
-        <div class="mark">S</div>
-        <div class="lockup">Kfz-Gutachter<br>Hannover<small>Persönlich · Direkt · Vor Ort</small></div>
-      </div>
+      ${logoTag('light')}
       <img class="qr" src="${qrDataUrl}" alt="QR" />
 
       <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 100px;">
@@ -306,7 +290,7 @@ const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, de
 
 for (const d of designs) {
   await page.setContent(d.html, { waitUntil: 'networkidle' })
-  await page.waitForTimeout(400)
+  await page.waitForTimeout(500)
   await page.screenshot({ path: resolve(OUT, `${d.id}.png`), type: 'png', fullPage: false })
   console.log(`✓ ${d.id}.png`)
 }

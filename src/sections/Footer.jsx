@@ -1,4 +1,5 @@
 import { brand } from '../lib/content.js'
+import { asset } from '../lib/utils.js'
 
 export default function Footer() {
   return (
@@ -6,9 +7,14 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <div className="font-serif text-2xl font-semibold text-cream">{brand.name}</div>
-            <div className="mt-1 text-xs uppercase tracking-[0.2em] text-gold-soft">
-              {brand.tagline}
+            <div className="inline-block rounded-lg bg-cream px-4 py-3">
+              <img
+                src={asset('logo/logo-512.png')}
+                alt={brand.name}
+                className="h-16 w-auto"
+                width="512"
+                height="384"
+              />
             </div>
             <p className="mt-5 max-w-sm text-sm leading-relaxed">
               Unabhängige Kfz-Gutachten für Privatkunden, Versicherungen, Anwälte und Gewerbe

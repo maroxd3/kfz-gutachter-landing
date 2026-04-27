@@ -1,17 +1,19 @@
 import { Phone } from 'lucide-react'
 import { brand } from '../lib/content.js'
+import { asset } from '../lib/utils.js'
 
 export default function Navbar() {
   return (
     <header className="absolute inset-x-0 top-0 z-50">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <a href="#" className="flex items-baseline gap-2">
-          <span className="font-serif text-2xl font-semibold tracking-tight text-white">
-            {brand.nameShort}
-          </span>
-          <span className="hidden text-xs uppercase tracking-[0.2em] text-gold-soft sm:inline">
-            {brand.tagline}
-          </span>
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="#" className="flex items-center" aria-label={brand.name}>
+          <img
+            src={asset('logo/logo-512.png')}
+            alt={`${brand.name} — Sachverständigenbüro`}
+            className="h-14 w-auto md:h-16"
+            width="512"
+            height="384"
+          />
         </a>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-neutral-300 md:flex">
