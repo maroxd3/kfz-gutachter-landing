@@ -7,11 +7,11 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <div className="inline-block rounded-lg bg-cream px-4 py-3">
+            <div className="inline-flex items-center rounded-2xl bg-cream px-5 py-4 shadow-xl shadow-black/30">
               <img
                 src={asset('logo/logo-512.png')}
                 alt={brand.name}
-                className="h-16 w-auto"
+                className="h-24 w-auto md:h-28"
                 width="512"
                 height="384"
               />
