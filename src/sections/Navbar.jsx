@@ -8,11 +8,11 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#" aria-label={brand.name} className="inline-flex items-center">
           <img
-            src={asset('logo/logo-512-dark.png')}
+            src={asset('logo/logo-1200-dark.png')}
             alt={`${brand.name} — Sachverständigenbüro`}
-            className="h-24 w-auto md:h-32"
-            width="512"
-            height="384"
+            className="h-36 w-auto md:h-48"
+            width="1200"
+            height="900"
           />
         </a>
 

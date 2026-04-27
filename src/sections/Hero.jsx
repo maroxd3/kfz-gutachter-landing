@@ -79,7 +79,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-6 max-w-3xl bg-gradient-to-b from-white to-neutral-400 bg-clip-text font-serif text-4xl font-semibold leading-[1.05] text-transparent md:mt-7 md:text-7xl md:leading-[1.02] lg:text-[5.5rem]"
+          className="mt-6 max-w-2xl bg-gradient-to-b from-white to-neutral-400 bg-clip-text font-serif text-3xl font-semibold leading-[1.1] text-transparent md:mt-7 md:text-5xl md:leading-[1.05] lg:text-6xl"
         >
           Jeder Schaden hat einen <span className="italic text-gold">Wert</span>.
         </motion.h1>
