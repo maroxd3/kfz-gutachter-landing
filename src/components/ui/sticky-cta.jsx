@@ -7,6 +7,7 @@ import { brand } from '../../lib/content.js'
 // Bleibt dann fix unten rechts. Mobile-first, auf Desktop dezent kleiner.
 export default function StickyCta() {
   const [show, setShow] = useState(false)
+  const [footerVisible, setFooterVisible] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.6)
@@ -15,9 +16,23 @@ export default function StickyCta() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Footer in Sicht? Dann sticky CTA ausblenden — verdeckt sonst Impressum-Links.
+  useEffect(() => {
+    const footer = document.querySelector('footer')
+    if (!footer) return
+    const io = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { rootMargin: '0px 0px -20% 0px' },
+    )
+    io.observe(footer)
+    return () => io.disconnect()
+  }, [])
+
+  const visible = show && !footerVisible
+
   return (
     <AnimatePresence>
-      {show && (
+      {visible && (
         <motion.div
           initial={{ opacity: 0, y: 24, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}

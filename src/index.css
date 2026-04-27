@@ -50,11 +50,13 @@ body {
   color: var(--color-ink);
   background: var(--color-cream);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* schützt vor Horizontal-Scroll bei langen DE-Wörtern */
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
   letter-spacing: -0.01em;
+  overflow-wrap: anywhere; /* breaks "Sachverständigenbüro" auf engen Phones sauber */
 }
 
 ::selection {

@@ -25,7 +25,7 @@ export default function TrustBanner() {
   return (
     <section
       aria-label="Service-Versprechen"
-      className="relative z-10 -mt-6 border-y border-ink/10 bg-cream"
+      className="relative z-10 border-b border-ink/10 bg-cream"
     >
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-y-4 px-6 py-6 sm:grid-cols-3 sm:gap-x-8 sm:py-7">
         {items.map((it, i) => (

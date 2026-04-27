@@ -99,7 +99,7 @@ export default function Contact() {
 
           <p className="mt-4 text-xs text-ink-muted">
             Mit dem Absenden stimmen Sie unserer{' '}
-            <a href="#datenschutz" className="underline hover:text-ink">Datenschutzerklärung</a> zu.
+            <a href="/datenschutz.html" className="underline hover:text-ink">Datenschutzerklärung</a> zu.
           </p>
         </form>
       </div>
