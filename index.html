@@ -59,7 +59,48 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- SEO-Fallback für Crawler ohne JS (Bing, AI-Bots, Vorschau-Renderer).
+           React überschreibt diesen Inhalt bei Mount — Nutzer sehen die App. -->
+      <header style="padding:24px 24px 8px; max-width:960px; margin:0 auto; font-family:'Cormorant Garamond',Georgia,serif; color:#0A1F44;">
+        <p style="font-size:14px; letter-spacing:0.2em; text-transform:uppercase; color:#8e6d43; margin:0 0 12px;">Kfz-Gutachter Hannover · Persönlich · Direkt · Vor Ort</p>
+        <h1 style="font-size:42px; font-weight:600; line-height:1.05; margin:0 0 16px;">Kfz-Gutachter in Hannover — Sachverständiger für Unfallgutachten</h1>
+        <p style="font-family:'Inter',sans-serif; font-size:18px; line-height:1.5; color:#1a2f5c; margin:0 0 28px;">
+          Unabhängige Kfz-Gutachten für Geschädigte. Termin vor Ort innerhalb 24 Stunden,
+          im Eilfall noch heute. Kostenlos bei unverschuldetem Unfall — die gegnerische
+          Haftpflichtversicherung trägt die Kosten vollständig.
+        </p>
+        <p style="font-family:'Inter',sans-serif; font-size:16px; margin:0 0 8px;">
+          <strong>Telefon &amp; WhatsApp:</strong>
+          <a href="tel:+4917680444241" style="color:#8e6d43;">+49 176 80444241</a>
+          · <a href="mailto:kontakt@hannover-kfz-gutachter.de" style="color:#8e6d43;">kontakt@hannover-kfz-gutachter.de</a>
+        </p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#5a6480; margin:0 0 24px;">
+          Berliner Allee 51, 30855 Langenhagen · Mo–Fr 08:00–18:00 · 24 h Notfall-Hotline
+        </p>
+        <h2 style="font-size:24px; font-weight:600; margin:24px 0 12px;">Unsere Leistungen</h2>
+        <ul style="font-family:'Inter',sans-serif; font-size:16px; line-height:1.6; padding-left:20px; margin:0 0 24px;">
+          <li>Haftpflicht-Schadengutachten nach Verkehrsunfall</li>
+          <li>Wertgutachten · Marktwert · Wiederbeschaffungswert</li>
+          <li>Oldtimer-Gutachten (§ 23 StVZO H-Kennzeichen)</li>
+          <li>Kurzgutachten / Kostenvoranschlag bei Bagatellschäden</li>
+          <li>Schadensregulierung mit Versicherung &amp; Anwalt</li>
+        </ul>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#5a6480; margin:0;">
+          Zertifiziert nach DIN ISO/IEC 17024 · TÜV- und DEKRA-qualifiziert · Einsatzradius 50&nbsp;km ab Hannover ohne Anfahrtskosten.
+        </p>
+      </header>
+    </div>
+    <noscript>
+      <p style="padding:16px; max-width:720px; margin:24px auto; background:#fafaf7; border:1px solid #e5e1d4; font-family:Georgia,serif; color:#0A1F44;">
+        Diese Webseite verwendet JavaScript für die interaktive Darstellung.
+        Bitte aktivieren Sie JavaScript oder nutzen Sie den direkten Kontakt:
+        <strong>+49 176 80444241</strong> · <a href="mailto:kontakt@hannover-kfz-gutachter.de">kontakt@hannover-kfz-gutachter.de</a>
+        <br>
+        Impressum: <a href="/impressum.html">/impressum.html</a> ·
+        Datenschutz: <a href="/datenschutz.html">/datenschutz.html</a>
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
