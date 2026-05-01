@@ -10,7 +10,7 @@ export default function Navbar() {
           <img
             src={asset('logo/logo-1200-dark.png')}
             alt={`${brand.name} — Sachverständigenbüro`}
-            className="h-36 w-auto md:h-48"
+            className="h-14 w-auto md:h-20"
             width="1200"
             height="900"
           />
