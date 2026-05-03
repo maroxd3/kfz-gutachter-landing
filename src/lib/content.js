@@ -69,8 +69,8 @@ export const collisionScene = {
     color: 'gold', // goldene Marker
     points: [
       { id: 'c1', x: 28, y: 54, label: 'Motorhaube', damage: 'Verformung durch Frontalaufprall, Lackschaden', repair: '2.100 €', depreciation: '380 €', severity: 'Schwer' },
-      { id: 'c2', x: 39, y: 60, label: 'Scheinwerfer rechts', damage: 'Gehäuse gebrochen, Reflektor defekt', repair: '620 €', depreciation: '—', severity: 'Leicht' },
-      { id: 'c3', x: 34, y: 73, label: 'Front-Stoßfänger', damage: 'Komplett eingedrückt, Halterungen gerissen', repair: '1.850 €', depreciation: '420 €', severity: 'Schwer' },
+      { id: 'c2', x: 18, y: 66, label: 'Scheinwerfer rechts', damage: 'Gehäuse gebrochen, Reflektor defekt', repair: '620 €', depreciation: '—', severity: 'Leicht' },
+      { id: 'c3', x: 12, y: 75, label: 'Front-Stoßfänger', damage: 'Komplett eingedrückt, Halterungen gerissen', repair: '1.850 €', depreciation: '420 €', severity: 'Schwer' },
     ],
   },
   opponent: {
