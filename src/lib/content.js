@@ -3,9 +3,9 @@
 import { asset } from './utils.js'
 
 export const brand = {
-  name: 'Kfz-Gutachter Hannover',
-  nameShort: 'Kfz-Gutachter Hannover',
-  tagline: 'Persönlich · Direkt · Vor Ort',
+  name: 'Kfz-Experten Hannover',
+  nameShort: 'Kfz-Experten Hannover',
+  tagline: 'Kfz-Gutachter & Sachverständiger · Hannover',
   city: 'Hannover',
   legalOwner: 'Mustafa Saleh',
   phone: '+49 176 80444241',
