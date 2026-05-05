@@ -25,8 +25,8 @@ export default function Contact() {
             Sprechen wir.
           </h2>
           <p className="mt-5 max-w-md text-lg leading-relaxed text-ink-soft">
-            Ein kurzer Anruf, und wir klären alles Weitere. Bei Unfällen rund um die Uhr
-            erreichbar — wir sind für Sie da, wenn Sie uns brauchen.
+            Ein kurzer Anruf, und wir klären alles Weitere. Ihr Kfz-Gutachter für Hannover,
+            Langenhagen und Umland — bei Unfällen rund um die Uhr erreichbar.
           </p>
 
           <div className="mt-10 space-y-5">

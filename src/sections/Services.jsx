@@ -67,11 +67,12 @@ export default function Services() {
         <div className="max-w-2xl">
           <p className="text-xs uppercase tracking-[0.2em] text-gold-dark">Leistungen</p>
           <h2 className="mt-3 font-serif text-4xl font-semibold text-ink md:text-5xl">
-            Gutachten für jeden Fall.
+            Gutachten für jeden Fall in Hannover.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-ink-soft">
-            Vom Bagatellschaden bis zum Oldtimer — wir liefern das Gutachten, das vor Gericht,
-            bei der Versicherung und im Verkauf Bestand hat.
+            Vom Bagatellschaden bis zum Oldtimer — als Kfz-Gutachter und Sachverständiger
+            in Hannover liefern wir das Gutachten, das vor Gericht, bei der Versicherung
+            und im Verkauf Bestand hat.
           </p>
         </div>
 

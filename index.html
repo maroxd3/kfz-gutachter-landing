@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/logo/favicon-180.png" />
     <link rel="alternate icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Kfz-Gutachter Hannover · Sachverständiger für Unfallgutachten</title>
-    <meta name="description" content="Erfahrene Kfz-Sachverständige in Hannover. Unabhängige Unfallgutachten, Wertgutachten und Oldtimer-Bewertungen. Ihr Experte für Schadensregulierung — Termin innerhalb 24 h." />
+    <meta name="description" content="Kfz-Gutachter in Hannover und Langenhagen — unabhängige Unfallgutachten, Wertgutachten und Oldtimer-Bewertungen. DIN ISO 17024 zertifiziert. Termin innerhalb 24 h, kostenlos für Geschädigte." />
 
     <link rel="canonical" href="https://hannover-kfz-gutachter.de/" />
 
@@ -33,35 +33,117 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "AutomotiveBusiness",
-      "name": "Kfz-Gutachter Hannover",
-      "description": "Unabhängiger Kfz-Sachverständiger in Hannover für Unfallgutachten, Wertgutachten und Oldtimer-Bewertungen.",
-      "logo": "https://hannover-kfz-gutachter.de/logo/logo-1200.png",
-      "image": "https://hannover-kfz-gutachter.de/logo/logo-1200.png",
-      "url": "https://hannover-kfz-gutachter.de/",
-      "telephone": "+4917680444241",
-      "email": "kontakt@hannover-kfz-gutachter.de",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Berliner Allee 51",
-        "postalCode": "30855",
-        "addressLocality": "Langenhagen",
-        "addressRegion": "Niedersachsen",
-        "addressCountry": "DE"
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": "Hannover"
-      },
-      "openingHoursSpecification": [
+      "@graph": [
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-          "opens": "08:00",
-          "closes": "18:00"
+          "@type": ["AutomotiveBusiness", "ProfessionalService", "LocalBusiness"],
+          "@id": "https://hannover-kfz-gutachter.de/#business",
+          "name": "Kfz-Gutachter Hannover",
+          "alternateName": ["Kfz-Sachverständiger Hannover", "Kfz-Gutachter Langenhagen"],
+          "description": "Unabhängiger Kfz-Sachverständiger in Hannover und Langenhagen für Unfallgutachten, Wertgutachten und Oldtimer-Bewertungen. Termin innerhalb 24 h, kostenlos für Geschädigte.",
+          "logo": "https://hannover-kfz-gutachter.de/logo/logo-1200.png",
+          "image": "https://hannover-kfz-gutachter.de/logo/logo-1200.png",
+          "url": "https://hannover-kfz-gutachter.de/",
+          "telephone": "+4917680444241",
+          "email": "kontakt@hannover-kfz-gutachter.de",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Berliner Allee 51",
+            "postalCode": "30855",
+            "addressLocality": "Langenhagen",
+            "addressRegion": "Niedersachsen",
+            "addressCountry": "DE"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Hannover" },
+            { "@type": "City", "name": "Langenhagen" },
+            { "@type": "City", "name": "Garbsen" },
+            { "@type": "City", "name": "Wunstorf" },
+            { "@type": "City", "name": "Laatzen" },
+            { "@type": "City", "name": "Lehrte" },
+            { "@type": "City", "name": "Sehnde" },
+            { "@type": "City", "name": "Burgwedel" }
+          ],
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ],
+          "priceRange": "€€",
+          "hasCredential": [
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "DIN ISO/IEC 17024" },
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "TÜV-qualifiziert" },
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "DEKRA-qualifiziert" }
+          ],
+          "knowsLanguage": ["de", "ar"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Kfz-Gutachten",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Haftpflicht-Schadengutachten" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wertgutachten / Marktwertgutachten" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Oldtimer-Gutachten (§ 23 StVZO H-Kennzeichen)" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kurzgutachten / Kostenvoranschlag" } }
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://hannover-kfz-gutachter.de/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Wer zahlt das Gutachten in Hannover?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bei einem unverschuldeten Unfall trägt die gegnerische Haftpflichtversicherung die vollständigen Gutachterkosten — auch in Hannover und Umland. Für Sie entstehen in der Regel keine Kosten."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Wie schnell bekomme ich mein Gutachten?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In der Regel innerhalb von 48 Stunden nach der Fahrzeugbesichtigung. Bei Eilfällen ist eine kurzfristigere Erstellung möglich."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Muss ich zu Ihnen nach Langenhagen kommen?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nein. Wir kommen zu Ihnen — zur Werkstatt, nach Hause, ins Büro oder zur Unfallstelle. Im Raum Hannover und Umland bis 50 km ohne Anfahrtskosten."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "In welchen Stadtteilen von Hannover sind Sie tätig?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Wir sind in ganz Hannover unterwegs (Mitte, List, Linden, Misburg, Bothfeld, Vahrenwald, Kirchrode u.a.) sowie im Umland: Langenhagen, Garbsen, Wunstorf, Laatzen, Lehrte, Sehnde, Burgwedel."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Was unterscheidet ein unabhängiges Gutachten vom Versicherungsgutachten?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Wir arbeiten ausschließlich in Ihrem Interesse. Ein von der gegnerischen Versicherung beauftragter Prüfer vertritt deren Interessen — das kann sich in der Schadenhöhe deutlich auswirken."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Welche Unterlagen benötige ich?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Fahrzeugschein, Führerschein und — falls vorhanden — polizeilicher Unfallbericht sowie gegnerische Versicherungsdaten."
+              }
+            }
+          ]
         }
-      ],
-      "priceRange": "€€"
+      ]
     }
     </script>
   </head>

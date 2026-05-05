@@ -228,16 +228,20 @@ export const reasons = [
 
 export const faq = [
   {
-    q: 'Wer zahlt das Gutachten?',
-    a: 'Bei einem unverschuldeten Unfall trägt die gegnerische Haftpflichtversicherung die vollständigen Gutachterkosten. Für Sie entstehen in der Regel keine Kosten.',
+    q: 'Wer zahlt das Gutachten in Hannover?',
+    a: 'Bei einem unverschuldeten Unfall trägt die gegnerische Haftpflichtversicherung die vollständigen Gutachterkosten — auch in Hannover und Umland. Für Sie entstehen in der Regel keine Kosten.',
   },
   {
     q: 'Wie schnell bekomme ich mein Gutachten?',
     a: 'In der Regel innerhalb von 48 Stunden nach der Fahrzeugbesichtigung. Bei Eilfällen ist eine kurzfristigere Erstellung möglich — sprechen Sie uns an.',
   },
   {
-    q: 'Muss ich zu Ihnen kommen?',
-    a: 'Nein. Wir kommen zu Ihnen — zur Werkstatt, nach Hause, ins Büro oder zur Unfallstelle. Im Raum Hannover bis 50 km ohne Anfahrtskosten.',
+    q: 'Muss ich zu Ihnen nach Langenhagen kommen?',
+    a: 'Nein. Wir kommen zu Ihnen — zur Werkstatt, nach Hause, ins Büro oder zur Unfallstelle. Im Raum Hannover und Umland bis 50 km ohne Anfahrtskosten. Unser Büro liegt in Langenhagen, direkt an der Berliner Allee.',
+  },
+  {
+    q: 'In welchen Stadtteilen von Hannover sind Sie tätig?',
+    a: 'Wir sind in ganz Hannover unterwegs — Mitte, List, Linden, Misburg, Bothfeld, Vahrenwald, Kirchrode und alle anderen Stadtteile — sowie im Umland: Langenhagen, Garbsen, Wunstorf, Laatzen, Lehrte, Sehnde, Burgwedel.',
   },
   {
     q: 'Was unterscheidet ein unabhängiges Gutachten vom Versicherungsgutachten?',

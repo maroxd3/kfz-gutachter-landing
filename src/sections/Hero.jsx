@@ -109,6 +109,9 @@ export default function Hero() {
           className="mt-6 max-w-[60%] bg-gradient-to-b from-white to-neutral-400 bg-clip-text font-serif text-2xl font-semibold leading-[1.1] text-transparent md:mt-7 md:max-w-2xl md:text-5xl md:leading-[1.05] lg:text-6xl"
         >
           Jeder Schaden hat einen <span className="italic text-gold">Wert</span>.
+          <span className="mt-3 block bg-none font-sans text-sm font-medium uppercase tracking-[0.18em] text-gold-soft md:text-base [-webkit-text-fill-color:initial]">
+            Kfz-Gutachter &amp; Sachverständiger in Hannover
+          </span>
         </motion.h1>
 
         <motion.p
@@ -117,8 +120,9 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mt-4 max-w-[60%] text-sm leading-relaxed text-neutral-300 md:mt-6 md:max-w-xl md:text-xl"
         >
-          Wir dokumentieren, bewerten und quantifizieren — rechtssicher und unabhängig.
-          Klicken Sie auf die Markierungen und sehen Sie, wie ein Gutachten entsteht.
+          Wir dokumentieren, bewerten und quantifizieren — rechtssicher und unabhängig
+          in Hannover und Umland. Klicken Sie auf die Markierungen und sehen Sie, wie
+          ein Gutachten entsteht.
         </motion.p>
 
         <motion.div
