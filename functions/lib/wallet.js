@@ -28,16 +28,27 @@ export function buildPassObject({ issuerId, classSuffix, objectSuffix, phone, wh
     id: objectId,
     classId,
     state: 'ACTIVE',
-    barcode: {
-      type: 'QR_CODE',
-      value: unfallUrl,
-      alternateText: 'Unfallhilfe',
+    cardTitle: {
+      defaultValue: { language: 'de', value: 'Kfz-Experten Hannover' },
+    },
+    header: {
+      defaultValue: { language: 'de', value: 'Unfallhilfe 24/7' },
+    },
+    subheader: {
+      defaultValue: { language: 'de', value: 'Mustafa Saleh · Sachverständiger' },
+    },
+    hexBackgroundColor: '#0A1F44',
+    logo: {
+      sourceUri: { uri: `${unfallUrl.replace(/\/unfall$/, '')}/logo/logo-512.png` },
+      contentDescription: {
+        defaultValue: { language: 'de', value: 'Kfz-Experten Hannover Logo' },
+      },
     },
     linksModuleData: {
       uris: [
         { uri: `tel:${phone.replace(/\s+/g, '')}`, description: 'Sofort anrufen', id: 'call' },
         { uri: whatsapp, description: 'WhatsApp', id: 'whatsapp' },
-        { uri: unfallUrl, description: 'Unfallhilfe-Seite', id: 'unfall' },
+        { uri: unfallUrl, description: 'Unfallhilfe-Seite öffnen', id: 'unfall' },
       ],
     },
     textModulesData: [
