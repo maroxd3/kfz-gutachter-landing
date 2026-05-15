@@ -22,6 +22,11 @@ export const brand = {
   hours: 'Mo–Fr  08:00 – 18:00 · Sa nach Vereinbarung',
   googleMaps: 'https://www.google.com/maps/search/?api=1&query=Berliner+Allee+51+30855+Langenhagen',
 
+  // Firebase Function URL für Google Wallet Pass-Generierung.
+  // Wird nach erstem `firebase deploy --only functions` mit echter URL ersetzt.
+  // Format: https://<region>-<project-id>.cloudfunctions.net/walletPass
+  walletApiUrl: 'https://europe-west1-kfz-gutachter-wallet.cloudfunctions.net/walletPass',
+
   // 🖼️ ZWEI FOTOS für den Before/After-Slider:
   //   heroImageBefore  = sauberes Auto (vor dem Unfall)
   //   heroImageAfter   = dasselbe Auto mit Schaden (nach dem Unfall)
