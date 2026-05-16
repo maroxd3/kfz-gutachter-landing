@@ -21,12 +21,32 @@ function getServiceAccount() {
   throw new Error('No GOOGLE_WALLET_SA_KEY env var set — cannot sign wallet JWT')
 }
 
+function buildVCard({ phoneClean, whatsapp, origin }) {
+  // vCard 3.0 — scanned by any iOS/Android camera, prompts "Add to contacts"
+  return [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'N:Saleh;Mustafa;;;',
+    'FN:Mustafa Saleh — Kfz-Experten Hannover',
+    'ORG:Kfz-Experten Hannover',
+    'TITLE:Kfz-Sachverständiger · Unfall-Soforthilfe',
+    `TEL;TYPE=CELL,VOICE:${phoneClean}`,
+    `URL:${origin}/unfall`,
+    `URL;TYPE=WhatsApp:${whatsapp}`,
+    'EMAIL:kontakt@hannover-kfz-gutachter.de',
+    'ADR;TYPE=WORK:;;Berliner Allee 51;Langenhagen;;30855;Deutschland',
+    'NOTE:24/7 Unfall-Soforthilfe · DIN ISO 17024',
+    'END:VCARD',
+  ].join('\n')
+}
+
 export function buildPassObject({ issuerId, classSuffix, objectSuffix, phone, whatsapp, unfallUrl }) {
   const classId = `${issuerId}.${classSuffix}`
   const objectId = `${issuerId}.${objectSuffix}`
   const origin = unfallUrl.replace(/\/unfall$/, '')
   const phoneClean = phone.replace(/\s+/g, '')
   const phoneDisplay = phone.startsWith('+49') ? `0${phone.slice(3).replace(/^\s*/, '').trim()}` : phone
+  const vcard = buildVCard({ phoneClean, whatsapp, origin })
   return {
     id: objectId,
     classId,
@@ -43,33 +63,33 @@ export function buildPassObject({ issuerId, classSuffix, objectSuffix, phone, wh
     },
     hexBackgroundColor: '#000000',
     logo: {
-      sourceUri: { uri: `${origin}/logo/wallet-logo.png` },
+      sourceUri: { uri: `${origin}/logo/wallet-logo.png?v=${Date.now()}` },
       contentDescription: {
         defaultValue: { language: 'de', value: 'Kfz-Experten Hannover Logo' },
       },
     },
     heroImage: {
-      sourceUri: { uri: `${origin}/logo/wallet-hero.png` },
+      sourceUri: { uri: `${origin}/logo/wallet-hero.png?v=${Date.now()}` },
       contentDescription: {
         defaultValue: { language: 'de', value: 'Kfz-Experten Hannover Unfall-Soforthilfe' },
       },
     },
     barcode: {
       type: 'QR_CODE',
-      value: unfallUrl,
-      alternateText: 'Unfallhilfe öffnen',
+      value: vcard,
+      alternateText: 'QR scannen → Kontakt speichern',
     },
     appLinkData: {
       webAppLinkInfo: {
         appTarget: {
           targetUri: {
-            uri: whatsapp,
-            description: 'WhatsApp Kontakt',
+            uri: `tel:${phoneClean}`,
+            description: 'Sofort anrufen',
           },
         },
       },
       displayText: {
-        defaultValue: { language: 'de', value: 'WhatsApp schreiben' },
+        defaultValue: { language: 'de', value: 'Sofort anrufen' },
       },
     },
     linksModuleData: {
