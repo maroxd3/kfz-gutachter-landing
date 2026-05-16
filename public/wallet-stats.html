@@ -13,6 +13,8 @@
       --fg: #fff;
       --muted: #8a8a8a;
       --gold: #d6b204;
+      --google: #4285F4;
+      --apple: #e5e5e7;
       --card: #0b0b0d;
       --line: #1f1f23;
     }
@@ -27,15 +29,28 @@
     .brand-text { font-size: 13px; color: var(--muted); letter-spacing: 0.04em; }
     h1 { font-size: 22px; font-weight: 600; margin: 0 0 6px; }
     .subtitle { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 18px 20px; }
+    .reach { background: linear-gradient(180deg, #14140f 0%, #0b0b0d 100%);
+      border: 1px solid #2a2208; border-radius: 18px; padding: 18px 20px 22px; margin-bottom: 18px; }
+    .reach .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
+    .reach .num { font-size: 56px; font-weight: 700; line-height: 1; color: var(--gold);
+      font-variant-numeric: tabular-nums; }
+    .reach .delta { font-size: 12px; color: var(--muted); margin-top: 8px; }
+    .section-label { font-size: 11px; color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.12em; margin: 20px 0 8px; display: flex; align-items: center; gap: 8px; }
+    .pill { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 10px;
+      letter-spacing: 0; text-transform: none; font-weight: 500; }
+    .pill.google { background: #1a3a8c; color: #cfe0ff; }
+    .pill.apple { background: #2a2a2c; color: #e5e5e7; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 14px 16px; }
     .card.full { grid-column: 1 / -1; }
-    .card.hero { background: linear-gradient(180deg, #14140f 0%, #0b0b0d 100%); border-color: #2a2208; }
-    .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
-    .num { font-size: 44px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
-    .num.gold { color: var(--gold); }
-    .num.small { font-size: 28px; }
-    .delta { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    .card .label { font-size: 10px; color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.12em; margin-bottom: 4px; }
+    .card .num { font-size: 28px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+    .card .num.lg { font-size: 36px; }
+    .card .num.google { color: #6ea8ff; }
+    .card .num.apple { color: #f4f4f7; }
+    .note { font-size: 11px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
     .footer { display: flex; justify-content: space-between; align-items: center;
       margin-top: 22px; font-size: 12px; color: var(--muted); }
     .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%;
@@ -52,22 +67,38 @@
       <img src="/logo/wallet-logo.png" alt="" />
       <div class="brand-text">Kfz-Experten Hannover · Wallet-Stats</div>
     </div>
-    <h1>Google-Wallet-Pass · Live</h1>
-    <div class="subtitle">Auto-Refresh alle 10 Sekunden</div>
+    <h1>Unfall-Pass · Live</h1>
+    <div class="subtitle">Auto-Refresh alle 10 Sekunden · anonyme Daten</div>
 
+    <div class="reach">
+      <div class="label">Gesamt-Reichweite</div>
+      <div class="num" id="reach">–</div>
+      <div class="delta" id="reachDelta">Saves (Google) + Downloads (Apple)</div>
+    </div>
+
+    <div class="section-label"><span class="pill google">Google</span> echte Save-/Delete-Events</div>
     <div class="grid">
-      <div class="card hero full">
+      <div class="card full">
         <div class="label">Aktuell gespeichert</div>
-        <div class="num gold" id="active">–</div>
-        <div class="delta" id="delta"></div>
+        <div class="num lg google" id="gActive">–</div>
+        <div class="note" id="gDelta"></div>
       </div>
       <div class="card">
         <div class="label">Gesamt-Saves</div>
-        <div class="num small" id="saves">–</div>
+        <div class="num google" id="gSaves">–</div>
       </div>
       <div class="card">
         <div class="label">Gelöscht</div>
-        <div class="num small" id="deletes">–</div>
+        <div class="num google" id="gDeletes">–</div>
+      </div>
+    </div>
+
+    <div class="section-label"><span class="pill apple">Apple</span> Download-Aufrufe (Schätzung)</div>
+    <div class="grid">
+      <div class="card full">
+        <div class="label">Pass heruntergeladen</div>
+        <div class="num lg apple" id="aDownloads">–</div>
+        <div class="note">Apple liefert keine Save-Callbacks. Wir zählen nur, wie oft die .pkpass-Datei ausgeliefert wurde — nicht ob der User sie behalten hat.</div>
       </div>
     </div>
 
@@ -88,13 +119,19 @@
         const r = await fetch(API, { cache: 'no-store' })
         if (!r.ok) throw new Error('HTTP ' + r.status)
         const d = await r.json()
-        $('active').textContent = d.currentlySaved
-        $('saves').textContent = d.saves
-        $('deletes').textContent = d.deletes
-        const delta = d.saves - d.deletes
-        $('delta').textContent = d.saves === 0
+        const g = d.google || { saves: 0, deletes: 0, currentlySaved: 0 }
+        const a = d.apple || { downloads: 0 }
+
+        $('reach').textContent = d.totalReach ?? (g.saves + a.downloads)
+        $('gActive').textContent = g.currentlySaved
+        $('gSaves').textContent = g.saves
+        $('gDeletes').textContent = g.deletes
+        $('aDownloads').textContent = a.downloads
+
+        $('gDelta').textContent = g.saves === 0
           ? 'Noch keine Saves'
-          : `${d.deletes} von ${d.saves} (${Math.round(d.deletes / d.saves * 100)} %) wieder gelöscht`
+          : `${g.deletes} von ${g.saves} (${Math.round(g.deletes / g.saves * 100)} %) wieder gelöscht`
+
         $('status').textContent = 'Live'
         $('dot').classList.remove('err')
         $('last').textContent = new Date().toLocaleTimeString('de-DE')
