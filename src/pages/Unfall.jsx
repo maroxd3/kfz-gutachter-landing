@@ -53,60 +53,25 @@ export default function Unfall() {
         </div>
       </header>
 
-      {/* Hero — near-black mit Foto-Background (oder Gradient-Fallback).
-          Foto liegt unter /public/unfall-hero.webp. */}
+      {/* Hero — das Banner-Foto trägt Logo + „Unfall-Soforthilfe"-Tagline
+          schon in sich, also kein zusätzlicher Text-Overlay. Bild läuft
+          full-bleed; unten ein weicher Fade in den Cream-Hintergrund. */}
       <section
-        className="relative overflow-hidden text-cream"
+        className="relative w-full"
         style={{ backgroundColor: NEAR_BLACK }}
       >
-        <img
+        <motion.img
           src={asset('unfall-hero.webp')}
-          alt=""
-          aria-hidden
-          onError={(e) => {
-            e.currentTarget.style.display = 'none'
-          }}
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
+          alt="Kfz-Experten Hannover — Unfall-Soforthilfe"
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          className="block h-auto w-full"
         />
-        <div
-          className="pointer-events-none absolute inset-0 opacity-90"
-          style={{
-            backgroundImage:
-              'linear-gradient(180deg, rgba(10,10,12,0.55) 0%, rgba(10,10,12,0.85) 60%, rgba(10,10,12,1) 100%), radial-gradient(circle at 18% 0%, rgba(184,145,94,0.45), transparent 55%)',
-          }}
-          aria-hidden
-        />
-        <div className="relative mx-auto max-w-3xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold-soft backdrop-blur-sm sm:text-xs"
-          >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            </span>
-            Soforthilfe
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-            className="mt-5 bg-gradient-to-b from-white to-neutral-400 bg-clip-text font-serif text-4xl font-semibold leading-[1.02] text-transparent sm:text-6xl"
-          >
-            Ruhig bleiben.
-            <br />
-            <span className="italic text-gold [-webkit-text-fill-color:initial]">
-              Wir sind in 45 Min. bei Ihnen.
-            </span>
-          </motion.h1>
-        </div>
       </section>
 
-      {/* Aktionen — Anruf primär (überlappt Hero), WhatsApp + Standort darunter. */}
-      <section className="relative z-10 -mt-10 px-5 sm:-mt-14">
+      {/* Aktionen — Anruf primär, WhatsApp + Standort darunter. */}
+      <section className="relative z-10 mt-6 px-5 sm:mt-10">
         <div className="mx-auto max-w-3xl space-y-3 sm:space-y-4">
           <motion.a
             href={brand.phoneHref}
