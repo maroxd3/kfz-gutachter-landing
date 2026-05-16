@@ -41,11 +41,17 @@ export function buildPassObject({ issuerId, classSuffix, objectSuffix, phone, wh
     subheader: {
       defaultValue: { language: 'de', value: '24/7 Unfall-Soforthilfe' },
     },
-    hexBackgroundColor: '#0B0B0D',
+    hexBackgroundColor: '#000000',
     logo: {
-      sourceUri: { uri: `${origin}/logo/logo-512.png` },
+      sourceUri: { uri: `${origin}/logo/wallet-logo.png` },
       contentDescription: {
         defaultValue: { language: 'de', value: 'Kfz-Experten Hannover Logo' },
+      },
+    },
+    heroImage: {
+      sourceUri: { uri: `${origin}/logo/wallet-hero.png` },
+      contentDescription: {
+        defaultValue: { language: 'de', value: 'Kfz-Experten Hannover Unfall-Soforthilfe' },
       },
     },
     barcode: {

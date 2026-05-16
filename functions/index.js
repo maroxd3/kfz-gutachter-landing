@@ -2,6 +2,7 @@ import { onRequest } from 'firebase-functions/v2/https'
 import { defineSecret, defineString } from 'firebase-functions/params'
 import { createSaveJwt } from './lib/wallet.js'
 import { upsertGoogleWalletClass } from './lib/wallet-class-setup.js'
+import { fetchGoogleWalletClass } from './lib/debug-class-fetch.js'
 import { buildApplePass, newSerial } from './lib/apple-wallet.js'
 
 const walletSaKey = defineSecret('GOOGLE_WALLET_SA_KEY')
@@ -54,6 +55,24 @@ export const setupWalletClass = onRequest(
       res.json({ ok: true, ...result })
     } catch (err) {
       console.error('setupWalletClass failed', err)
+      res.status(500).json({ error: err.message })
+    }
+  }
+)
+
+// Debug: read current class state from Google
+export const debugWalletClass = onRequest(
+  { cors: true, secrets: [walletSaKey], region: 'europe-west1', invoker: 'public' },
+  async (req, res) => {
+    try {
+      process.env.GOOGLE_WALLET_SA_KEY = walletSaKey.value()
+      const result = await fetchGoogleWalletClass({
+        issuerId: issuerId.value(),
+        classSuffix: classSuffix.value(),
+      })
+      res.json(result)
+    } catch (err) {
+      console.error('debugWalletClass failed', err)
       res.status(500).json({ error: err.message })
     }
   }
