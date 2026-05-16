@@ -8,7 +8,7 @@
 
   "backgroundColor": "rgb(0, 0, 0)",
   "foregroundColor": "rgb(255, 255, 255)",
-  "labelColor": "rgb(200, 164, 74)",
+  "labelColor": "rgb(214, 178, 4)",
 
   "sharingProhibited": false,
 
@@ -21,31 +21,31 @@
     }
   ],
 
-  "coupon": {
+  "eventTicket": {
     "headerFields": [
       {
-        "key": "tap",
-        "label": "Mehr ↑",
-        "value": "⋯ tippen"
+        "key": "type",
+        "label": "Soforthilfe",
+        "value": "24/7"
       }
     ],
 
     "primaryFields": [],
 
-    "secondaryFields": [
+    "auxiliaryFields": [
       {
         "key": "call",
-        "label": "📞 Soforthilfe",
+        "label": "Anrufen",
         "value": "0176 80444241"
       },
       {
-        "key": "actionHint",
-        "label": "💬 WhatsApp",
+        "key": "whatsapp",
+        "label": "WhatsApp",
         "value": "Karte aufrufen"
       }
     ],
 
-    "auxiliaryFields": [],
+    "secondaryFields": [],
 
     "backFields": [
       {
@@ -79,7 +79,7 @@
       {
         "key": "about",
         "label": "Ihr Sachverständiger",
-        "value": "Mustafa Saleh · Kfz-Experten Hannover\nBerliner Allee 51, 30855 Langenhagen\nDIN ISO 17024 zertifiziert"
+        "value": "Mustafa Saleh · Kfz-Experten Hannover\nBerliner Allee 51, 30855 Langenhagen\nTÜV zertifiziert · DIN ISO 17024"
       }
     ]
   }
