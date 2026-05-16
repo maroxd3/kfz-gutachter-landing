@@ -73,8 +73,40 @@ export default function Unfall() {
         />
       </section>
 
-      {/* Aktionen — Anruf primär, WhatsApp + Standort darunter. */}
+      {/* Wallet-Card direkt nach dem Hero — Hauptzweck der Page: User soll
+          die Karte speichern. Vor Anrufen, damit es als erstes auffällt. */}
       <section className="relative z-10 mt-6 px-5 sm:mt-10">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.15 }}
+          className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl bg-ink text-cream shadow-2xl shadow-black/25 ring-1 ring-white/10"
+        >
+          <div
+            className="pointer-events-none absolute inset-0 opacity-30"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 100% 0%, rgba(214,178,4,0.55), transparent 50%)',
+            }}
+            aria-hidden
+          />
+          <div className="relative p-6 sm:p-8">
+            <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold sm:text-xs">
+              <Clock className="h-3.5 w-3.5" /> Jetzt für den Ernstfall speichern
+            </div>
+            <h2 className="mt-3 text-2xl font-bold tracking-tight leading-tight sm:text-3xl">
+              Notfall-Karte in Ihre Wallet.
+            </h2>
+            <p className="mt-2 max-w-md text-sm leading-relaxed text-neutral-300 sm:text-base">
+              Anruf- und WhatsApp-Button direkt vom Sperrbildschirm — auch ohne Internet.
+            </p>
+            <WalletButton className="mt-5" />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Aktionen — Anruf primär, WhatsApp + Standort darunter. */}
+      <section className="relative z-10 mt-4 px-5 sm:mt-6">
         <div className="mx-auto max-w-3xl space-y-3 sm:space-y-4">
           <motion.a
             href={brand.phoneHref}
@@ -88,10 +120,10 @@ export default function Unfall() {
               <Phone className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.1} />
             </div>
             <div className="min-w-0 flex-1">
-              <div className="text-[10px] uppercase tracking-[0.2em] text-gold-soft sm:text-xs">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-soft sm:text-xs">
                 Sofort anrufen
               </div>
-              <div className="mt-0.5 font-serif text-2xl leading-none sm:text-3xl">
+              <div className="mt-0.5 text-2xl font-bold tracking-tight tabular-nums leading-none sm:text-3xl">
                 {brand.phone}
               </div>
             </div>
@@ -124,10 +156,10 @@ export default function Unfall() {
               <MessageCircle className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.1} />
             </div>
             <div className="min-w-0 flex-1">
-              <div className="text-[10px] uppercase tracking-[0.2em] text-ink-muted sm:text-xs">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-muted sm:text-xs">
                 WhatsApp
               </div>
-              <div className="mt-0.5 font-serif text-xl leading-tight sm:text-2xl">
+              <div className="mt-0.5 text-lg font-bold tracking-tight leading-tight sm:text-xl">
                 Schaden in 30 Sek. melden
               </div>
             </div>
@@ -147,50 +179,19 @@ export default function Unfall() {
               <MapPin className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.1} />
             </div>
             <div className="min-w-0 flex-1">
-              <div className="text-[10px] uppercase tracking-[0.2em] text-ink-muted sm:text-xs">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-muted sm:text-xs">
                 Unser Büro
               </div>
               <div className="mt-0.5 text-sm font-semibold sm:text-base">
                 {brand.address.street} · {brand.address.zip} {brand.address.city}
               </div>
             </div>
-            <span className="text-xs font-medium text-gold-dark">Route</span>
+            <span className="text-xs font-semibold text-gold-dark">Route</span>
           </motion.a>
         </div>
       </section>
 
-      {/* Wallet — dunkler Ink-Block wie der Anrufen-Button. Goldakzent oben rechts. */}
-      <section className="px-5 py-12 sm:py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.55 }}
-          className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl bg-ink text-cream shadow-xl shadow-black/25 ring-1 ring-white/10"
-        >
-          <div
-            className="pointer-events-none absolute inset-0 opacity-25"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle at 100% 0%, rgba(214,178,4,0.5), transparent 50%)',
-            }}
-            aria-hidden
-          />
-          <div className="relative p-6 sm:p-8">
-            <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-gold sm:text-xs">
-              <Clock className="h-3.5 w-3.5" /> Für später speichern
-            </div>
-            <h2 className="mt-3 font-serif text-2xl leading-tight sm:text-3xl">
-              Notfall-Karte für{' '}
-              <span className="italic text-gold">Ihre Wallet</span>.
-            </h2>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-neutral-300 sm:text-base">
-              Anruf- und WhatsApp-Button direkt vom Sperrbildschirm — auch ohne Internet.
-            </p>
-            <WalletButton className="mt-5" />
-          </div>
-        </motion.div>
-      </section>
+      <div className="pb-12 sm:pb-16" />
 
       {/* Trust + Footer — knapp, mit Zertifikaten und Legal-Pflichtdaten. */}
       <footer className="border-t border-line bg-cream-dark px-5 py-8">
