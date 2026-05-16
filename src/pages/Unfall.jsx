@@ -15,8 +15,9 @@ import WalletButton from '../components/ui/wallet-button.jsx'
 // erreichbar.
 //
 // Brand-Farben sind LOKAL via CSS-Var-Overrides angepasst (Logo ist
-// black + yellow-gold, nicht das Site-default navy + bronze). Wirkt
-// dadurch nur auf /unfall — Homepage bleibt unverändert.
+// black + yellow-gold, nicht das Site-default navy + bronze). Die ganze
+// Page läuft dunkel, damit das Hero-Banner ohne Schnittkante in den
+// Hintergrund übergeht.
 const UNFALL_THEME = {
   '--color-ink': '#0a0a0c',
   '--color-ink-soft': '#1a1a1c',
@@ -27,42 +28,39 @@ const UNFALL_THEME = {
 
 export default function Unfall() {
   return (
-    <div style={UNFALL_THEME} className="min-h-screen bg-cream text-ink">
-      {/* Header — Icon-Mark + serif Wordmark statt komplettem PNG mit
-          unleserlichem Mini-Wordmark. Live-Dot rechts. */}
-      <header className="sticky top-0 z-30 border-b border-line bg-cream/85 backdrop-blur-md">
+    <div style={UNFALL_THEME} className="min-h-screen bg-ink text-cream">
+      {/* Header — dunkel, cream Logo (M-Variante), Live-Dot rechts. */}
+      <header className="sticky top-0 z-30 border-b border-white/10 bg-ink/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-5 py-3">
           <a href="/" className="flex items-center gap-3" aria-label={brand.name}>
             <img
-              src={asset('logo/icon-black-transparent.png')}
+              src={asset('logo/icon-cream-transparent.png')}
               alt=""
               className="h-9 w-auto sm:h-10"
             />
             <div className="leading-none">
-              <div className="font-serif text-base font-semibold tracking-tight sm:text-lg">
+              <div className="font-serif text-base font-semibold tracking-tight text-cream sm:text-lg">
                 Kfz-Experten Hannover
               </div>
-              <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-gold-dark sm:text-[11px]">
+              <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold sm:text-[11px]">
                 Sachverständigenbüro
               </div>
             </div>
           </a>
           <div className="flex flex-shrink-0 items-center gap-2">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-600" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            <span className="hidden text-xs font-medium tracking-wide text-ink-muted sm:inline">
+            <span className="hidden text-xs font-medium tracking-wide text-neutral-400 sm:inline">
               Sofort erreichbar
             </span>
           </div>
         </div>
       </header>
 
-      {/* Hero — das Banner-Foto trägt Logo + „Unfall-Soforthilfe"-Tagline
-          schon in sich, also kein zusätzlicher Text-Overlay. Bild läuft
-          full-bleed; bg-ink ist der Fallback wenn das Bild noch lädt. */}
-      <section className="relative w-full bg-ink">
+      {/* Hero — Banner-Foto blendet jetzt ohne Bruch in den dunklen Page-BG. */}
+      <section className="relative w-full">
         <motion.img
           src={asset('unfall-hero.webp')}
           alt="Kfz-Experten Hannover — Unfall-Soforthilfe"
@@ -73,17 +71,16 @@ export default function Unfall() {
         />
       </section>
 
-      {/* Wallet-Card direkt nach dem Hero — Hauptzweck der Page: User soll
-          die Karte speichern. Vor Anrufen, damit es als erstes auffällt. */}
+      {/* Wallet-Card direkt nach dem Hero — Hauptzweck der Page. */}
       <section className="relative z-10 mt-6 px-5 sm:mt-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.15 }}
-          className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl bg-ink text-cream shadow-2xl shadow-black/25 ring-1 ring-white/10"
+          className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl bg-white/[0.04] shadow-xl shadow-black/40 ring-1 ring-white/10"
         >
           <div
-            className="pointer-events-none absolute inset-0 opacity-30"
+            className="pointer-events-none absolute inset-0 opacity-25"
             style={{
               backgroundImage:
                 'radial-gradient(circle at 100% 0%, rgba(214,178,4,0.55), transparent 50%)',
@@ -105,7 +102,7 @@ export default function Unfall() {
         </motion.div>
       </section>
 
-      {/* Aktionen — Anruf primär, WhatsApp + Standort darunter. */}
+      {/* Aktionen — Anrufen mit rotem SOS-Square, WhatsApp + Standort darunter. */}
       <section className="relative z-10 mt-4 px-5 sm:mt-6">
         <div className="mx-auto max-w-3xl space-y-3 sm:space-y-4">
           <motion.a
@@ -114,16 +111,16 @@ export default function Unfall() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.22 }}
             whileTap={{ scale: 0.985 }}
-            className="group flex items-center gap-4 rounded-3xl bg-ink p-5 text-cream shadow-2xl shadow-black/25 ring-1 ring-white/10 transition hover:bg-ink-soft sm:gap-5 sm:p-6"
+            className="group flex items-center gap-4 rounded-3xl bg-white/[0.05] p-5 shadow-2xl shadow-black/40 ring-1 ring-white/10 transition hover:bg-white/[0.08] sm:gap-5 sm:p-6"
           >
-            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gold/15 text-gold sm:h-16 sm:w-16">
-              <Phone className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.1} />
+            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-600/30 sm:h-16 sm:w-16">
+              <Phone className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.2} />
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-soft sm:text-xs">
                 Sofort anrufen
               </div>
-              <div className="mt-0.5 text-2xl font-bold tracking-tight tabular-nums leading-none sm:text-3xl">
+              <div className="mt-0.5 whitespace-nowrap text-xl font-bold tracking-tight tabular-nums leading-none sm:text-3xl">
                 {brand.phone}
               </div>
             </div>
@@ -150,13 +147,13 @@ export default function Unfall() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             whileTap={{ scale: 0.985 }}
-            className="flex items-center gap-4 rounded-3xl border border-line bg-card p-5 text-ink shadow-sm transition hover:border-ink/30 hover:shadow-md sm:gap-5 sm:p-6"
+            className="flex items-center gap-4 rounded-3xl bg-white/[0.04] p-5 shadow-lg shadow-black/30 ring-1 ring-white/10 transition hover:bg-white/[0.07] sm:gap-5 sm:p-6"
           >
-            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-[#25D366]/12 text-[#1d9d52] sm:h-16 sm:w-16">
+            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-[#25D366]/15 text-[#25D366] sm:h-16 sm:w-16">
               <MessageCircle className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.1} />
             </div>
             <div className="min-w-0 flex-1">
-              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-muted sm:text-xs">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-400 sm:text-xs">
                 WhatsApp
               </div>
               <div className="mt-0.5 text-lg font-bold tracking-tight leading-tight sm:text-xl">
@@ -173,20 +170,20 @@ export default function Unfall() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.36 }}
             whileTap={{ scale: 0.985 }}
-            className="flex items-center gap-4 rounded-3xl border border-line bg-cream-dark p-4 text-ink transition hover:border-ink/30 sm:p-5"
+            className="flex items-center gap-4 rounded-3xl bg-white/[0.03] p-4 ring-1 ring-white/10 transition hover:bg-white/[0.06] sm:p-5"
           >
-            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gold/12 text-gold sm:h-12 sm:w-12">
+            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold sm:h-12 sm:w-12">
               <MapPin className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.1} />
             </div>
             <div className="min-w-0 flex-1">
-              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-muted sm:text-xs">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-400 sm:text-xs">
                 Unser Büro
               </div>
               <div className="mt-0.5 text-sm font-semibold sm:text-base">
                 {brand.address.street} · {brand.address.zip} {brand.address.city}
               </div>
             </div>
-            <span className="text-xs font-semibold text-gold-dark">Route</span>
+            <span className="text-xs font-semibold text-gold">Route</span>
           </motion.a>
         </div>
       </section>
@@ -194,30 +191,30 @@ export default function Unfall() {
       <div className="pb-12 sm:pb-16" />
 
       {/* Trust + Footer — knapp, mit Zertifikaten und Legal-Pflichtdaten. */}
-      <footer className="border-t border-line bg-cream-dark px-5 py-8">
+      <footer className="border-t border-white/10 bg-black/40 px-5 py-8">
         <div className="mx-auto max-w-3xl">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <ShieldCheck className="h-4 w-4 text-gold" strokeWidth={2.2} />
             {certifications.map((c) => (
-              <span key={c} className="text-xs font-medium text-ink-muted">
+              <span key={c} className="text-xs font-medium text-neutral-400">
                 {c}
               </span>
             ))}
           </div>
-          <div className="mt-5 text-xs leading-relaxed text-ink-muted">
-            <div className="text-ink">{brand.legalOwner}</div>
+          <div className="mt-5 text-xs leading-relaxed text-neutral-400">
+            <div className="text-cream">{brand.legalOwner}</div>
             <div>
               {brand.address.street} · {brand.address.zip} {brand.address.city}
             </div>
             <div className="mt-1">{brand.hours}</div>
             <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
-              <a href={brand.emailHref} className="underline-offset-4 hover:underline">
+              <a href={brand.emailHref} className="underline-offset-4 hover:underline hover:text-cream">
                 {brand.email}
               </a>
-              <a href="/impressum.html" className="underline-offset-4 hover:underline">
+              <a href="/impressum.html" className="underline-offset-4 hover:underline hover:text-cream">
                 Impressum
               </a>
-              <a href="/datenschutz.html" className="underline-offset-4 hover:underline">
+              <a href="/datenschutz.html" className="underline-offset-4 hover:underline hover:text-cream">
                 Datenschutz
               </a>
             </div>
