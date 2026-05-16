@@ -19,8 +19,8 @@ import WalletButton from '../components/ui/wallet-button.jsx'
 // Page läuft dunkel, damit das Hero-Banner ohne Schnittkante in den
 // Hintergrund übergeht.
 const UNFALL_THEME = {
-  '--color-ink': '#0a0a0c',
-  '--color-ink-soft': '#1a1a1c',
+  '--color-ink': '#000000',
+  '--color-ink-soft': '#0f0f0f',
   '--color-gold': '#d6b204',
   '--color-gold-soft': '#f0d54e',
   '--color-gold-dark': '#a08502',
