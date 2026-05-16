@@ -144,7 +144,6 @@ export const calculator = {
 
 export const certifications = [
   'TÜV zertifiziert',
-  'DEKRA geprüft',
   'DIN ISO 17024',
 ]
 

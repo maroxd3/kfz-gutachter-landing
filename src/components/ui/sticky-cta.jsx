@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Phone, MessageCircle } from 'lucide-react'
+import { Phone, MessageCircle, Smartphone, ArrowRight } from 'lucide-react'
 import { brand } from '../../lib/content.js'
 
 // Sichtbar erst NACH dem Hero (vermeidet Duplikat zu den Hero-CTAs).
@@ -38,9 +38,22 @@ export default function StickyCta() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 24, scale: 0.9 }}
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed right-4 bottom-4 z-[60] flex flex-col gap-3 sm:right-6 sm:bottom-6"
+          className="fixed right-4 bottom-4 z-[60] flex flex-col items-end gap-3 sm:right-6 sm:bottom-6"
           aria-label="Schnellkontakt"
         >
+          <a
+            href="/unfall"
+            aria-label="Digitale Soforthilfe-Karte für Ihr Handy speichern"
+            className="group inline-flex items-center gap-2 rounded-full bg-ink/90 px-4 py-2.5 text-xs font-semibold text-cream shadow-xl shadow-black/30 ring-1 ring-white/15 backdrop-blur-sm transition hover:bg-ink hover:ring-gold/50 sm:text-sm"
+          >
+            <Smartphone size={16} className="text-gold" strokeWidth={2.2} />
+            <span>Digitale Soforthilfe-Karte</span>
+            <ArrowRight
+              size={14}
+              className="-mr-0.5 text-gold transition group-hover:translate-x-0.5"
+              strokeWidth={2.4}
+            />
+          </a>
           <a
             href={brand.whatsappHref}
             target="_blank"
