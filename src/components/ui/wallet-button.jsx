@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Loader2 } from 'lucide-react'
 import { brand } from '../../lib/content.js'
@@ -30,22 +30,9 @@ function GoogleWalletIcon({ className = 'h-6 w-6' }) {
   )
 }
 
-function detectPlatform() {
-  if (typeof navigator === 'undefined') return 'unknown'
-  const ua = navigator.userAgent || ''
-  if (/iPhone|iPad|iPod/i.test(ua)) return 'ios'
-  if (/Android/i.test(ua)) return 'android'
-  return 'desktop'
-}
-
 export default function WalletButton({ className = '' }) {
-  const [platform, setPlatform] = useState('unknown')
   const [loading, setLoading] = useState(null)
   const [error, setError] = useState(null)
-
-  useEffect(() => {
-    setPlatform(detectPlatform())
-  }, [])
 
   async function addToGoogle() {
     setLoading('google')
@@ -81,50 +68,43 @@ export default function WalletButton({ className = '' }) {
     }
   }
 
-  const showApple = platform === 'ios' || platform === 'desktop'
-  const showGoogle = platform === 'android' || platform === 'desktop'
-
   return (
     <div className={className}>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        {showApple && (
-          <motion.button
-            type="button"
-            onClick={addToApple}
-            disabled={loading !== null}
-            whileHover={{ scale: loading ? 1 : 1.02 }}
-            whileTap={{ scale: loading ? 1 : 0.98 }}
-            className="flex items-center justify-center gap-3 rounded-full bg-black px-6 py-3.5 text-white shadow-lg shadow-black/30 ring-1 ring-white/10 transition disabled:opacity-60"
-          >
-            {loading === 'apple' ? (
-              <Loader2 className="h-5 w-5 animate-spin" />
-            ) : (
-              <img src={asset('apple-wallet.png')} alt="" className="h-6 w-6" />
-            )}
-            <span className="text-sm font-semibold tracking-wide sm:text-base">
-              {loading === 'apple' ? 'Pass wird erstellt …' : 'Zu Apple Wallet hinzufügen'}
-            </span>
-          </motion.button>
-        )}
-        {showGoogle && (
-          <motion.button
-            type="button"
-            onClick={addToGoogle}
-            disabled={loading !== null}
-            whileHover={{ scale: loading ? 1 : 1.02 }}
-            whileTap={{ scale: loading ? 1 : 0.98 }}
-            className="flex items-center justify-center gap-3 rounded-full bg-white px-6 py-3.5 text-[#202124] shadow-lg shadow-black/30 ring-1 ring-black/5 transition disabled:opacity-60"
-          >
-            {loading === 'google' ? (
-              <Loader2 className="h-5 w-5 animate-spin" />
-            ) : (
-              <GoogleWalletIcon className="h-6 w-6" />
-            )}
-            <span className="text-sm font-semibold tracking-wide sm:text-base">
-              {loading === 'google' ? 'Pass wird erstellt …' : 'Zu Google Wallet hinzufügen'}
-            </span>
-          </motion.button>
-        )}
+        <motion.button
+          type="button"
+          onClick={addToApple}
+          disabled={loading !== null}
+          whileHover={{ scale: loading ? 1 : 1.02 }}
+          whileTap={{ scale: loading ? 1 : 0.98 }}
+          className="flex items-center justify-center gap-3 rounded-full bg-black px-6 py-3.5 text-white shadow-lg shadow-black/30 ring-1 ring-white/10 transition disabled:opacity-60"
+        >
+          {loading === 'apple' ? (
+            <Loader2 className="h-5 w-5 animate-spin" />
+          ) : (
+            <img src={asset('apple-wallet.png')} alt="" className="h-6 w-6" />
+          )}
+          <span className="text-sm font-semibold tracking-wide sm:text-base">
+            {loading === 'apple' ? 'Pass wird erstellt …' : 'Zu Apple Wallet hinzufügen'}
+          </span>
+        </motion.button>
+        <motion.button
+          type="button"
+          onClick={addToGoogle}
+          disabled={loading !== null}
+          whileHover={{ scale: loading ? 1 : 1.02 }}
+          whileTap={{ scale: loading ? 1 : 0.98 }}
+          className="flex items-center justify-center gap-3 rounded-full bg-white px-6 py-3.5 text-[#202124] shadow-lg shadow-black/30 ring-1 ring-black/5 transition disabled:opacity-60"
+        >
+          {loading === 'google' ? (
+            <Loader2 className="h-5 w-5 animate-spin" />
+          ) : (
+            <GoogleWalletIcon className="h-6 w-6" />
+          )}
+          <span className="text-sm font-semibold tracking-wide sm:text-base">
+            {loading === 'google' ? 'Pass wird erstellt …' : 'Zu Google Wallet hinzufügen'}
+          </span>
+        </motion.button>
       </div>
       {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
     </div>

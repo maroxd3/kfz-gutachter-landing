@@ -20,12 +20,16 @@ export const brand = {
     city: 'Langenhagen',
   },
   hours: 'Mo–Fr  08:00 – 18:00 · Sa nach Vereinbarung',
-  googleMaps: 'https://www.google.com/maps/search/?api=1&query=Berliner+Allee+51+30855+Langenhagen',
+  // Echter Google-Business-Profile-Link (öffnet die GBP-Seite mit Reviews,
+  // Öffnungszeiten, Fotos — nicht nur eine Adress-Suche).
+  googleMaps:
+    'https://www.google.de/maps/place/Kfz-Experten+Hannover+%E2%80%94+Sachverst%C3%A4ndigenb%C3%BCro/@52.4349178,9.6896358,17z/data=!4m6!3m5!1s0x47b073a4c6cc4645:0x4bbf9e4b7089af47!8m2!3d52.4349178!4d9.6896358!16s%2Fg%2F11z6nnvppc',
 
   // Firebase Function URL für Google Wallet Pass-Generierung.
   // Wird nach erstem `firebase deploy --only functions` mit echter URL ersetzt.
   // Format: https://<region>-<project-id>.cloudfunctions.net/walletPass
   walletApiUrl: 'https://europe-west1-kfz-gutachter-wallet.cloudfunctions.net/walletPass',
+  appleWalletApiUrl: 'https://europe-west1-kfz-gutachter-wallet.cloudfunctions.net/applePass',
 
   // 🖼️ ZWEI FOTOS für den Before/After-Slider:
   //   heroImageBefore  = sauberes Auto (vor dem Unfall)
