@@ -1,0 +1,86 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.de.hannover-kfz-gutachter.unfall",
+  "teamIdentifier": "K636NK48Y2",
+  "organizationName": "Kfz-Experten Hannover",
+  "description": "Unfall-Soforthilfe — Kfz-Experten Hannover",
+  "serialNumber": "__SERIAL__",
+
+  "backgroundColor": "rgb(0, 0, 0)",
+  "foregroundColor": "rgb(255, 255, 255)",
+  "labelColor": "rgb(200, 164, 74)",
+
+  "sharingProhibited": false,
+
+  "barcodes": [
+    {
+      "format": "PKBarcodeFormatQR",
+      "message": "https://hannover-kfz-gutachter.de/unfall",
+      "messageEncoding": "iso-8859-1",
+      "altText": "Unfallhilfe öffnen"
+    }
+  ],
+
+  "coupon": {
+    "headerFields": [
+      {
+        "key": "tap",
+        "label": "Mehr ↑",
+        "value": "⋯ tippen"
+      }
+    ],
+
+    "primaryFields": [],
+
+    "secondaryFields": [
+      {
+        "key": "call",
+        "label": "📞 Soforthilfe",
+        "value": "0176 80444241"
+      },
+      {
+        "key": "actionHint",
+        "label": "💬 WhatsApp",
+        "value": "Karte aufrufen"
+      }
+    ],
+
+    "auxiliaryFields": [],
+
+    "backFields": [
+      {
+        "key": "intro",
+        "label": "Im Schadenfall",
+        "value": "Ruhig bleiben. Rufen Sie uns direkt an oder schreiben Sie per WhatsApp. Wir unterstützen Sie schnell bei Beweissicherung, Schadenaufnahme und Gutachten."
+      },
+      {
+        "key": "callLink",
+        "label": "📞 Jetzt anrufen",
+        "value": "+49 176 80444241",
+        "attributedValue": "<a href='tel:+4917680444241'>+49 176 80444241</a>"
+      },
+      {
+        "key": "whatsapp",
+        "label": "💬 WhatsApp öffnen",
+        "value": "Schaden direkt senden",
+        "attributedValue": "<a href='https://wa.me/4917680444241'>WhatsApp öffnen</a>"
+      },
+      {
+        "key": "unfallPage",
+        "label": "Unfallhilfe-Seite",
+        "value": "hannover-kfz-gutachter.de/unfall",
+        "attributedValue": "<a href='https://hannover-kfz-gutachter.de/unfall'>Unfallhilfe öffnen</a>"
+      },
+      {
+        "key": "checklist",
+        "label": "Was tun nach dem Unfall?",
+        "value": "1. Fotos vom Schaden und der Unfallstelle machen.\n2. Kennzeichen und Kontaktdaten sichern.\n3. Keine vorschnelle Schuldanerkennung abgeben.\n4. Direkt Kfz-Experten Hannover kontaktieren."
+      },
+      {
+        "key": "about",
+        "label": "Ihr Sachverständiger",
+        "value": "Mustafa Saleh · Kfz-Experten Hannover\nBerliner Allee 51, 30855 Langenhagen\nDIN ISO 17024 zertifiziert"
+      }
+    ]
+  }
+}

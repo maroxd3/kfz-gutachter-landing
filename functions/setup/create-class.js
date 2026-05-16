@@ -33,10 +33,24 @@ const classBody = {
     cardTemplateOverride: {
       cardRowTemplateInfos: [
         {
+          twoItems: {
+            startItem: {
+              firstValue: {
+                fields: [{ fieldPath: "object.textModulesData['call_front']" }],
+              },
+            },
+            endItem: {
+              firstValue: {
+                fields: [{ fieldPath: "object.textModulesData['whatsapp_front']" }],
+              },
+            },
+          },
+        },
+        {
           oneItem: {
             item: {
               firstValue: {
-                fields: [{ fieldPath: "object.textModulesData['instructions']" }],
+                fields: [{ fieldPath: "object.textModulesData['service_front']" }],
               },
             },
           },
@@ -47,21 +61,24 @@ const classBody = {
   logo: {
     sourceUri: { uri: `${ORIGIN}/logo/logo-512.png` },
     contentDescription: {
-      defaultValue: { language: 'de', value: 'Kfz-Gutachter Hannover Logo' },
+      defaultValue: { language: 'de', value: 'Kfz-Experten Hannover Logo' },
     },
   },
   cardTitle: {
     defaultValue: { language: 'de', value: 'Kfz-Experten Hannover' },
   },
   subheader: {
-    defaultValue: { language: 'de', value: 'Unfallhilfe — Mustafa Saleh' },
+    defaultValue: { language: 'de', value: 'Unfall-Soforthilfe' },
   },
   header: {
-    defaultValue: { language: 'de', value: 'Im Schadenfall sofort scannen' },
+    defaultValue: { language: 'de', value: 'Unfall? Wir helfen sofort.' },
   },
-  hexBackgroundColor: '#0A1F44',
+  hexBackgroundColor: '#0B0B0D',
   heroImage: {
-    sourceUri: { uri: `${ORIGIN}/logo/logo-1200.png` },
+    sourceUri: { uri: `${ORIGIN}/logo/wallet-hero.png` },
+    contentDescription: {
+      defaultValue: { language: 'de', value: 'Kfz-Experten Hannover Unfall-Soforthilfe' },
+    },
   },
 }
 

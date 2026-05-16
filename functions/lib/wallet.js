@@ -24,38 +24,80 @@ function getServiceAccount() {
 export function buildPassObject({ issuerId, classSuffix, objectSuffix, phone, whatsapp, unfallUrl }) {
   const classId = `${issuerId}.${classSuffix}`
   const objectId = `${issuerId}.${objectSuffix}`
+  const origin = unfallUrl.replace(/\/unfall$/, '')
+  const phoneClean = phone.replace(/\s+/g, '')
+  const phoneDisplay = phone.startsWith('+49') ? `0${phone.slice(3).replace(/^\s*/, '').trim()}` : phone
   return {
     id: objectId,
     classId,
     state: 'ACTIVE',
+    genericType: 'GENERIC_AUTO_INSURANCE',
     cardTitle: {
       defaultValue: { language: 'de', value: 'Kfz-Experten Hannover' },
     },
     header: {
-      defaultValue: { language: 'de', value: 'Unfallhilfe 24/7' },
+      defaultValue: { language: 'de', value: 'Unfall? Wir helfen sofort.' },
     },
     subheader: {
-      defaultValue: { language: 'de', value: 'Mustafa Saleh · Sachverständiger' },
+      defaultValue: { language: 'de', value: '24/7 Unfall-Soforthilfe' },
     },
-    hexBackgroundColor: '#0A1F44',
+    hexBackgroundColor: '#0B0B0D',
     logo: {
-      sourceUri: { uri: `${unfallUrl.replace(/\/unfall$/, '')}/logo/logo-512.png` },
+      sourceUri: { uri: `${origin}/logo/logo-512.png` },
       contentDescription: {
         defaultValue: { language: 'de', value: 'Kfz-Experten Hannover Logo' },
       },
     },
+    barcode: {
+      type: 'QR_CODE',
+      value: unfallUrl,
+      alternateText: 'Unfallhilfe öffnen',
+    },
+    appLinkData: {
+      webAppLinkInfo: {
+        appTarget: {
+          targetUri: {
+            uri: whatsapp,
+            description: 'WhatsApp Kontakt',
+          },
+        },
+      },
+      displayText: {
+        defaultValue: { language: 'de', value: 'WhatsApp schreiben' },
+      },
+    },
     linksModuleData: {
       uris: [
-        { uri: `tel:${phone.replace(/\s+/g, '')}`, description: 'Sofort anrufen', id: 'call' },
-        { uri: whatsapp, description: 'WhatsApp', id: 'whatsapp' },
+        { uri: `tel:${phoneClean}`, description: 'Sofort anrufen', id: 'call' },
+        { uri: whatsapp, description: 'WhatsApp öffnen', id: 'whatsapp' },
         { uri: unfallUrl, description: 'Unfallhilfe-Seite öffnen', id: 'unfall' },
       ],
     },
     textModulesData: [
       {
+        header: '📞 Direkt anrufen',
+        body: phoneDisplay,
+        id: 'call_front',
+      },
+      {
+        header: '💬 WhatsApp',
+        body: 'Schaden senden',
+        id: 'whatsapp_front',
+      },
+      {
+        header: 'Soforthilfe',
+        body: '24/7 · Persönlich · Direkt · Vor Ort',
+        id: 'service_front',
+      },
+      {
         header: 'Im Schadenfall',
-        body: 'Anrufen oder WhatsApp — wir kommen zu Ihnen. Beweissicherung, Kalkulation, Gutachten in 48 h. Bei Haftpflichtschaden 0 € für Sie.',
+        body: 'Anrufen oder WhatsApp schreiben — wir helfen direkt weiter. Beweissicherung, Kalkulation und Gutachten in der Regel innerhalb von 48 Stunden.',
         id: 'instructions',
+      },
+      {
+        header: 'Haftpflichtschaden',
+        body: 'Bei unverschuldetem Haftpflichtschaden werden die Gutachterkosten in der Regel von der gegnerischen Versicherung übernommen.',
+        id: 'cost_info',
       },
       {
         header: 'Ihr Sachverständiger',

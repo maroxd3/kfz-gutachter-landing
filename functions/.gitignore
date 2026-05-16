@@ -5,3 +5,18 @@ service-account.json*
 .env
 .env.local
 *.log
+
+# Apple Pass certificates — NEVER commit private key / signing cert
+certs/pass.key
+certs/pass.csr
+certs/*.p12
+certs/*.pem
+certs/Pass.cer
+certs/pass.cer
+# WWDR cert IS safe to commit (Apple's public intermediate)
+!certs/AppleWWDRCAG4.cer
+!certs/AppleWWDRCAG4.pem
+
+# Apple Pass test artifacts
+apple-pass/test.pkpass
+apple-pass/prod-test.pkpass
