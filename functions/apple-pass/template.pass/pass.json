@@ -60,7 +60,7 @@
         "attributedValue": "<a href='tel:+4917680444241'>+49 176 80444241</a>"
       },
       {
-        "key": "whatsapp",
+        "key": "whatsappLink",
         "label": "💬 WhatsApp öffnen",
         "value": "Schaden direkt senden",
         "attributedValue": "<a href='https://wa.me/4917680444241'>WhatsApp öffnen</a>"
