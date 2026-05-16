@@ -12,23 +12,29 @@ import WalletButton from '../components/ui/wallet-button.jsx'
 
 // Notfall-Landingpage. Ziel der QR-Codes auf Wallet/Flyer/Visitenkarte.
 // Mobile-first: Anrufen ist die einzige Primär-Aktion und ohne Scrollen
-// erreichbar. Farbpalette lokal auf near-black + gold gezogen (matched
-// das Logo besser als das Site-default-navy).
+// erreichbar.
 //
-// /public/unfall-hero.webp wird als Hero-Bild geladen, sobald vorhanden.
-// Fehlt die Datei, zeigt der Hero den gold-getönten Gradient-Fallback.
-const NEAR_BLACK = '#0a0a0c'
+// Brand-Farben sind LOKAL via CSS-Var-Overrides angepasst (Logo ist
+// black + yellow-gold, nicht das Site-default navy + bronze). Wirkt
+// dadurch nur auf /unfall — Homepage bleibt unverändert.
+const UNFALL_THEME = {
+  '--color-ink': '#0a0a0c',
+  '--color-ink-soft': '#1a1a1c',
+  '--color-gold': '#d6b204',
+  '--color-gold-soft': '#f0d54e',
+  '--color-gold-dark': '#a08502',
+}
 
 export default function Unfall() {
   return (
-    <div className="min-h-screen bg-cream text-ink">
+    <div style={UNFALL_THEME} className="min-h-screen bg-cream text-ink">
       {/* Header — Icon-Mark + serif Wordmark statt komplettem PNG mit
           unleserlichem Mini-Wordmark. Live-Dot rechts. */}
       <header className="sticky top-0 z-30 border-b border-line bg-cream/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-5 py-3">
           <a href="/" className="flex items-center gap-3" aria-label={brand.name}>
             <img
-              src={asset('logo/icon-512.png')}
+              src={asset('logo/icon-black-512.png')}
               alt=""
               className="h-9 w-auto sm:h-10"
             />
@@ -55,11 +61,8 @@ export default function Unfall() {
 
       {/* Hero — das Banner-Foto trägt Logo + „Unfall-Soforthilfe"-Tagline
           schon in sich, also kein zusätzlicher Text-Overlay. Bild läuft
-          full-bleed; unten ein weicher Fade in den Cream-Hintergrund. */}
-      <section
-        className="relative w-full"
-        style={{ backgroundColor: NEAR_BLACK }}
-      >
+          full-bleed; bg-ink ist der Fallback wenn das Bild noch lädt. */}
+      <section className="relative w-full bg-ink">
         <motion.img
           src={asset('unfall-hero.webp')}
           alt="Kfz-Experten Hannover — Unfall-Soforthilfe"
@@ -79,8 +82,7 @@ export default function Unfall() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.22 }}
             whileTap={{ scale: 0.985 }}
-            style={{ backgroundColor: NEAR_BLACK }}
-            className="group flex items-center gap-4 rounded-3xl p-5 text-cream shadow-2xl shadow-black/25 ring-1 ring-white/10 transition hover:brightness-110 sm:gap-5 sm:p-6"
+            className="group flex items-center gap-4 rounded-3xl bg-ink p-5 text-cream shadow-2xl shadow-black/25 ring-1 ring-white/10 transition hover:bg-ink-soft sm:gap-5 sm:p-6"
           >
             <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gold/15 text-gold sm:h-16 sm:w-16">
               <Phone className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.1} />
@@ -157,22 +159,20 @@ export default function Unfall() {
         </div>
       </section>
 
-      {/* Wallet — derselbe near-black-Block wie der Anrufen-Button, damit es
-          als „brand surface" durchgeht. Goldakzent oben rechts. */}
+      {/* Wallet — dunkler Ink-Block wie der Anrufen-Button. Goldakzent oben rechts. */}
       <section className="px-5 py-12 sm:py-16">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.55 }}
-          style={{ backgroundColor: NEAR_BLACK }}
-          className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl text-cream shadow-xl shadow-black/25 ring-1 ring-white/10"
+          className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl bg-ink text-cream shadow-xl shadow-black/25 ring-1 ring-white/10"
         >
           <div
             className="pointer-events-none absolute inset-0 opacity-25"
             style={{
               backgroundImage:
-                'radial-gradient(circle at 100% 0%, rgba(184,145,94,0.55), transparent 50%)',
+                'radial-gradient(circle at 100% 0%, rgba(214,178,4,0.5), transparent 50%)',
             }}
             aria-hidden
           />
