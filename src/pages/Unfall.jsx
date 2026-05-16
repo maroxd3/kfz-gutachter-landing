@@ -62,7 +62,7 @@ export default function Unfall() {
       {/* Hero — Banner-Foto blendet jetzt ohne Bruch in den dunklen Page-BG. */}
       <section className="relative w-full">
         <motion.img
-          src={asset('unfall-hero.webp')}
+          src={asset('unfall-hero-v2.webp')}
           alt="Kfz-Experten Hannover — Unfall-Soforthilfe"
           initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
