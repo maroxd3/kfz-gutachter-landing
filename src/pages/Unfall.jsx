@@ -34,7 +34,7 @@ export default function Unfall() {
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-5 py-3">
           <a href="/" className="flex items-center gap-3" aria-label={brand.name}>
             <img
-              src={asset('logo/icon-black-512.png')}
+              src={asset('logo/icon-black-transparent.png')}
               alt=""
               className="h-9 w-auto sm:h-10"
             />
