@@ -163,6 +163,280 @@ export const standorte = [
       },
     ],
   },
+
+  {
+    slug: 'wunstorf',
+    city: 'Wunstorf',
+    titleH1: 'Kfz-Gutachter in Wunstorf',
+    tagline: 'Sachverständigenbüro für Wunstorf, Steinhuder Meer und Umland',
+    metaTitle: 'Kfz-Gutachter Wunstorf — Sachverständiger vor Ort · Kfz-Experten Hannover',
+    metaDescription: 'Kfz-Gutachten in Wunstorf, Luthe, Bokeloh und am Steinhuder Meer. Unfallgutachten, Wertgutachten, Oldtimer-Bewertung. Anfahrt vom Stammsitz Langenhagen in 30 Minuten, kein Aufpreis bis 50 km.',
+    intro:
+      'Wunstorf liegt rund 25 km westlich von Hannover am Steinhuder Meer und ist mit den Ortsteilen Luthe, Bokeloh, Idensen, Klein Heidorn, Großenheidorn und Steinhude eine touristisch wie wirtschaftlich vielfältige Gemeinde. Durch die Nähe zur A2 und zur B441 sehen wir hier vor allem Autobahn-Auffahrunfälle und Fahrzeugschäden auf den Bundesstraßen.',
+    sections: [
+      {
+        h2: 'Vor Ort in allen Ortsteilen',
+        list: [
+          { strong: 'Wunstorf-Mitte und Luthe:', text: 'Stadtkern, Wohngebiete, Schulen, klassische Stadtschäden.' },
+          { strong: 'Bokeloh und Idensen:', text: 'Wohngebiete mit Anbindung an die A2.' },
+          { strong: 'Steinhude, Großenheidorn, Klein Heidorn:', text: 'Touristisch geprägter Bereich am Steinhuder Meer, im Sommer überdurchschnittlich viele Camper- und Anhänger-Schäden.' },
+        ],
+      },
+      {
+        h2: 'Typische Schadenlagen',
+        body:
+          'Die Anbindung an die A2 (Anschlussstelle Wunstorf-Luthe) bringt klassische Autobahnschäden — Auffahrunfälle und Wildunfälle nach Wildwechsel im Naturpark Steinhuder Meer. Der Tourismus am See sorgt im Sommer für mehr Wohnwagen- und Bootsanhänger-Schäden, die wir ebenfalls fachgerecht begutachten.',
+      },
+      {
+        h2: 'Anfahrt und Verfügbarkeit',
+        body:
+          'Vom Stammsitz Langenhagen erreichen wir Wunstorf-Mitte in etwa 25–30 Minuten über die A352/A2, Steinhude in 35 Minuten. Anfahrtskosten fallen innerhalb 50 km nicht an.',
+      },
+    ],
+    faqs: [
+      {
+        q: 'Begutachten Sie auch Wohnwagen, Wohnmobile und Bootsanhänger?',
+        a: 'Ja. Wohnwagen, Wohnmobile, PKW-Anhänger und Bootsanhänger gehören zu unserem Standard-Repertoire — gerade rund um das Steinhuder Meer ist das eine häufige Schadenkategorie.',
+      },
+      {
+        q: 'Wildschaden auf der B441 oder am Steinhuder Meer — was tun?',
+        a: 'Polizei (110) rufen für die Wildschaden-Bescheinigung. Danach uns kontaktieren — wir erstellen das Gutachten für Ihre Teilkasko oder Vollkasko.',
+      },
+      {
+        q: 'Wie schnell sind Sie in Steinhude?',
+        a: 'In der Regel 30–40 Minuten ab Anruf, abhängig von Saison und Tageszeit. In Eilfällen priorisieren wir.',
+      },
+    ],
+  },
+
+  {
+    slug: 'laatzen',
+    city: 'Laatzen',
+    titleH1: 'Kfz-Gutachter in Laatzen',
+    tagline: 'Sachverständigenbüro für Laatzen, Rethen, Gleidingen und Umkreis',
+    metaTitle: 'Kfz-Gutachter Laatzen — Sachverständiger vor Ort · Kfz-Experten Hannover',
+    metaDescription: 'Kfz-Gutachter in Laatzen, Rethen, Gleidingen und Grasdorf. Unfallgutachten, Wertgutachten, Oldtimer-Gutachten. Schnelle Anfahrt vom Stammsitz Langenhagen, kein Aufpreis bis 50 km.',
+    intro:
+      'Laatzen liegt direkt südlich von Hannover und ist durch die A7 sowie das Messegelände Hannover-Laatzen geprägt. Mit knapp 40.000 Einwohnern in den Stadtteilen Laatzen-Mitte, Rethen, Gleidingen, Grasdorf und Ingeln-Oesselse ist das Verkehrsaufkommen besonders rund um Messezeiten und im Berufsverkehr hoch — und damit auch die Schadenhäufigkeit.',
+    sections: [
+      {
+        h2: 'Stadtteile, die wir bedienen',
+        list: [
+          { strong: 'Laatzen-Mitte:', text: 'Stadtkern, Einkaufszentrum, Wohnstraßen.' },
+          { strong: 'Rethen (Leine) und Grasdorf:', text: 'Verbindung zur A7, Pendlerverkehr und Auffahrunfälle.' },
+          { strong: 'Gleidingen und Ingeln-Oesselse:', text: 'Wohngebiete, Familienfahrzeuge.' },
+          { strong: 'Messegelände Hannover-Laatzen:', text: 'Während Messen erhöhtes Stau- und Parkschadensaufkommen.' },
+        ],
+      },
+      {
+        h2: 'A7-Schäden — was zu beachten ist',
+        body:
+          'Die A7 zwischen Hannover-Süd und der Anschlussstelle Laatzen ist eine der unfallreichsten Strecken im Hannover-Raum. Bei Autobahn-Schäden sind drei Dinge wichtig: schnelle Beweissicherung vor der Reparatur, vollständige Fotodokumentation auch bei zunächst klein wirkenden Schäden, und rechtzeitige Klärung des Schuldverhältnisses. Wir sind kurzfristig vor Ort.',
+      },
+      {
+        h2: 'Anfahrt',
+        body:
+          'Vom Stammsitz Langenhagen erreichen wir Laatzen-Mitte in etwa 30 Minuten über den Südschnellweg und die A7. Rethen und Gleidingen in 30–35 Minuten. Keine Anfahrtskosten innerhalb 50 km.',
+      },
+    ],
+    faqs: [
+      {
+        q: 'Schaden während der Hannover-Messe — kommen Sie trotz Stau?',
+        a: 'Ja. Während Messezeiten priorisieren wir Anfahrten in den Messebereich und planen genug Puffer ein. Bitte rufen Sie uns möglichst früh an, damit wir die Anfahrt entsprechend timen können.',
+      },
+      {
+        q: 'Werkstatt in Rethen — kommen Sie dorthin?',
+        a: 'Selbstverständlich. Wir kommen zu jeder Werkstatt in Laatzen, Rethen oder Gleidingen. Bitte vorab kurz Werkstattname und Adresse durchgeben.',
+      },
+      {
+        q: 'A7-Unfall — was tun?',
+        a: 'Wenn möglich Bilder von der Unfallstelle machen (Position der Fahrzeuge, Bremsspuren, Schaden, Schilder), Daten der Beteiligten austauschen und uns sofort anrufen. Wir kommen zur Werkstatt oder zur Abschleppstelle, wo das Fahrzeug nach dem Unfall steht.',
+      },
+    ],
+  },
+
+  {
+    slug: 'lehrte',
+    city: 'Lehrte',
+    titleH1: 'Kfz-Gutachter in Lehrte',
+    tagline: 'Sachverständigenbüro für Lehrte, Sievershausen, Aligse und Umkreis',
+    metaTitle: 'Kfz-Gutachter Lehrte — Sachverständiger vor Ort · Kfz-Experten Hannover',
+    metaDescription: 'Kfz-Gutachter in Lehrte, Sievershausen, Aligse, Steinwedel und Hämelerwald. Unfallgutachten, Wertgutachten, Oldtimer-Bewertung. Anfahrt von Langenhagen, kein Aufpreis bis 50 km.',
+    intro:
+      'Lehrte ist östlich von Hannover ein wichtiger Verkehrsknoten — durch den Bahnhof, die A2 und die B65 als Pendler- und Güterverkehrsroute. Mit den Ortsteilen Lehrte-Stadt, Sievershausen, Aligse, Steinwedel, Hämelerwald, Arpke, Ahlten und Kolshorn sehen wir hier viele Auffahr- und Wildunfälle.',
+    sections: [
+      {
+        h2: 'Ortsteile mit höherer Schadenhäufigkeit',
+        list: [
+          { strong: 'Lehrte-Stadt:', text: 'Stadtkern mit Bahnhof, Einzelhandel, Parkschäden häufig.' },
+          { strong: 'Ahlten und Steinwedel:', text: 'Direkter Anschluss an A2, Pendlerverkehr.' },
+          { strong: 'Sievershausen und Aligse:', text: 'Ländlicher, häufiger Wildwechsel, B-Straßen-Schäden.' },
+          { strong: 'Hämelerwald und Arpke:', text: 'Wohngebiete mit Familienfahrzeugen.' },
+        ],
+      },
+      {
+        h2: 'Wildunfälle in den ländlichen Ortsteilen',
+        body:
+          'Sievershausen, Aligse und Hämelerwald grenzen an Waldgebiete — Wildunfälle sind hier überdurchschnittlich häufig. Wichtig: nach einem Wildunfall sofort die Polizei (110) für die Wildschaden-Bescheinigung verständigen, das tote Wild NICHT mitnehmen (Wilderei-Vorwurf vermeiden), und dann uns für die Schadenaufnahme rufen.',
+      },
+      {
+        h2: 'Anfahrt',
+        body:
+          'Vom Stammsitz Langenhagen erreichen wir Lehrte-Stadt in etwa 25 Minuten über die A2. Sievershausen und die ländlicheren Ortsteile in 30–35 Minuten. Keine Anfahrtskosten innerhalb 50 km.',
+      },
+    ],
+    faqs: [
+      {
+        q: 'Wildschaden in Sievershausen — wer zahlt?',
+        a: 'Bei Wildunfällen mit Haarwild (Rehe, Wildschweine, Hirsche etc.) zahlt Ihre Teilkasko (wenn vorhanden). Voraussetzung ist die Wildschaden-Bescheinigung der Polizei. Wir erstellen das Gutachten für die Versicherung.',
+      },
+      {
+        q: 'Bedienen Sie auch Sehnde und Burgdorf?',
+        a: 'Ja, beide liegen in unserem 50-km-Radius — keine Anfahrtskosten.',
+      },
+      {
+        q: 'A2-Auffahrunfall bei Lehrte — wann sind Sie da?',
+        a: '25–35 Minuten ab Anruf, je nach Tageszeit. Bei Notfällen priorisieren wir.',
+      },
+    ],
+  },
+
+  {
+    slug: 'burgwedel',
+    city: 'Burgwedel',
+    titleH1: 'Kfz-Gutachter in Burgwedel',
+    tagline: 'Sachverständigenbüro für Großburgwedel, Engensen, Fuhrberg und Umkreis',
+    metaTitle: 'Kfz-Gutachter Burgwedel — Sachverständiger vor Ort · Kfz-Experten Hannover',
+    metaDescription: 'Kfz-Gutachter in Burgwedel und Großburgwedel — Sachverständigenbüro für Unfallgutachten, Wertgutachten, Oldtimer-Bewertung. Schnelle Anfahrt von Langenhagen.',
+    intro:
+      'Burgwedel liegt nördlich von Hannover und ist mit Großburgwedel, Engensen, Fuhrberg, Kleinburgwedel, Oldhorst, Thönse und Wettmar geprägt durch Wohnortqualität und höherwertige Fahrzeuge. Aufgrund der Lage an der A7 und der ländlichen Umgebung sehen wir hier eine spezifische Mischung aus Premium-Fahrzeug-Schäden und Wildunfällen.',
+    sections: [
+      {
+        h2: 'Stadtteile von Burgwedel',
+        list: [
+          { strong: 'Großburgwedel:', text: 'Stadtkern mit Einzelhandel und Bahnhof, klassische Stadtschäden.' },
+          { strong: 'Engensen, Fuhrberg, Kleinburgwedel:', text: 'Ländliche Ortsteile, höhere Wildunfall-Quote.' },
+          { strong: 'Oldhorst, Thönse, Wettmar:', text: 'Wohnortgeprägt, viele Familien- und Premium-Fahrzeuge.' },
+        ],
+      },
+      {
+        h2: 'Höherwertige Fahrzeuge — höhere Anforderungen',
+        body:
+          'Burgwedel hat überdurchschnittlich viele Premium-Fahrzeuge (Mercedes, BMW, Audi, Porsche). Bei diesen Fahrzeugen sind drei Punkte besonders wichtig: korrekte Wertminderungs-Berechnung (hoher absoluter Betrag), markenkonforme Reparaturwege (Originalteile), und vollständige Erfassung der Sonderausstattung im Gutachten. Wir arbeiten regelmäßig mit Premium-Fahrzeugen.',
+      },
+      {
+        h2: 'Anfahrt',
+        body:
+          'Vom Stammsitz Langenhagen erreichen wir Großburgwedel in etwa 20 Minuten, die ländlichen Ortsteile in 25–30 Minuten. Keine Anfahrtskosten innerhalb 50 km.',
+      },
+    ],
+    faqs: [
+      {
+        q: 'Premium-Fahrzeug-Gutachten — gibt es Besonderheiten?',
+        a: 'Ja, in zwei Punkten: die Wertminderung ist absolut höher (oft 4-stellig), und die Versicherungen versuchen häufig, auf günstigere Werkstattalternativen zu verweisen. Bei werkstattgebundenen Premium-Fahrzeugen (oft in Garantie- oder Servicevertragsbindung) ist das nicht zulässig — das setzen wir im Gutachten klar fest.',
+      },
+      {
+        q: 'Bedienen Sie auch Wedemark und Isernhagen?',
+        a: 'Ja, beide liegen in unserem 50-km-Radius — keine Anfahrtskosten.',
+      },
+      {
+        q: 'Wildunfall in Fuhrberg — was zu tun?',
+        a: 'Polizei (110) rufen für die Wildschaden-Bescheinigung, danach uns kontaktieren. Wir erstellen das Gutachten für Ihre Teilkasko.',
+      },
+    ],
+  },
+
+  {
+    slug: 'wedemark',
+    city: 'Wedemark',
+    titleH1: 'Kfz-Gutachter in der Wedemark',
+    tagline: 'Sachverständigenbüro für Mellendorf, Bissendorf, Resse und alle Ortsteile',
+    metaTitle: 'Kfz-Gutachter Wedemark — Mellendorf, Bissendorf · Kfz-Experten Hannover',
+    metaDescription: 'Kfz-Gutachter in der Wedemark — Mellendorf, Bissendorf, Resse, Berkhof und alle Ortsteile. Unfallgutachten, Wertgutachten, Oldtimer-Bewertung. Anfahrt vom Stammsitz Langenhagen.',
+    intro:
+      'Die Wedemark ist eine flächengroße Gemeinde nordöstlich von Hannover mit 14 Ortsteilen, darunter Mellendorf (Verwaltungssitz), Bissendorf, Resse, Berkhof, Brelingen, Elze, Gailhof, Hellendorf, Meitze, Negenborn, Oegenbostel, Plumhof, Scherenbostel und Sprockhof. Ländlich geprägt mit großen Waldflächen — Wildunfälle sind hier eine zentrale Schadenkategorie.',
+    sections: [
+      {
+        h2: 'Größte Ortsteile mit höherer Verkehrsdichte',
+        list: [
+          { strong: 'Mellendorf:', text: 'Verwaltungssitz, größter Ortsteil, Einkaufs- und Schulzentrum.' },
+          { strong: 'Bissendorf und Bissendorf-Wietze:', text: 'Wohngebiete mit Anschluss an die B6 nach Hannover.' },
+          { strong: 'Resse und Berkhof:', text: 'Mittelgroße Ortsteile, viel Pendlerverkehr Richtung Hannover/Langenhagen.' },
+          { strong: 'Brelingen, Elze, Gailhof, Hellendorf:', text: 'Ländliche Ortsteile, überdurchschnittlich häufig Wildunfälle.' },
+        ],
+      },
+      {
+        h2: 'Wildunfall-Schwerpunkt',
+        body:
+          'Mit den großen Waldflächen rund um Brelingen, Elze und Gailhof ist die Wedemark einer der wildreichsten Bereiche der Region Hannover. Im Herbst und Frühjahr (Dämmerung, Brunftzeit, Jagdsaison) steigt die Unfallhäufigkeit deutlich. Wir kennen die Versicherungs-Prozesse für Wildschäden und erstellen Gutachten, die ohne Nachfragen anerkannt werden.',
+      },
+      {
+        h2: 'Anfahrt',
+        body:
+          'Vom Stammsitz Langenhagen erreichen wir Mellendorf in etwa 25 Minuten, Bissendorf in 20 Minuten, die abgelegeneren Ortsteile (Brelingen, Hellendorf) in 30–40 Minuten. Keine Anfahrtskosten innerhalb 50 km.',
+      },
+    ],
+    faqs: [
+      {
+        q: 'Wann ist Wildunfall-Saison in der Wedemark?',
+        a: 'Hauptzeiten sind Oktober/November (Brunftzeit beim Rotwild) und März/April (Jungtiere). Auch die Dämmerungsphasen im Sommer haben erhöhte Wildaktivität. Vorsicht besonders auf den L-Straßen zwischen den Ortsteilen.',
+      },
+      {
+        q: 'Schaden am Wochenende oder feiertags — sind Sie erreichbar?',
+        a: 'Ja, wir sind 24/7 erreichbar. Bei Wildunfällen empfehlen wir, zuerst die Polizei (110) für die Wildschaden-Bescheinigung zu rufen, dann uns.',
+      },
+      {
+        q: 'Bedienen Sie auch Burgwedel und Isernhagen?',
+        a: 'Ja, beide liegen in unserem 50-km-Radius — keine Anfahrtskosten.',
+      },
+    ],
+  },
+
+  {
+    slug: 'sehnde',
+    city: 'Sehnde',
+    titleH1: 'Kfz-Gutachter in Sehnde',
+    tagline: 'Sachverständigenbüro für Sehnde, Höver, Rethmar und alle Ortsteile',
+    metaTitle: 'Kfz-Gutachter Sehnde — Sachverständiger vor Ort · Kfz-Experten Hannover',
+    metaDescription: 'Kfz-Gutachter in Sehnde, Höver, Rethmar, Ilten und allen Ortsteilen. Unfallgutachten, Wertgutachten, Oldtimer-Bewertung. Anfahrt vom Stammsitz Langenhagen, kein Aufpreis bis 50 km.',
+    intro:
+      'Sehnde liegt südöstlich von Hannover und ist mit Höver, Rethmar, Ilten, Bolzum, Wassel, Bilm, Müllingen, Wirringen, Klein Lobke, Evern und Haimar von ländlich-wohnortgeprägter Struktur. Die Nähe zur A7 und zur B65 bringt typischen Pendler- und Lieferverkehr — sowie entsprechende Schadenfälle.',
+    sections: [
+      {
+        h2: 'Ortsteile von Sehnde',
+        list: [
+          { strong: 'Sehnde-Mitte:', text: 'Stadtkern mit Einkaufszentrum und Verwaltung.' },
+          { strong: 'Höver:', text: 'Industriegebiet (Zementwerk), Schwerlast- und LKW-Verkehr.' },
+          { strong: 'Ilten, Rethmar, Bolzum, Wassel:', text: 'Wohnortgeprägte Ortsteile.' },
+          { strong: 'Müllingen, Wirringen, Evern, Klein Lobke:', text: 'Kleinere ländliche Ortsteile.' },
+        ],
+      },
+      {
+        h2: 'Höver — Industrie-Standort mit besonderer Verkehrslage',
+        body:
+          'Das Zementwerk in Höver bringt täglich erheblichen Schwerlastverkehr. Bei Schäden zwischen LKW und PKW sind oft besondere Beweisaufnahmen nötig (Tachoscheiben, EVB-Auswertung). Wir arbeiten mit erfahrenen Verkehrsrechtsanwälten zusammen, die solche Fälle regelmäßig betreuen.',
+      },
+      {
+        h2: 'Anfahrt',
+        body:
+          'Vom Stammsitz Langenhagen erreichen wir Sehnde-Mitte in etwa 30 Minuten über den Südschnellweg und die A7. Die kleineren Ortsteile in 30–40 Minuten. Keine Anfahrtskosten innerhalb 50 km.',
+      },
+    ],
+    faqs: [
+      {
+        q: 'PKW vs. LKW-Schaden — was ist zu beachten?',
+        a: 'Bei PKW-LKW-Schäden ist die Beweisaufnahme aufwendiger (Tachoscheibe, Geschwindigkeitsschreiber, Sichtverhältnisse). Wir nehmen Schaden und Unfallsituation umfassend auf — und empfehlen frühe Einbindung eines Verkehrsrechtsanwalts.',
+      },
+      {
+        q: 'Bedienen Sie auch Hannover-Wülfel und Misburg?',
+        a: 'Ja, beide liegen in unserem 50-km-Radius — keine Anfahrtskosten.',
+      },
+      {
+        q: 'Schaden auf B65 oder A7 bei Sehnde — wann sind Sie da?',
+        a: '30–40 Minuten ab Anruf, je nach Tageszeit und Verkehrslage. In Eilfällen priorisieren wir.',
+      },
+    ],
+  },
 ]
 
 export function getStandortBySlug(slug) {

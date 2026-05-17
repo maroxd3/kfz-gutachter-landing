@@ -26,11 +26,16 @@ if (!existsSync(src)) {
   process.exit(1)
 }
 
-// Pull the leistungen + standorte data — same source the React components use
+// Pull the leistungen + standorte + stadtteile + ratgeber data — same source
+// the React components use. One source of truth.
 const { leistungen, leistungServiceSchema, leistungFaqSchema } =
   await import('../src/data/leistungen.js')
 const { standorte, standortServiceSchema, standortFaqSchema } =
   await import('../src/data/standorte.js')
+const { stadtteile, stadtteilServiceSchema, stadtteilFaqSchema } =
+  await import('../src/data/stadtteile.js')
+const { ratgeber, ratgeberArticleSchema } =
+  await import('../src/data/ratgeber.js')
 
 const ORIGIN = 'https://hannover-kfz-gutachter.de'
 const TEMPLATE = readFileSync(src, 'utf8')
@@ -67,6 +72,44 @@ const routes = [
       '@context': 'https://schema.org',
       '@graph': [standortServiceSchema(s, ORIGIN), standortFaqSchema(s, ORIGIN)],
     },
+  })),
+  ...stadtteile.map((s) => ({
+    path: `standorte/hannover/${s.slug}`,
+    title: s.metaTitle,
+    description: s.metaDescription,
+    canonical: `${ORIGIN}/standorte/hannover/${s.slug}/`,
+    ogImage: `${ORIGIN}/logo/logo-1200.png`,
+    extraSchema: {
+      '@context': 'https://schema.org',
+      '@graph': [stadtteilServiceSchema(s, ORIGIN), stadtteilFaqSchema(s, ORIGIN)],
+    },
+  })),
+  {
+    path: 'ratgeber',
+    title: 'Ratgeber für Kfz-Schäden in Hannover · Kfz-Experten Hannover',
+    description: 'Praktische Ratgeber-Artikel zu Verkehrsunfall, Wertminderung, Nutzungsausfall und Versicherungsstreit. Vom Sachverständigen-Team Kfz-Experten Hannover.',
+    canonical: `${ORIGIN}/ratgeber/`,
+    ogImage: `${ORIGIN}/logo/logo-1200.png`,
+    extraSchema: {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      '@id': `${ORIGIN}/ratgeber/#collection`,
+      name: 'Ratgeber Kfz-Experten Hannover',
+      url: `${ORIGIN}/ratgeber/`,
+      hasPart: ratgeber.map((r) => ({
+        '@type': 'Article',
+        headline: r.title,
+        url: `${ORIGIN}/ratgeber/${r.slug}/`,
+      })),
+    },
+  },
+  ...ratgeber.map((r) => ({
+    path: `ratgeber/${r.slug}`,
+    title: r.metaTitle,
+    description: r.metaDescription,
+    canonical: `${ORIGIN}/ratgeber/${r.slug}/`,
+    ogImage: `${ORIGIN}/logo/logo-1200.png`,
+    extraSchema: ratgeberArticleSchema(r, ORIGIN),
   })),
 ]
 
