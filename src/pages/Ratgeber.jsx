@@ -4,6 +4,7 @@ import { Phone, MessageCircle, ChevronRight, Clock, Tag } from 'lucide-react'
 import { brand } from '../lib/content.js'
 import { asset } from '../lib/utils.js'
 import { ratgeber, getRatgeberBySlug, ratgeberArticleSchema } from '../data/ratgeber.js'
+import { leistungen } from '../data/leistungen.js'
 
 function setMeta(name, content, attr = 'name') {
   let el = document.querySelector(`meta[${attr}="${name}"]`)
@@ -111,6 +112,29 @@ export default function Ratgeber() {
             {data.blocks.map((b, i) => <RenderBlock key={i} block={b} />)}
           </div>
         </article>
+
+        {/* Verwandte Leistungen — kontextueller Internal-Link Block */}
+        {data.relatedLeistungen && data.relatedLeistungen.length > 0 && (
+          <section className="mt-14">
+            <h2 className="font-serif text-xl sm:text-2xl mb-4">Passende Leistungen zu diesem Thema</h2>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {data.relatedLeistungen
+                .map((slug) => leistungen.find((l) => l.slug === slug))
+                .filter(Boolean)
+                .map((l) => (
+                  <Link
+                    key={l.slug}
+                    to={`/leistungen/${l.slug}/`}
+                    className="block rounded-xl border border-line bg-card p-4 transition hover:border-gold/60 hover:shadow-sm"
+                  >
+                    <div className="text-xs uppercase tracking-wider text-gold-dark">{l.title}</div>
+                    <div className="mt-1 font-serif text-base text-ink">{l.titleH1}</div>
+                    <div className="mt-1 text-sm text-ink-muted leading-snug">{l.tagline}</div>
+                  </Link>
+                ))}
+            </div>
+          </section>
+        )}
 
         {/* CTA */}
         <section className="mt-14 rounded-2xl border border-line bg-card p-6 sm:p-8">

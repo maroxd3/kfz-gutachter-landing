@@ -16,12 +16,11 @@
     {
       "format": "PKBarcodeFormatQR",
       "message": "BEGIN:VCARD\nVERSION:3.0\nN:Saleh;Mustafa;;;\nFN:Mustafa Saleh — Kfz-Experten Hannover\nORG:Kfz-Experten Hannover\nTITLE:Kfz-Sachverständiger · Unfall-Soforthilfe\nTEL;TYPE=CELL,VOICE:+4917680444241\nURL:https://hannover-kfz-gutachter.de/unfall\nURL;TYPE=WhatsApp:https://wa.me/4917680444241\nEMAIL:kontakt@hannover-kfz-gutachter.de\nADR;TYPE=WORK:;;Berliner Allee 51;Langenhagen;;30855;Deutschland\nNOTE:24/7 Unfall-Soforthilfe · DIN ISO 17024\nEND:VCARD",
-      "messageEncoding": "utf-8",
-      "altText": "Kontakt teilen"
+      "messageEncoding": "utf-8"
     }
   ],
 
-  "eventTicket": {
+  "coupon": {
     "headerFields": [
       {
         "key": "tap",

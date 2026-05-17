@@ -51,6 +51,9 @@ export async function upsertGoogleWalletClass({ issuerId, classSuffix, origin })
       defaultValue: { language: 'de', value: 'Unfall? Wir helfen sofort.' },
     },
     hexBackgroundColor: '#0B0B0D',
+    callbackOptions: {
+      url: 'https://europe-west1-kfz-gutachter-wallet.cloudfunctions.net/walletCallback',
+    },
     heroImage: {
       sourceUri: { uri: `${origin}/logo/wallet-hero.png` },
       contentDescription: {

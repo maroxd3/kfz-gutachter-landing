@@ -77,7 +77,7 @@ export function buildPassObject({ issuerId, classSuffix, objectSuffix, phone, wh
     barcode: {
       type: 'QR_CODE',
       value: vcard,
-      alternateText: 'QR scannen → Kontakt speichern',
+      alternateText: 'Kontakt teilen',
     },
     appLinkData: {
       webAppLinkInfo: {

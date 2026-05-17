@@ -17,6 +17,7 @@ export const ratgeber = [
     published: '2026-05-17',
     readTime: '6 Min',
     category: 'Soforthilfe',
+    relatedLeistungen: ['unfallgutachten', 'kurzgutachten'],
     blocks: [
       { type: 'p', text: 'Ein Verkehrsunfall passiert in Sekunden — aber die nächsten 30 Minuten bestimmen, wie sauber die Sache abgewickelt wird. Dieser Leitfaden geht durch die wichtigsten Schritte, optimiert für Verkehrssituationen im Hannover-Raum.' },
 
@@ -88,6 +89,7 @@ export const ratgeber = [
     published: '2026-05-17',
     readTime: '5 Min',
     category: 'Schadensregulierung',
+    relatedLeistungen: ['unfallgutachten', 'wertgutachten'],
     blocks: [
       { type: 'p', text: 'Auch nach einer fachgerechten Reparatur ist ein Fahrzeug, das einen erheblichen Unfallschaden hatte, am Markt weniger wert als ein unfallfreies. Dieser Wertverlust heißt "merkantile Wertminderung" — und Sie haben bei unverschuldetem Unfall einen rechtlichen Anspruch darauf, zusätzlich zur reinen Reparatur.' },
 
@@ -141,6 +143,7 @@ export const ratgeber = [
     published: '2026-05-17',
     readTime: '5 Min',
     category: 'Schadensregulierung',
+    relatedLeistungen: ['unfallgutachten'],
     blocks: [
       { type: 'p', text: 'Nach einem unverschuldeten Unfall steht Ihr Fahrzeug in der Werkstatt — und Sie haben einen Anspruch darauf, in dieser Zeit nicht ohne Mobilität dazustehen. Zwei Wege sind möglich, beide werden von der gegnerischen Haftpflichtversicherung getragen.' },
 
@@ -190,6 +193,7 @@ export const ratgeber = [
     published: '2026-05-17',
     readTime: '6 Min',
     category: 'Schadensregulierung',
+    relatedLeistungen: ['unfallgutachten', 'wertgutachten'],
     blocks: [
       { type: 'p', text: 'Sie haben ein sauberes Gutachten in der Hand — und die gegnerische Versicherung zahlt nur einen Teil davon. Das ist keine Ausnahme, das ist eine Strategie. In den meisten Fällen sind die Kürzungen rechtlich nicht haltbar. Hier sind die häufigsten Tricks und wie Sie darauf reagieren.' },
 
