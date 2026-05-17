@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.jsx'
 import Unfall from './pages/Unfall.jsx'
 import Leistung from './pages/Leistung.jsx'
+import Standort from './pages/Standort.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -14,6 +15,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/unfall" element={<Unfall />} />
         <Route path="/leistungen/:slug" element={<Leistung />} />
         <Route path="/leistungen/:slug/" element={<Leistung />} />
+        <Route path="/standorte/:slug" element={<Standort />} />
+        <Route path="/standorte/:slug/" element={<Standort />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

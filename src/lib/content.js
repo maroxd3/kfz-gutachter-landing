@@ -169,24 +169,28 @@ export const audiences = [
 export const services = [
   {
     title: 'Haftpflicht-Schadengutachten',
+    slug: 'unfallgutachten',
     description:
       'Bei unverschuldetem Unfall haben Sie Anspruch auf ein unabhängiges Gutachten. Die Kosten trägt die gegnerische Versicherung — nicht Sie.',
     bullets: ['Beweissicherung', 'Reparaturkalkulation', 'Wertminderung', 'Nutzungsausfall'],
   },
   {
     title: 'Kurzgutachten',
+    slug: 'kurzgutachten',
     description:
       'Bei Bagatellschäden unter 750 € erstellen wir einen fundierten Kostenvoranschlag — schnell, präzise und zum Festpreis.',
     bullets: ['Schadenhöhe', 'Reparaturweg', 'Fotodokumentation', 'Festpreis'],
   },
   {
     title: 'Wertgutachten',
+    slug: 'wertgutachten',
     description:
       'Ermittlung von Zeitwert, Marktwert oder Wiederbeschaffungswert — für Verkauf, Kauf, Scheidung, Erbschaft oder Finanzamt.',
     bullets: ['Marktwert', 'Händlereinkaufswert', 'Restwert', 'Wiederbeschaffungswert'],
   },
   {
     title: 'Oldtimer-Gutachten',
+    slug: 'oldtimer-gutachten',
     description:
       'H-Kennzeichen, Versicherung, Marktwert: Klassische Fahrzeuge verlangen Fachwissen und ein geübtes Auge.',
     bullets: ['§ 23 StVZO (H-Kennzeichen)', 'Marktwert-Einstufung', 'Versicherungswert', 'Zustandsnoten 1–5'],

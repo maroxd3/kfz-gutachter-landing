@@ -26,9 +26,11 @@ if (!existsSync(src)) {
   process.exit(1)
 }
 
-// Pull the leistungen data — same source the React components use
+// Pull the leistungen + standorte data — same source the React components use
 const { leistungen, leistungServiceSchema, leistungFaqSchema } =
   await import('../src/data/leistungen.js')
+const { standorte, standortServiceSchema, standortFaqSchema } =
+  await import('../src/data/standorte.js')
 
 const ORIGIN = 'https://hannover-kfz-gutachter.de'
 const TEMPLATE = readFileSync(src, 'utf8')
@@ -53,6 +55,17 @@ const routes = [
     extraSchema: {
       '@context': 'https://schema.org',
       '@graph': [leistungServiceSchema(l, ORIGIN), leistungFaqSchema(l, ORIGIN)],
+    },
+  })),
+  ...standorte.map((s) => ({
+    path: `standorte/${s.slug}`,
+    title: s.metaTitle,
+    description: s.metaDescription,
+    canonical: `${ORIGIN}/standorte/${s.slug}/`,
+    ogImage: `${ORIGIN}/logo/logo-1200.png`,
+    extraSchema: {
+      '@context': 'https://schema.org',
+      '@graph': [standortServiceSchema(s, ORIGIN), standortFaqSchema(s, ORIGIN)],
     },
   })),
 ]

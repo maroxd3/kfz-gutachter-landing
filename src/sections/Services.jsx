@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Check } from 'lucide-react'
+import { Check, ArrowRight } from 'lucide-react'
 import { services } from '../lib/content.js'
 
 function SpotlightCard({ service }) {
@@ -55,6 +55,14 @@ function SpotlightCard({ service }) {
             </li>
           ))}
         </ul>
+        {service.slug && (
+          <a
+            href={`/leistungen/${service.slug}/`}
+            className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-gold-dark transition hover:text-ink"
+          >
+            Details &amp; FAQ <ArrowRight size={14} className="transition group-hover:translate-x-0.5" />
+          </a>
+        )}
       </div>
     </article>
   )
