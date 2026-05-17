@@ -1,14 +1,19 @@
-// GitHub Pages doesn't know about React Router routes — so /unfall returns
-// HTTP 404 by default. Two fixes here:
-//   1. For each known SPA route, write dist/<route>/index.html (copy of root
-//      index.html). GitHub Pages then serves it with HTTP 200 and the
-//      BrowserRouter picks up the path from there.
-//   2. Also write dist/404.html so any OTHER unknown URL still loads the SPA
-//      shell (returns 404 status but at least the user sees the site instead
-//      of GitHub's default 404 page).
+// GitHub Pages doesn't know about React Router routes — so /unfall and
+// /leistungen/* would return HTTP 404 by default. This script fixes that
+// and also injects per-route SEO meta tags + JSON-LD into each generated
+// dist/<route>/index.html.
 //
-// When you add a new <Route path="/foo">, add 'foo' to ROUTES below.
-import { copyFileSync, mkdirSync, existsSync } from 'node:fs'
+// Why this matters: client-side meta updates (via React useEffect) work for
+// users in browsers, but Google/ChatGPT/Perplexity crawlers often don't run
+// JS — they only see what's in the raw HTML. So we MUST bake meta + schema
+// into the static HTML files at build time. That's what this script does.
+//
+// To add a new route:
+//   1. Add it to src/main.jsx as a <Route>
+//   2. Add the page data here (or for leistungen: in src/data/leistungen.js)
+//   3. Rebuild — script auto-emits dist/<route>/index.html with correct meta
+
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -21,14 +26,106 @@ if (!existsSync(src)) {
   process.exit(1)
 }
 
-const ROUTES = ['unfall']
+// Pull the leistungen data — same source the React components use
+const { leistungen, leistungServiceSchema, leistungFaqSchema } =
+  await import('../src/data/leistungen.js')
 
-for (const route of ROUTES) {
-  const target = resolve(dist, route, 'index.html')
-  mkdirSync(dirname(target), { recursive: true })
-  copyFileSync(src, target)
-  console.log(`postbuild: wrote dist/${route}/index.html`)
+const ORIGIN = 'https://hannover-kfz-gutachter.de'
+const TEMPLATE = readFileSync(src, 'utf8')
+
+// Build the route plan
+const routes = [
+  {
+    path: 'unfall',
+    title: 'Unfall in Hannover? Soforthilfe in 45 Minuten · Kfz-Experten Hannover',
+    description:
+      'Notfall-Soforthilfe nach Unfall in Hannover und Umkreis. 24/7 erreichbar, in 45 Minuten vor Ort. Anruf oder WhatsApp — Beweissicherung, Schadenaufnahme, Gutachten in 48 h. Bei Haftpflicht 0 € für Sie.',
+    canonical: `${ORIGIN}/unfall/`,
+    ogImage: `${ORIGIN}/logo/wallet-hero.png`,
+    extraSchema: null,
+  },
+  ...leistungen.map((l) => ({
+    path: `leistungen/${l.slug}`,
+    title: l.metaTitle,
+    description: l.metaDescription,
+    canonical: `${ORIGIN}/leistungen/${l.slug}/`,
+    ogImage: `${ORIGIN}/logo/logo-1200.png`,
+    extraSchema: {
+      '@context': 'https://schema.org',
+      '@graph': [leistungServiceSchema(l, ORIGIN), leistungFaqSchema(l, ORIGIN)],
+    },
+  })),
+]
+
+function applyMeta(html, route) {
+  let out = html
+
+  // <title>
+  out = out.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(route.title)}</title>`)
+
+  // <meta name="description">
+  out = replaceMeta(out, 'name', 'description', route.description)
+
+  // OG tags
+  out = replaceMeta(out, 'property', 'og:title', route.title)
+  out = replaceMeta(out, 'property', 'og:description', route.description)
+  out = replaceMeta(out, 'property', 'og:url', route.canonical)
+  out = replaceMeta(out, 'property', 'og:image', route.ogImage)
+
+  // Twitter
+  out = replaceMeta(out, 'name', 'twitter:title', route.title)
+  out = replaceMeta(out, 'name', 'twitter:description', route.description)
+  out = replaceMeta(out, 'name', 'twitter:image', route.ogImage)
+
+  // Canonical
+  out = out.replace(
+    /<link\s+rel="canonical"[^>]*>/i,
+    `<link rel="canonical" href="${escapeAttr(route.canonical)}" />`
+  )
+
+  // Extra JSON-LD schema, injected before </head>. The existing inline schema
+  // (LocalBusiness + FAQPage) stays for the homepage; we add an EXTRA <script>
+  // with the route-specific Service + FAQ schema. Google merges multiple
+  // JSON-LD blocks fine.
+  if (route.extraSchema) {
+    const json = JSON.stringify(route.extraSchema)
+    out = out.replace(
+      /<\/head>/i,
+      `<script type="application/ld+json">${json}</script>\n  </head>`
+    )
+  }
+
+  return out
 }
 
-copyFileSync(src, resolve(dist, '404.html'))
-console.log('postbuild: wrote dist/404.html (SPA fallback)')
+function replaceMeta(html, attr, name, content) {
+  const re = new RegExp(`<meta\\s+${attr}="${escapeRegex(name)}"[^>]*>`, 'i')
+  const tag = `<meta ${attr}="${name}" content="${escapeAttr(content)}" />`
+  if (re.test(html)) return html.replace(re, tag)
+  // If the tag doesn't exist, inject before </head>
+  return html.replace(/<\/head>/i, `${tag}\n  </head>`)
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))
+}
+function escapeAttr(s) {
+  return String(s).replace(/[&"<>]/g, (c) => ({ '&': '&amp;', '"': '&quot;', '<': '&lt;', '>': '&gt;' }[c]))
+}
+function escapeRegex(s) {
+  return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+// Write each route
+for (const route of routes) {
+  const html = applyMeta(TEMPLATE, route)
+  const target = resolve(dist, route.path, 'index.html')
+  mkdirSync(dirname(target), { recursive: true })
+  writeFileSync(target, html, 'utf8')
+  console.log(`postbuild: ${route.path}/index.html (title: "${route.title.slice(0, 60)}…")`)
+}
+
+// SPA fallback for any other unknown URL: serves the React shell with the
+// homepage meta (not ideal but at least the app loads instead of GH 404 page)
+writeFileSync(resolve(dist, '404.html'), TEMPLATE, 'utf8')
+console.log('postbuild: 404.html (SPA fallback)')
