@@ -13,7 +13,7 @@ export const leistungen = [
     titleH1: 'Unfallgutachten in Hannover und Langenhagen',
     tagline: 'Nach unverschuldetem Unfall: rechtssicheres Gutachten · in 48 h · 0 € für Sie',
     metaTitle: 'Unfallgutachten Hannover — kostenlos bei Haftpflicht · Kfz-Experten Hannover',
-    metaDescription: 'Unabhängiges Unfallgutachten in Hannover, Langenhagen und Umkreis. Termin innerhalb 24 h, Gutachten in 48 h. Bei unverschuldetem Unfall trägt die gegnerische Versicherung die Kosten — 0 € für Sie. Persönlich, vor Ort, mit Aviation-Engineering-Sorgfalt.',
+    metaDescription: 'Unabhängiges Unfallgutachten in Hannover, Langenhagen und Umkreis. Termin innerhalb 24 h, Gutachten in 48 h. Bei unverschuldetem Unfall trägt die gegnerische Versicherung die Kosten — 0 € für Sie. Persönlich, vor Ort, Sachverständiger nach DIN ISO/IEC 17024.',
     intro:
       'Nach einem Verkehrsunfall in Hannover oder Umkreis kommen wir zu Ihnen — zur Werkstatt, nach Hause oder zur Unfallstelle. Wir dokumentieren den Schaden vollständig, kalkulieren die Reparaturkosten rechtssicher und erfassen alle Ansprüche, die Ihnen zustehen: Wertminderung, Nutzungsausfall, Mietwagen.',
     sections: [

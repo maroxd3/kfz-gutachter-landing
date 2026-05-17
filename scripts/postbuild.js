@@ -75,6 +75,7 @@ routes.push({
   title: 'Unfall in Hannover? Soforthilfe in 45 Minuten · Kfz-Experten Hannover',
   description:
     'Notfall-Soforthilfe nach Unfall in Hannover und Umkreis. 24/7 erreichbar, in 45 Minuten vor Ort. Anruf oder WhatsApp — Beweissicherung, Schadenaufnahme, Gutachten in 48 h. Bei Haftpflicht 0 € für Sie.',
+  h1: 'Unfall in Hannover? Wir sind in 45 Minuten vor Ort',
   canonical: `${ORIGIN}/unfall/`,
   ogImage: `${ORIGIN}/logo/wallet-hero.png`,
   changefreq: 'weekly',
@@ -93,6 +94,7 @@ routes.push({
   title: 'Kfz-Gutachten in Hannover — alle Leistungen · Kfz-Experten Hannover',
   description:
     'Übersicht aller Gutachten-Leistungen unseres Sachverständigenbüros in Hannover: Unfallgutachten, Wertgutachten, Oldtimer-Gutachten, Kurzgutachten. Jeweils mit FAQ, Ablauf und Preisinfo.',
+  h1: 'Kfz-Gutachten in Hannover — alle Leistungen aus einer Hand',
   canonical: `${ORIGIN}/leistungen/`,
   ogImage: `${ORIGIN}/logo/logo-1200.png`,
   changefreq: 'monthly',
@@ -122,6 +124,7 @@ for (const l of leistungen) {
     path: `leistungen/${l.slug}`,
     title: l.metaTitle,
     description: l.metaDescription,
+    h1: l.titleH1,
     canonical: `${ORIGIN}/leistungen/${l.slug}/`,
     ogImage: `${ORIGIN}/logo/logo-1200.png`,
     changefreq: 'monthly',
@@ -144,6 +147,7 @@ routes.push({
   title: 'Einsatzgebiet — Kfz-Gutachter im gesamten Hannover-Raum · Kfz-Experten Hannover',
   description:
     'Übersicht aller Städte und Hannover-Stadtteile, in denen wir als Kfz-Gutachter vor Ort sind: Hannover, Langenhagen, Garbsen, Wunstorf, Laatzen, Lehrte, Burgwedel, Wedemark, Sehnde — plus 5 Hannover-Stadtteile.',
+  h1: 'Kfz-Gutachter im gesamten Hannover-Raum',
   canonical: `${ORIGIN}/standorte/`,
   ogImage: `${ORIGIN}/logo/logo-1200.png`,
   changefreq: 'monthly',
@@ -173,6 +177,7 @@ for (const s of standorte) {
     path: `standorte/${s.slug}`,
     title: s.metaTitle,
     description: s.metaDescription,
+    h1: s.titleH1,
     canonical: `${ORIGIN}/standorte/${s.slug}/`,
     ogImage: `${ORIGIN}/logo/logo-1200.png`,
     changefreq: 'monthly',
@@ -195,6 +200,7 @@ for (const s of stadtteile) {
     path: `standorte/hannover/${s.slug}`,
     title: s.metaTitle,
     description: s.metaDescription,
+    h1: s.titleH1,
     canonical: `${ORIGIN}/standorte/hannover/${s.slug}/`,
     ogImage: `${ORIGIN}/logo/logo-1200.png`,
     changefreq: 'monthly',
@@ -218,6 +224,7 @@ routes.push({
   title: 'Ratgeber für Kfz-Schäden in Hannover · Kfz-Experten Hannover',
   description:
     'Praktische Ratgeber-Artikel zu Verkehrsunfall, Wertminderung, Nutzungsausfall und Versicherungsstreit. Vom Sachverständigen-Team Kfz-Experten Hannover.',
+  h1: 'Ratgeber für Kfz-Schäden in Hannover',
   canonical: `${ORIGIN}/ratgeber/`,
   ogImage: `${ORIGIN}/logo/logo-1200.png`,
   changefreq: 'weekly',
@@ -247,6 +254,7 @@ for (const r of ratgeber) {
     path: `ratgeber/${r.slug}`,
     title: r.metaTitle,
     description: r.metaDescription,
+    h1: r.title,
     canonical: `${ORIGIN}/ratgeber/${r.slug}/`,
     ogImage: `${ORIGIN}/logo/logo-1200.png`,
     changefreq: 'monthly',
@@ -279,6 +287,15 @@ function applyMeta(html, route) {
     /<link\s+rel="canonical"[^>]*>/i,
     `<link rel="canonical" href="${escapeAttr(route.canonical)}" />`
   )
+  // Static SEO-fallback H1 (visible to JS-less crawlers) — replace the
+  // generic homepage H1 with the route-specific one so that bots see the
+  // keyword-first heading even without rendering React.
+  if (route.h1) {
+    out = out.replace(
+      /<h1\s+style="[^"]*">[^<]+<\/h1>/i,
+      `<h1 style="font-size:42px; font-weight:600; line-height:1.05; margin:0 0 16px;">${escapeHtml(route.h1)}</h1>`
+    )
+  }
   if (route.extraSchema) {
     const json = JSON.stringify(route.extraSchema)
     out = out.replace(
