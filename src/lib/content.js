@@ -222,7 +222,7 @@ export const reasons = [
   },
   {
     title: 'Zertifiziert',
-    description: 'Nach DIN ISO 17024 geprüft. TÜV- und DEKRA-Qualifikationen im Hintergrund.',
+    description: 'Sachverständiger nach DIN ISO/IEC 17024 — internationale Personenzertifizierung. Aviation- und Automotive-Engineering im Team.',
   },
   {
     title: 'Kostenfrei bei Haftpflicht',

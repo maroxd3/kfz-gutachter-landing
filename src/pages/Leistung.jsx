@@ -204,7 +204,7 @@ export default function Leistung() {
           <p className="mt-2 text-sm sm:text-base text-cream/80 leading-relaxed">
             Wartungsstandards aus der zivilen Luftfahrt, übertragen aufs Auto.
             Ein Ingenieur-Team aus dem Raum Hannover — persönlich, direkt, vor Ort.
-            DIN ISO 17024 zertifiziert. TÜV- und DEKRA-qualifiziert.
+            Sachverständiger nach DIN ISO/IEC 17024.
           </p>
         </section>
 

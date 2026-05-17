@@ -175,7 +175,7 @@ const designs = [
         </div>
 
         <div style="margin-top: 64px; font-size: 28px; opacity: 0.7; font-weight: 500;">
-          DIN ISO 17024 · TÜV-/DEKRA-zertifiziert
+          Sachverständiger nach DIN ISO/IEC 17024
         </div>
       </div>
 
